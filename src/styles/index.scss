@@ -48,6 +48,16 @@ body {
     text-align: center;
   }
 
+  .justify-content-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .padding-top-25px {
+    padding-top: 25px;
+  }
   .show {
     display: block !important;
   }
@@ -236,7 +246,7 @@ body {
 
   .container-button {
     .button {
-      width: 110px !important;
+      // width: 110px !important;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;

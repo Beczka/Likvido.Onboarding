@@ -53,9 +53,9 @@ export default class Input extends React.Component {
 
         return (
             <div className="input-block">
-                <div className="input-title">
+               {title && <div className="input-title">
                     {title}
-                </div>
+                </div>}
                 <div>
                     <input type={type} name={name} autoComplete="off" placeholder={placeholder} defaultValue={defaultValue} className={`input-value ${errorShow ? 'error' : ''}`} onChange={this.validation} />
                 </div>
