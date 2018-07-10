@@ -567,14 +567,15 @@ body {
     left: 0; }
     .main .modal-container .modal {
       position: fixed;
-      width: 80%;
+      max-width: 1000px;
+      width: 100%;
+      overflow-y: scroll;
       max-height: 950px;
       height: 100%;
       background-color: white;
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 80%;
       left: 0;
       right: 0;
       top: 0;
@@ -590,7 +591,12 @@ body {
         padding: 15px 0; }
         .main .modal-container .modal .modal-header .modal-header-title {
           font-size: 21px;
-          font-weight: 500; }
+          font-weight: 500;
+          padding-left: 10px; }
+        .main .modal-container .modal .modal-header .modal-header-icon {
+          width: 32px;
+          height: 32px;
+          margin-right: 52px; }
         .main .modal-container .modal .modal-header .close {
           position: absolute;
           right: 20px;
@@ -629,7 +635,9 @@ body {
             padding-top: 35px;
             border-bottom: 1px solid #e4e5ec;
             color: #8a8fa3;
-            list-style-type: none; }
+            list-style-type: none;
+            flex-wrap: wrap;
+            justify-content: start; }
             .main .modal-container .modal .modal-body .react-tabs .tabs-header-container li {
               padding: 10px;
               cursor: pointer; }
@@ -638,22 +646,50 @@ body {
               color: #464855; }
             .main .modal-container .modal .modal-body .react-tabs .tabs-header-container li:nth-child(2) {
               margin: 0 55px; }
+            @media screen and (max-width: 803px) {
+              .main .modal-container .modal .modal-body .react-tabs .tabs-header-container li:nth-child(2) {
+                margin: 0px !important; } }
+          @media screen and (max-width: 803px) {
+            .main .modal-container .modal .modal-body .react-tabs .subject-line-email-container {
+              justify-content: flex-start !important;
+              flex-wrap: wrap; }
+              .main .modal-container .modal .modal-body .react-tabs .subject-line-email-container .container-inp {
+                padding: 10px 0; } }
           .main .modal-container .modal .modal-body .react-tabs .subject-line-constainer {
             display: flex;
             margin-top: 55px;
-            align-items: center; }
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: space-between; }
             .main .modal-container .modal .modal-body .react-tabs .subject-line-constainer .subject-line-block {
-              margin-left: 50px;
+              margin-left: 10px;
               border: 1px solid #e4e5ec;
-              padding: 20px;
-              width: 100%; }
+              width: 80%;
+              overflow: hidden; }
+              .main .modal-container .modal .modal-body .react-tabs .subject-line-constainer .subject-line-block j textarea {
+                padding-top: 20px;
+                padding-left: 10px; }
+          @media screen and (max-width: 967px) {
+            .main .modal-container .modal .modal-body .react-tabs .subject-line-block {
+              margin-top: 10px;
+              margin-left: 0px !important;
+              width: 100% !important; } }
           .main .modal-container .modal .modal-body .react-tabs .subject-line-container {
             margin-top: 20px;
-            padding: 15px;
+            padding-left: 5px;
+            padding-right: 3px;
             border: 1px solid #e4e5ec;
             word-wrap: break-word;
             height: 250px;
-            overflow: auto; }
+            overflow: hidden; }
+            .main .modal-container .modal .modal-body .react-tabs .subject-line-container textarea {
+              padding-top: 10px; }
+            .main .modal-container .modal .modal-body .react-tabs .subject-line-container .DraftEditor-root {
+              height: 100%; }
+              .main .modal-container .modal .modal-body .react-tabs .subject-line-container .DraftEditor-root .DraftEditor-editorContainer {
+                height: 100%; }
+                .main .modal-container .modal .modal-body .react-tabs .subject-line-container .DraftEditor-root .DraftEditor-editorContainer .public-DraftEditor-content {
+                  height: 100%; }
           .main .modal-container .modal .modal-body .react-tabs .subject-line-email-container {
             display: flex;
             justify-content: space-around;
@@ -672,10 +708,18 @@ body {
         justify-content: center;
         align-items: center;
         height: 100%; }
+  .main textarea {
+    width: 100%;
+    height: 100%;
+    resize: none;
+    border: none;
+    outline: none; }
   .main .switch-container {
     display: flex;
     align-items: center;
     padding-bottom: 10px; }
+    .main .switch-container .switch {
+      min-width: 50px; }
     .main .switch-container label {
       padding-left: 10px; }
   .main .align-items-center {
@@ -814,7 +858,8 @@ body {
       width: 100px;
       align-items: center;
       text-align: left;
-      overflow: visible; }
+      overflow: hidden;
+      outline: none; }
     .main .ReactTable .rt-tbody {
       font-weight: 500; }
     .main .ReactTable .rt-td.text-hiden span {

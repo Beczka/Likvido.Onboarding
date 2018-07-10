@@ -296,14 +296,15 @@
 
     .modal {
       position: fixed;
-      width: 80%;
+      max-width: 1000px;
+      width: 100%;
+      overflow-y: scroll;
       max-height: 950px;
       height: 100%;
       background-color: white;
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 80%;
       left: 0;
       right: 0;
       top: 0;
@@ -322,6 +323,13 @@
         .modal-header-title {
           font-size: 21px;
           font-weight: 500;
+          padding-left: 10px;
+        }
+
+        .modal-header-icon {
+          width: 32px;
+          height: 32px;
+          margin-right: 52px;
         }
 
         .close {
@@ -372,6 +380,8 @@
             border-bottom: 1px solid #e4e5ec;
             color: #8a8fa3;
             list-style-type: none;
+            flex-wrap: wrap;
+            justify-content: start;
 
             li {
               padding: 10px;
@@ -387,29 +397,80 @@
              margin: 0 55px;
             }
 
+            @media screen and (max-width: 803px) {
+
+              li:nth-child(2) {
+                margin: 0px !important;
+               }
+            }
+
 
           }
+          @media screen and (max-width: 803px) {
 
+            .subject-line-email-container {
+              justify-content: flex-start !important;
+              flex-wrap: wrap;
+
+              .container-inp {
+                padding: 10px 0;
+              }
+             }
+          }
           .subject-line-constainer {
             display: flex;
             margin-top: 55px;
             align-items: center;
+            flex-wrap: wrap;
+            justify-content: space-between;
 
             .subject-line-block {
-              margin-left: 50px;
+              margin-left: 10px;
               border: 1px solid #e4e5ec;
-              padding: 20px;
-              width: 100%;
+              width: 80%;
+              overflow: hidden;
+              j
+
+              textarea {
+                padding-top: 20px;
+                padding-left: 10px;
+              }
+            }
+          }
+
+          @media screen and (max-width: 967px) {
+
+            .subject-line-block {
+              margin-top: 10px;
+              margin-left: 0px !important;
+              width: 100% !important;
             }
           }
 
           .subject-line-container {
             margin-top: 20px;
-            padding: 15px;
+            padding-left: 5px;
+            padding-right: 3px;
             border: 1px solid #e4e5ec;
             word-wrap: break-word;
             height: 250px;
-            overflow: auto;
+            overflow: hidden;
+
+            textarea {
+              padding-top: 10px
+            }
+
+            .DraftEditor-root {
+              height: 100%;
+
+              .DraftEditor-editorContainer {
+                height: 100%;
+
+                .public-DraftEditor-content {
+                  height: 100%;
+                }
+              }
+            }
           }
 
           .subject-line-email-container {
@@ -445,10 +506,22 @@
     }
   }
 
+  textarea {
+    width: 100%;
+    height: 100%;
+    resize: none;
+    border: none;
+    outline: none;
+  }
+
   .switch-container {
     display: flex;
     align-items: center;
     padding-bottom: 10px;
+
+    .switch {
+      min-width: 50px
+    }
 
     label {
       padding-left: 10px;
@@ -634,7 +707,8 @@
       width: 100px;
       align-items: center;
       text-align: left;
-      overflow: visible;
+      overflow: hidden;
+      outline: none;
     }
 
     .rt-tbody {

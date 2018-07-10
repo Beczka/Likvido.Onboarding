@@ -4,6 +4,7 @@ import defaultProps from '../../../../default';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import Validation from '../../../validation';
 import Switch from 'react-ios-switch';
+import { Editor, EditorState } from 'draft-js';
 
 export default class SettingsReminder extends React.Component {
     constructor(props) {
@@ -11,7 +12,7 @@ export default class SettingsReminder extends React.Component {
         console.log('hlhlhlhlhllh')
         console.log('hlhlhlhlhllh')
 
-        const {dataSwitch} =this.props;
+        const { dataSwitch } = this.props;
         this.state = {
             dataSwitch: dataSwitch ? dataSwitch : [
                 {
@@ -35,11 +36,17 @@ export default class SettingsReminder extends React.Component {
                 }
             ],
             checked: true,
+            editorStateContent: this.props.editorStateContent || '',
+            editorStateHeader: this.props.editorStateHeader || 'En venlig reminder om faktura <faktura> forfalder om 5 dage'
+
         }
 
         this.updatedDone = this.updatedDone.bind(this);
         this.selectData = this.selectData.bind(this);
-        this.changeSwitch = this.changeSwitch.bind(this);
+        this.onChangeContent = (editorState) => {
+            this.setState({ editorStateContent: editorState });
+        };
+        this.onChangeHeader = (editorState) => this.setState({ editorStateHeader: editorState });
     }
 
     updatedDone() {
@@ -66,7 +73,7 @@ export default class SettingsReminder extends React.Component {
         // this.props.saveData(data);
     }
 
-    changeSwitch(index, value) {
+    changeSwitch = (index, value) => {
         let { dataSwitch } = this.state;
         dataSwitch[index].value = !value;
         this.setState(dataSwitch);
@@ -75,9 +82,7 @@ export default class SettingsReminder extends React.Component {
     render() {
         const { btnPrimaryColor } = defaultProps.btnStyles;
         const { saveData, openModal } = this.props;
-        const { update = false, dataSwitch, checked } = this.state;
-
-        console.log('============================================',this.props)
+        const { update = false, dataSwitch, editorStateContent, editorStateHeader } = this.state;
 
         return (
             <div className="modal-container">
@@ -93,12 +98,13 @@ export default class SettingsReminder extends React.Component {
                     <div className="modal-body">
                         <div className="modal-body-container-radio">
                             {dataSwitch.map((el, index) => {
-                                return <div className="switch-container" key={index}>
+                                return <div className="switch-container" key={Math.random()}>
                                     < Switch
                                         checked={el.value}
                                         offColor="white"
                                         onChange={() => this.changeSwitch(index, el.value)}
                                         onColor="#666ee8"
+                                        className="switch"
                                     />
                                     <label>{el.label}</label>
                                 </div>
@@ -116,40 +122,12 @@ export default class SettingsReminder extends React.Component {
                                 <div className="subject-line-constainer">
                                     <span>Emnelinje:</span>
                                     <div className="subject-line-block">
-                                        <span>En venlig reminder om faktura {'<faktura>'} forfalder om 5 dage </span>
+                                        <textarea value={editorStateHeader} onChange={(el) => this.onChangeHeader(el.target.value)} />
                                     </div>
                                 </div>
                                 <div className="subject-line-container">
-                                    testestsettestestsettestestsettestestsettestestsettestestsettestestsettestestsettestestsettestestset
-                                    testestsettestestsettestestsettestestsettestestset
-                                    testestsettestestsettestestsettestestsettestestsettestestsettestestsettestestsetteste
-                                    stsettestestsettestestsettestestsettestestsettestestset
-                                    testestsettestestsettestestsettestestset testestsettestestsettestestsettestestset testestsette
-                                    stestsettestestset testestsettestestsettestestset  testestsettestestsettestestset
-                                    testestsettestestsettestestset testestsettestestsettestestset testestsettestestset testestsette
-                                    stestsettestestset
-                                    testestsettestestsettestestset testestsettestestsettestestset
-                                    testestsettestestsettestestset  testestsettestestsettestestset
-                                    testestsettestestsettestestset testestsettestestsetvtestestsettestestsettestestsettestestset
-                                    testestsettestestsettestestsettestestsettestestsettestestset testestsettest
-                                    estsettestestset testestsettestestsettestestset testestsettestestsettestestset testestsettestestse
-                                    ttestestsettestestsettestestsettestestset testestsettestestsettestestset
-                                    testestsettestestsettestestset testestsettestestset
-                                    testestsettestestsettestestset testestsettestestset
-                                    testestsettestestsettestestset testestsettestestset
-                                    testestsettestestsettestestset testestsettestestset
-                                    testestsettestestsettestestset testestsettestestsetsdsadasddasdasdasdasd
-                                    testestsettestestsettestestset testestsettestestsetsdsadasddasdasdasdasdtest
-                                    estsettestestsettestestset testestsettestestsettestestsettestestsettestestset testestsettestestset
-                                    testestsettestestsettestestset testestsettestestsettestestsettestestsettestestset testestsettestestset
-                                    testestsettestestsettestestset testestsettestestsettestestsettestestsettestestset testestsettestestset
-                                    testestsettestestsettestestset testestsettestestset testestsettestestsettestestset testestsettestestset
-                                    testestsettestestsettestestset testestsettestestset testestsettestestsettestestset
-                                     testestsettestestset testestsettestestsettestestset testestsettestestset testestsettestestsettestestset
-                                      testestsettestestset
-                                    testestsettestestsettestestsette stestsettestestsettestestset
-                                    </div>
-
+                                    <textarea value={editorStateContent} onChange={(el) => this.onChangeContent(el.target.value)} />
+                                </div>
                                 <div className="subject-line-email-container">
                                     <span>Fa tilsendt en test mail </span>
                                     <div className="container-inp">
@@ -160,13 +138,13 @@ export default class SettingsReminder extends React.Component {
                                             placeholder={'E-mail (arbejdsmail) '}
                                             errorMes={'e-mail er forkert'}
                                             error={(el) => { return Validation.validationEmail(el) }}
-                                            onChange={() =>{}} />
+                                            onChange={() => { }} />
                                     </div>
                                     <Button onChange={() => { }} title={'Send test'} styles={{ backgroundColor: btnPrimaryColor }} />
                                 </div>
 
                                 <div className="container-button">
-                                    <Button onChange={() => { saveData(dataSwitch); openModal(false) }} title={'Gem'} styles={{ backgroundColor: btnPrimaryColor }} />
+                                    <Button onChange={() => { saveData(dataSwitch, editorStateContent, editorStateHeader); openModal(false) }} title={'Gem'} styles={{ backgroundColor: btnPrimaryColor }} />
                                     <Button onChange={() => { openModal(false) }} title={'Annuller'} className={'button button-back'} />
                                 </div>
                             </TabPanel>
