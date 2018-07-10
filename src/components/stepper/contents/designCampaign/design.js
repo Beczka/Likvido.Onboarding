@@ -1,23 +1,39 @@
-import React from 'react'
-import { Button, CustomSelect } from '../../../../smpl-components/index'
-import defaultProps from '../../../../default'
+import { Button, CustomSelect } from '../../../../smpl-components/index';
+import SettingsReminder from './settingsReminder';
+import defaultProps from '../../../../default';
 import ReactTable from "react-table";
 import 'react-table/react-table.css';
-import SettingsReminder from './settingsReminder';
+import React from 'react';
 
 export default class Design extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            data: [],
+            openModal: false,
+            checked: true,
+            dataSwitch: {}
         }
+        this.dataSwitch = {};
+        this.openModal = this.openModal.bind(this);
+        this.saveData = this.saveData.bind(this);
 
+    }
+
+    openModal(status, row) {
+        this.setState({ openModal: status ? status : false, row: row ? row : '' })
+    }
+
+    saveData(data) {
+        let { row } = this.state;
+        this.dataSwitch[row] = data || [];
     }
 
 
     render() {
         const { btnPrimaryColor } = defaultProps.btnStyles;
         const { changeStep } = this.props;
+        const { openModal, dataSwitch, row } = this.state;
+
         const data = [{
             name: 'Venlig pamindekse',
             id: 5
@@ -34,6 +50,7 @@ export default class Design extends React.Component {
             name: 'Final notice',
             id: 22
         }];
+
         const columns = [{
             Header: props => <span className="justify-content-center">Dage efter <br /> forfald</span>,
             accessor: 'id',
@@ -46,14 +63,14 @@ export default class Design extends React.Component {
         }, {
             id: 'friendName', // Required because our accessor is not a string
             Header: 'Detaljer',
-            accessor: d => <u href="#">Se mere</u>,
+            accessor: d => <u href="#" onClick={() => this.openModal(true, d.name)}>Se mere</u>,
             maxWidth: 100
         }, {
             Header: props => <span>Kraves godkendelse?</span>, // Custom header components!
             accessor: 'friend.age',
             minWidth: 250,
             Cell: row => (
-                <div className={row.index >= 2 && 'top'}
+                <div className={row.index >= 2 ? 'top' : ''}
                     style={{
                         width: "100%",
                         height: "100%",
@@ -62,10 +79,9 @@ export default class Design extends React.Component {
                 >
                     <CustomSelect placeholder={'Nej, Start automatisk'} />
                 </div>)
-        }]
+        }];
 
-
-        return ([
+        return ([openModal && <SettingsReminder openModal={this.openModal} saveData={this.saveData} dataSwitch={this.dataSwitch[row]} />,
         <div className="left-panel-block padding-top-25px">
             <div className="left-panel-container-header">
                 Design dit rykkerflow
