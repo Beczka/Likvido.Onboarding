@@ -122,7 +122,7 @@ export default class SettingsReminder extends React.Component {
                                 <div className="subject-line-constainer">
                                     <span>Emnelinje:</span>
                                     <div className="subject-line-block">
-                                        <textarea value={editorStateHeader} onChange={(el) => this.onChangeHeader(el.target.value)} />
+                                        <input type="text" value={editorStateHeader} onChange={(el) => this.onChangeHeader(el.target.value)} />
                                     </div>
                                 </div>
                                 <div className="subject-line-container">

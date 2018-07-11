@@ -429,11 +429,17 @@
               border: 1px solid #e4e5ec;
               width: 80%;
               overflow: hidden;
-              j
 
-              textarea {
+              input {
                 padding-top: 20px;
-                padding-left: 10px;
+                padding-bottom: 20px;
+                width: 100%;
+                padding-left: 30px;
+                font-family: 'Montserrat';
+                font-weight: 400;
+                color: #6d7183;
+                font-size: 15px;
+                border: none;
               }
             }
           }
@@ -457,7 +463,8 @@
             overflow: hidden;
 
             textarea {
-              padding-top: 10px
+              padding-top: 10px;
+              padding-left: 10px;
             }
 
             .DraftEditor-root {
@@ -485,7 +492,11 @@
             }
             .container-inp {
               margin: 0;
+              max-width: 200px;
 
+              input {
+                height: 55px;
+              }
               .input-block {
                 padding-bottom: 0px;
               }
@@ -512,6 +523,10 @@
     resize: none;
     border: none;
     outline: none;
+    font-family: 'Montserrat';
+    font-weight: 400;
+    color: #6d7183;
+    font-size: 15px;
   }
 
   .switch-container {
