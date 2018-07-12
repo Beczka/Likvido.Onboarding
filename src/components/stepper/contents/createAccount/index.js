@@ -20,7 +20,7 @@ export default class CreateAccount extends React.Component {
     }
 
     renderStep() {
-        const { value,entry,activeStep } = this.state;
+        const { value = '',entry,activeStep } = this.state;
 
         switch (activeStep) {
             case 'payment step':
@@ -44,7 +44,7 @@ export default class CreateAccount extends React.Component {
                 this.setState({ activeStep: this.steps[backStep ? key + 1 : key - 1] });
             }
         })
-        value && this.setState({ value: value });
+        value && this.setState({ value: value || '' });
     }
 
     saveData(saveData) {

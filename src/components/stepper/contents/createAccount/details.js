@@ -51,9 +51,7 @@ export default class Details extends React.Component {
     }
 
     async getData() {
-        if (!!!this.props.value)
-            return;
-        this.props.spinner(true)
+    this.props.spinner(true);
         try {
             const res = await axios.get(API.detailAPI, {
                 headers: {
@@ -66,6 +64,7 @@ export default class Details extends React.Component {
             this.setState({ data: res.data[0] || {}, loader: false })
         } catch (e) {
             console.log('Err: ', e)
+            this.props.spinner();
         }
     }
 

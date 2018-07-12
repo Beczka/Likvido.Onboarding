@@ -704,7 +704,8 @@ body {
                 font-weight: 400;
                 color: #6d7183;
                 font-size: 15px;
-                border: none; }
+                border: none;
+                outline: none; }
           @media screen and (max-width: 967px) {
             .main .modal-container .modal .modal-body .react-tabs .subject-line-block {
               margin-top: 10px;
