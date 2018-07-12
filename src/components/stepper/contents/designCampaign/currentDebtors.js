@@ -1,5 +1,4 @@
 import { Button, Checkbox, CustomSelect } from '../../../../smpl-components/index';
-import 'react-bootstrap-table/dist/react-bootstrap-table.min.css';
 import ReactTable from "react-table";
 import defaultProps from '../../../../default';
 import Switch from 'react-ios-switch';
