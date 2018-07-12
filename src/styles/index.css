@@ -122,7 +122,8 @@ body {
     body .main .left-panel {
       flex: 5 0 10rem;
       padding-bottom: 30px;
-      position: relative; }
+      position: relative;
+      -webkit-box-sizing: initial !important; }
       body .main .left-panel .left-panel-block {
         padding: 70px 60px 20px 70px;
         position: relative;
@@ -130,7 +131,8 @@ body {
         max-height: 550px;
         display: flex;
         flex-direction: column;
-        justify-content: space-around; }
+        justify-content: space-around;
+        -webkit-box-sizing: initial !important; }
         body .main .left-panel .left-panel-block .left-panel-container-header-content {
           padding-top: 15px; }
         body .main .left-panel .left-panel-block .panel-bl-content {
@@ -226,7 +228,8 @@ body {
       align-items: center;
       padding: 0px 15px;
       flex-grow: 1;
-      justify-content: space-around; }
+      justify-content: space-around;
+      -webkit-box-sizing: initial !important; }
       body .main .right-panel .container-number {
         display: flex;
         flex-direction: column; }
@@ -518,6 +521,7 @@ body {
       cursor: pointer;
       left: 2px; }
     .main .container-custom-checkbox .custom-checkmark {
+      background-color: white;
       position: absolute;
       top: 0;
       left: 0;
@@ -530,7 +534,10 @@ body {
     .main .container-custom-checkbox .custom-checkmark:after {
       content: "";
       position: absolute;
-      display: none; }
+      display: none;
+      -webkit-box-sizing: initial;
+      -moz-box-sizing: initial;
+      box-sizing: initial; }
     .main .container-custom-checkbox input:checked ~ .custom-checkmark:after {
       display: block; }
     .main .container-custom-checkbox .custom-checkmark:after {
@@ -584,6 +591,7 @@ body {
       .main .modal-container .modal .modal-header {
         background-color: #464855;
         width: 100%;
+        min-height: 35px;
         color: white;
         display: flex;
         justify-content: center;
@@ -648,8 +656,27 @@ body {
               margin: 0 55px; }
             @media screen and (max-width: 803px) {
               .main .modal-container .modal .modal-body .react-tabs .tabs-header-container li:nth-child(2) {
-                margin: 0px !important; } }
+                margin: 0px !important; }
+              .main .modal-container .modal .modal-body .react-tabs .tabs-header-container .subject-line-email-container {
+                width: 100% !important; } }
           @media screen and (max-width: 803px) {
+            .main .modal-container .modal .modal-body .react-tabs .subject-line-email-container {
+              width: 100% !important; }
+            .main .modal-container .modal .modal-body .react-tabs .container-button {
+              padding-bottom: 20px; } }
+          @media screen and (max-width: 500px) {
+            .main .modal-container .modal .modal-body .react-tabs .subject-line-email-container {
+              width: 100% !important; }
+              .main .modal-container .modal .modal-body .react-tabs .subject-line-email-container .container-inp {
+                max-width: none !important;
+                width: 100% !important; }
+                .main .modal-container .modal .modal-body .react-tabs .subject-line-email-container .container-inp .input-block {
+                  padding-bottom: 30px !important; }
+                  .main .modal-container .modal .modal-body .react-tabs .subject-line-email-container .container-inp .input-block div {
+                    margin-right: 20px; }
+              .main .modal-container .modal .modal-body .react-tabs .subject-line-email-container .button {
+                width: 100%; } }
+          @media screen and (max-width: 500px) {
             .main .modal-container .modal .modal-body .react-tabs .subject-line-email-container {
               justify-content: flex-start !important;
               flex-wrap: wrap; }
@@ -665,7 +692,9 @@ body {
               margin-left: 10px;
               border: 1px solid #e4e5ec;
               width: 80%;
-              overflow: hidden; }
+              overflow: hidden;
+              padding-left: 10px;
+              padding-right: 10px; }
               .main .modal-container .modal .modal-body .react-tabs .subject-line-constainer .subject-line-block input {
                 padding-top: 20px;
                 padding-bottom: 20px;
@@ -858,6 +887,8 @@ body {
     opacity: 1; }
   100% {
     opacity: 0; } }
+  .main .color-grey {
+    color: #898ea2; }
   .main .ReactTable {
     height: 400px; }
     .main .ReactTable .rt-thead {
@@ -867,6 +898,8 @@ body {
       box-shadow: none !important;
       color: #878eee;
       font-weight: 600; }
+    .main .ReactTable .pagination-bottom {
+      display: none; }
     .main .ReactTable .rt-th {
       display: flex;
       flex: 100 0 auto;
@@ -908,3 +941,32 @@ body {
     width: 100%;
     max-height: 270px;
     height: 100%; }
+  .main .react-table .ReactTable {
+    max-height: 260px; }
+    .main .react-table .ReactTable .rt-thead {
+      color: #c0c4d1;
+      font-size: 15px; }
+      .main .react-table .ReactTable .rt-thead .rt-th {
+        border-right: none;
+        align-items: flex-end;
+        display: flex; }
+    .main .react-table .ReactTable .rt-tbody .rt-td {
+      border-right: none; }
+      .main .react-table .ReactTable .rt-tbody .rt-td div {
+        margin: 0; }
+    .main .react-table .ReactTable .rt-tbody .custom-checkmark {
+      left: 10px;
+      height: 17px;
+      width: 17px; }
+  .main .react-table-bottom-header {
+    height: 70px;
+    background-color: #e4e5ec;
+    display: flex;
+    align-items: center;
+    padding-left: 18px;
+    padding-top: 10px;
+    border-radius: 0 0 5px 5px;
+    font-weight: 500;
+    color: #545662; }
+    .main .react-table-bottom-header .custom-checkmark {
+      background-color: white; }

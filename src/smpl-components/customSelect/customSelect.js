@@ -20,7 +20,13 @@ export default class CustomSelect extends React.Component {
 
   render() {
     const { selectedOption } = this.state;
-    const { placeholder = '' } = this.props;
+    const { placeholder = '',data=['Nej, start automatisk','[Ja, kræver godkendelse'] } = this.props;
+    const options = [];
+
+    data.forEach(el => {
+      options.push({value: el, label: el})
+    });
+
     return (
       <Select
         name="form-field-name"
@@ -28,10 +34,7 @@ export default class CustomSelect extends React.Component {
         value={selectedOption}
         onChange={this.handleChange}
         
-        options={[
-          { value: 'Nej, start automatisk', label: 'Nej, start automatisk' },
-          { value: '[Ja, kræver godkendelse', label: '[Ja, kræver godkendelse' },
-        ]}
+        options={options}
       />
     );
   }

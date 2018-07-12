@@ -4,13 +4,10 @@ import defaultProps from '../../../../default';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import Validation from '../../../validation';
 import Switch from 'react-ios-switch';
-import { Editor, EditorState } from 'draft-js';
 
 export default class SettingsReminder extends React.Component {
     constructor(props) {
         super(props)
-        console.log('hlhlhlhlhllh')
-        console.log('hlhlhlhlhllh')
 
         const { dataSwitch } = this.props;
         this.state = {
@@ -37,7 +34,7 @@ export default class SettingsReminder extends React.Component {
             ],
             checked: true,
             editorStateContent: this.props.editorStateContent || '',
-            editorStateHeader: this.props.editorStateHeader || 'En venlig reminder om faktura <faktura> forfalder om 5 dage'
+            editorStateHeader: this.props.editorStateHeader || ''
 
         }
 
@@ -122,7 +119,7 @@ export default class SettingsReminder extends React.Component {
                                 <div className="subject-line-constainer">
                                     <span>Emnelinje:</span>
                                     <div className="subject-line-block">
-                                        <input type="text" value={editorStateHeader} onChange={(el) => this.onChangeHeader(el.target.value)} />
+                                        <input type="text" value={editorStateHeader} placeholder={'En venlig reminder om faktura <faktura> forfalder om 5 dage'} onChange={(el) => this.onChangeHeader(el.target.value)} />
                                     </div>
                                 </div>
                                 <div className="subject-line-container">
@@ -152,7 +149,7 @@ export default class SettingsReminder extends React.Component {
                                 <h2>Any content 2</h2>
                             </TabPanel>
                             <TabPanel>
-                                <h2>Any content 2</h2>
+                                <h2>Any content 3</h2>
                             </TabPanel>
                         </Tabs>
                     </div>

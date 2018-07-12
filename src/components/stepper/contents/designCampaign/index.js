@@ -1,8 +1,8 @@
 import React from 'react';
-// import Details from './details';
+import DebtCollection from './debtCollection';
 import Design from './design';
 import Distribution from './distribution';
-// import data from './comparingMockup.json';
+import CurrentDebtors from './currentDebtors';
 
 export default class DesignCampaing extends React.Component {
     constructor(props) {
@@ -11,7 +11,7 @@ export default class DesignCampaing extends React.Component {
             activeStep: 'distribution step',
             entry: {}
         };
-        this.steps = ['distribution step', 'Design kampagne', 'account step', 'greeting step'];
+        this.steps = ['distribution step', 'Design kampagne', 'Debt collection', 'Current debtors'];
         this.changeStep = this.changeStep.bind(this);
         this.changePart = this.props.changePart;
         this.changeStatus = this.props.changeStatus;
@@ -26,10 +26,10 @@ export default class DesignCampaing extends React.Component {
                 return <Distribution changeStep={this.changeStep} />
             case 'Design kampagne':
                 return <Design changeStep={this.changeStep} />;
-            // case 'account step':
-            //     return <Account changeStep={this.changeStep} data={data.data_account} entry={entry[activeStep]} saveData={this.saveData} />;
-            // case 'greeting step':
-            //     return <Greeting changeStep={this.changePart} data={data.data_greeting} />;
+            case 'Debt collection':
+                return <DebtCollection changeStep={this.changeStep} />;
+            case 'Current debtors':
+                return <CurrentDebtors changeStep={this.changeStep}  />;
         }
     }
 
@@ -39,7 +39,7 @@ export default class DesignCampaing extends React.Component {
 
         this.steps.filter((el, key) => {
             if (activeStep === el) {
-                this.changeStatus('Opret konto', 'progress');
+                this.changeStatus('Design kampagne', 'progress');
                 this.setState({ activeStep: this.steps[backStep ? key + 1 : key - 1] });
             }
         })

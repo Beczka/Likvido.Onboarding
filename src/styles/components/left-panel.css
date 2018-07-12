@@ -10,7 +10,8 @@
 .left-panel {
   flex: 5 0 10rem;
   padding-bottom: 30px;
-  position: relative; }
+  position: relative;
+  -webkit-box-sizing: initial !important; }
   .left-panel .left-panel-block {
     padding: 70px 60px 20px 70px;
     position: relative;
@@ -18,7 +19,8 @@
     max-height: 550px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around; }
+    justify-content: space-around;
+    -webkit-box-sizing: initial !important; }
     .left-panel .left-panel-block .left-panel-container-header-content {
       padding-top: 15px; }
     .left-panel .left-panel-block .panel-bl-content {

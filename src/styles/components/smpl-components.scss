@@ -231,6 +231,7 @@
     }
 
     .custom-checkmark {
+      background-color: white;
       position: absolute;
       top: 0;
       left: 0;
@@ -246,6 +247,9 @@
       content: "";
       position: absolute;
       display: none;
+      -webkit-box-sizing: initial ;
+      -moz-box-sizing: initial ;
+      box-sizing: initial ;
     }
 
     input:checked ~ .custom-checkmark:after {
@@ -314,6 +318,7 @@
       .modal-header {
         background-color: #464855;
         width: 100%;
+        min-height: 35px;
         color: white;
         display: flex;
         justify-content: center;
@@ -402,21 +407,61 @@
               li:nth-child(2) {
                 margin: 0px !important;
                }
+
+               .subject-line-email-container {
+                width: 100% !important;
+               }
             }
-
-
           }
+
           @media screen and (max-width: 803px) {
 
+             .subject-line-email-container {
+              width: 100% !important;
+             }
+
+             .container-button {
+              padding-bottom: 20px;
+            }
+
+          }
+
+          @media screen and (max-width: 500px) {
+
             .subject-line-email-container {
+              width: 100% !important;
+
+              .container-inp {
+                max-width: none !important; 
+                width: 100% !important;
+
+                .input-block {
+                  padding-bottom: 30px !important;
+                  
+                  div {
+                    margin-right: 20px;
+                  }
+                }
+              }
+
+              .button {
+                width: 100%;
+              }
+             }
+          }
+
+          @media screen and (max-width: 500px) {
+
+            .subject-line-email-container {
+              
               justify-content: flex-start !important;
               flex-wrap: wrap;
-
               .container-inp {
                 padding: 10px 0;
               }
              }
           }
+
           .subject-line-constainer {
             display: flex;
             margin-top: 55px;
@@ -429,6 +474,8 @@
               border: 1px solid #e4e5ec;
               width: 80%;
               overflow: hidden;
+              padding-left: 10px;
+              padding-right: 10px;
 
               input {
                 padding-top: 20px;
@@ -703,6 +750,10 @@
       opacity: 0;
     }
   }
+
+  .color-grey {
+    color: #898ea2;
+  }
   
   .ReactTable {
     height: 400px;
@@ -714,6 +765,10 @@
       box-shadow: none !important;
       color: #878eee;
       font-weight: 600;
+    }
+
+    .pagination-bottom {
+      display: none;
     }
 
     .rt-th {
@@ -780,4 +835,54 @@
     height: 100%;
   }
   
+  .react-table {
+
+    .ReactTable {
+      max-height: 260px;
+
+      .rt-thead { 
+        color: #c0c4d1;
+        font-size: 15px;
+
+        .rt-th {
+          border-right: none;
+          align-items: flex-end;
+          display: flex;
+        }
+      }
+
+      .rt-tbody{
+
+        .rt-td {
+          border-right: none;
+
+           div {
+             margin: 0;
+           }
+        }
+
+        .custom-checkmark {
+          left: 10px;
+          height: 17px;
+          width: 17px;
+        }
+      }
+    }
+  }
+
+  .react-table-bottom-header {
+    height: 70px;
+    background-color: #e4e5ec;
+    display: flex;
+    align-items: center;
+    padding-left: 18px;
+    padding-top: 10px;
+    border-radius: 0 0 5px 5px;
+    font-weight: 500;
+    color: #545662;
+
+    .custom-checkmark  {
+      background-color: white;
+    }
+  }
 }

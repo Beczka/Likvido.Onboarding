@@ -100,7 +100,7 @@ export default class Design extends React.Component {
             />
 
             <div className="container-button">
-                <Button onChange={() => { }} title={'Næste (inkasso indstillinger) →'} styles={{ backgroundColor: btnPrimaryColor, width: 260 }} />
+                <Button onChange={() => changeStep(true)} title={'Næste (inkasso indstillinger) →'} styles={{ backgroundColor: btnPrimaryColor, width: 260 }} />
                 <Button onChange={() => changeStep(false)} title={'Forrige'} className={'button button-back'} />
             </div>
         </div>

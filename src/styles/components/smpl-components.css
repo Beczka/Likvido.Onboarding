@@ -177,6 +177,7 @@
       cursor: pointer;
       left: 2px; }
     .main .container-custom-checkbox .custom-checkmark {
+      background-color: white;
       position: absolute;
       top: 0;
       left: 0;
@@ -189,7 +190,10 @@
     .main .container-custom-checkbox .custom-checkmark:after {
       content: "";
       position: absolute;
-      display: none; }
+      display: none;
+      -webkit-box-sizing: initial;
+      -moz-box-sizing: initial;
+      box-sizing: initial; }
     .main .container-custom-checkbox input:checked ~ .custom-checkmark:after {
       display: block; }
     .main .container-custom-checkbox .custom-checkmark:after {
@@ -243,6 +247,7 @@
       .main .modal-container .modal .modal-header {
         background-color: #464855;
         width: 100%;
+        min-height: 35px;
         color: white;
         display: flex;
         justify-content: center;
@@ -307,8 +312,27 @@
               margin: 0 55px; }
             @media screen and (max-width: 803px) {
               .main .modal-container .modal .modal-body .react-tabs .tabs-header-container li:nth-child(2) {
-                margin: 0px !important; } }
+                margin: 0px !important; }
+              .main .modal-container .modal .modal-body .react-tabs .tabs-header-container .subject-line-email-container {
+                width: 100% !important; } }
           @media screen and (max-width: 803px) {
+            .main .modal-container .modal .modal-body .react-tabs .subject-line-email-container {
+              width: 100% !important; }
+            .main .modal-container .modal .modal-body .react-tabs .container-button {
+              padding-bottom: 20px; } }
+          @media screen and (max-width: 500px) {
+            .main .modal-container .modal .modal-body .react-tabs .subject-line-email-container {
+              width: 100% !important; }
+              .main .modal-container .modal .modal-body .react-tabs .subject-line-email-container .container-inp {
+                max-width: none !important;
+                width: 100% !important; }
+                .main .modal-container .modal .modal-body .react-tabs .subject-line-email-container .container-inp .input-block {
+                  padding-bottom: 30px !important; }
+                  .main .modal-container .modal .modal-body .react-tabs .subject-line-email-container .container-inp .input-block div {
+                    margin-right: 20px; }
+              .main .modal-container .modal .modal-body .react-tabs .subject-line-email-container .button {
+                width: 100%; } }
+          @media screen and (max-width: 500px) {
             .main .modal-container .modal .modal-body .react-tabs .subject-line-email-container {
               justify-content: flex-start !important;
               flex-wrap: wrap; }
@@ -324,7 +348,9 @@
               margin-left: 10px;
               border: 1px solid #e4e5ec;
               width: 80%;
-              overflow: hidden; }
+              overflow: hidden;
+              padding-left: 10px;
+              padding-right: 10px; }
               .main .modal-container .modal .modal-body .react-tabs .subject-line-constainer .subject-line-block input {
                 padding-top: 20px;
                 padding-bottom: 20px;
@@ -517,6 +543,8 @@
     opacity: 1; }
   100% {
     opacity: 0; } }
+  .main .color-grey {
+    color: #898ea2; }
   .main .ReactTable {
     height: 400px; }
     .main .ReactTable .rt-thead {
@@ -526,6 +554,8 @@
       box-shadow: none !important;
       color: #878eee;
       font-weight: 600; }
+    .main .ReactTable .pagination-bottom {
+      display: none; }
     .main .ReactTable .rt-th {
       display: flex;
       flex: 100 0 auto;
@@ -567,3 +597,32 @@
     width: 100%;
     max-height: 270px;
     height: 100%; }
+  .main .react-table .ReactTable {
+    max-height: 260px; }
+    .main .react-table .ReactTable .rt-thead {
+      color: #c0c4d1;
+      font-size: 15px; }
+      .main .react-table .ReactTable .rt-thead .rt-th {
+        border-right: none;
+        align-items: flex-end;
+        display: flex; }
+    .main .react-table .ReactTable .rt-tbody .rt-td {
+      border-right: none; }
+      .main .react-table .ReactTable .rt-tbody .rt-td div {
+        margin: 0; }
+    .main .react-table .ReactTable .rt-tbody .custom-checkmark {
+      left: 10px;
+      height: 17px;
+      width: 17px; }
+  .main .react-table-bottom-header {
+    height: 70px;
+    background-color: #e4e5ec;
+    display: flex;
+    align-items: center;
+    padding-left: 18px;
+    padding-top: 10px;
+    border-radius: 0 0 5px 5px;
+    font-weight: 500;
+    color: #545662; }
+    .main .react-table-bottom-header .custom-checkmark {
+      background-color: white; }

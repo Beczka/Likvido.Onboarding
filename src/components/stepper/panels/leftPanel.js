@@ -8,7 +8,7 @@ export default class LeftPanel extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            activePart: this.props.activePart || 'Design kampagne',
+            activePart: this.props.activePart || 'Opret konto',
             status: false
         };
         this.changePart = this.changePart.bind(this);
@@ -33,10 +33,8 @@ export default class LeftPanel extends React.Component {
     changePart() {
         const { activePart } = this.state;
         const { parts, saveActivePart } = this.props;
-        console.log('parts', parts)
         parts.filter((el, key) => {
             if (activePart === el.name) {
-                console.log('activePart', parts[key + 1].name)
                 this.setState({ activePart: parts[key + 1].name });
                 saveActivePart(parts[key + 1].name);
                 this.changeStatus(parts[key].name, 'success');
