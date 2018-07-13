@@ -34,7 +34,8 @@ export default class SettingsReminder extends React.Component {
             ],
             checked: true,
             editorStateContent: this.props.editorStateContent || '',
-            editorStateHeader: this.props.editorStateHeader || ''
+            editorStateHeader: this.props.editorStateHeader || '',
+            email: this.props.email || ''
 
         }
 
@@ -51,23 +52,7 @@ export default class SettingsReminder extends React.Component {
     }
 
     selectData(name, value) {
-        let { data } = this.state;
-        let stop = true;
-
-        data.forEach((el, index) => {
-            if (el.name === name) {
-                data[index].value = value;
-                stop = false;
-                this.setState(data);
-                return
-            }
-        })
-        if (stop) {
-            data.push({ name: name, value: value })
-            this.setState(data);
-        }
-
-        // this.props.saveData(data);
+        this.setState({ email: value })
     }
 
     changeSwitch = (index, value) => {
@@ -79,7 +64,7 @@ export default class SettingsReminder extends React.Component {
     render() {
         const { btnPrimaryColor } = defaultProps.btnStyles;
         const { saveData, openModal } = this.props;
-        const { update = false, dataSwitch, editorStateContent, editorStateHeader } = this.state;
+        const { update = false, dataSwitch, editorStateContent, editorStateHeader, email } = this.state;
 
         return (
             <div className="modal-container">
@@ -134,14 +119,15 @@ export default class SettingsReminder extends React.Component {
                                             update={update}
                                             placeholder={'E-mail (arbejdsmail) '}
                                             errorMes={'e-mail er forkert'}
+                                            defaultValue = {email}
                                             error={(el) => { return Validation.validationEmail(el) }}
-                                            onChange={() => { }} />
+                                            onChange={(name, value) => { this.selectData(name, value) }} />
                                     </div>
                                     <Button onChange={() => { }} title={'Send test'} styles={{ backgroundColor: btnPrimaryColor }} />
                                 </div>
 
                                 <div className="container-button">
-                                    <Button onChange={() => { saveData(dataSwitch, editorStateContent, editorStateHeader); openModal(false) }} title={'Gem'} styles={{ backgroundColor: btnPrimaryColor }} />
+                                    <Button onChange={() => { saveData(dataSwitch, editorStateContent, editorStateHeader, email); openModal(false) }} title={'Gem'} styles={{ backgroundColor: btnPrimaryColor }} />
                                     <Button onChange={() => { openModal(false) }} title={'Annuller'} className={'button button-back'} />
                                 </div>
                             </TabPanel>

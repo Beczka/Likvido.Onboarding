@@ -2,22 +2,27 @@ import React from 'react'
 import Design from '../contents/designCampaign/index'
 import Account from '../contents/createAccount/index'
 import Confirm from '../contents/confirm/index'
-import {  Spinner } from '../../../smpl-components/index';
+import SelectCases from '../contents/selectCases/index'
+import ConfirmCampaign from '../contents/confirmCampaign/index'
+import { Spinner } from '../../../smpl-components/index';
 
 export default class LeftPanel extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             activePart: this.props.activePart || 'Opret konto',
-            status: false
+            status: false,
+            activeStep: ''
         };
+        this.activeStep = ''
         this.changePart = this.changePart.bind(this);
         this.changeStatus = this.props.changeStatus;
         this.spinner = this.spinner.bind(this);
+        this.saveActiveStep =this.props.saveActiveStep;
     }
 
     renderPart() {
-        const { activePart } = this.state;
+        const { activePart, activeStep } = this.state;
         switch (activePart) {
             case 'Opret konto':
                 return <Account changePart={this.changePart} key={2} spinner={this.spinner} changeStatus={this.changeStatus} />
@@ -25,8 +30,10 @@ export default class LeftPanel extends React.Component {
                 return <Confirm changePart={this.changePart} key={3} changeLoading={this.props.changeLoading} changeStatus={this.changeStatus} />
             case 'Design kampagne':
                 return <Design changePart={this.changePart} key={4} changeStatus={this.changeStatus} />
-            case 'greeting step':
-            // return <Greeting changePart={this.changePart} />
+            case 'Vælg sager':
+                return <SelectCases changePart={this.changePart} key={5} changeStatus={this.changeStatus} />
+            case 'Bekræft kampagne':
+                return <ConfirmCampaign changePart={this.changePart} activeStep={this.props.activeStep} saveActiveStep={this.props.saveActiveStep} key={6} changeLoading={this.props.changeLoading} changeStatus={this.changeStatus} />
         }
     }
 
@@ -42,13 +49,17 @@ export default class LeftPanel extends React.Component {
         })
     }
 
+    saveActiveStep(el) {
+        this.activeStep = el.activeStep
+    }
+
     spinner(status) {
-        this.setState({status:status})
+        this.setState({ status: status })
     }
 
     renderSpinner() {
         const { status = false } = this.state;
-        return status && <Spinner key={1}/>
+        return status && <Spinner key={1} />
     }
 
     render() {

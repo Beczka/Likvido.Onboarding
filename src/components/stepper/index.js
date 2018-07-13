@@ -26,6 +26,7 @@ export default class step extends React.Component {
         this.changeStatus = this.changeStatus.bind(this);
         this.changeLoading = this.changeLoading.bind(this);
         this.saveActivePart = this.saveActivePart.bind(this);
+        this.saveActiveStep =this.saveActiveStep.bind(this);
     }
 
     changeStatus(name, status) {
@@ -38,17 +39,21 @@ export default class step extends React.Component {
         });
         this.setState({ parts: parts });
     }
-    
+
     saveActivePart(el) {
-        this.setState({activePart: el})
+        this.setState({ activePart: el })
     }
 
-    changeLoading(status) {
-        this.setState({ loading: status })
+    saveActiveStep(el) {
+        this.activeStep = el.activeStep
+    }
+
+    changeLoading(status, title, body, progress) {
+        this.setState({ loading: status, title: title, body: body, progress: progress })
     }
 
     render() {
-        const { parts, loading, activePart='' } = this.state;
+        const { parts, loading, activePart = '', body, title, progress } = this.state;
         return ([
             <div className="compan-block">
                 <div className="compan-logo">
@@ -63,12 +68,12 @@ export default class step extends React.Component {
 
                 {loading ?
                     <div className="container-main">
-                        <LoadingPage changeLoading={this.changeLoading} />
+                        <LoadingPage changeLoading={this.changeLoading} body={body} title={title} progress={progress} />
                     </div>
                     :
                     [<TopPanel parts={parts} />,
                     <div className="container-main">
-                        <LeftPanel parts={parts} activePart={activePart} saveActivePart={this.saveActivePart} changeStatus={this.changeStatus} changeLoading={this.changeLoading}/>
+                        <LeftPanel parts={parts} activePart={activePart} activeStep={this.activeStep} saveActiveStep={this.saveActiveStep} saveActivePart={this.saveActivePart} changeStatus={this.changeStatus} changeLoading={this.changeLoading} />
                         <RightPanel />
                     </div>]
                 }

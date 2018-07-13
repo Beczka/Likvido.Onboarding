@@ -1,16 +1,17 @@
 import React from 'react';
-import DebtCollection from './debtCollection';
-import Design from './design';
-import Distribution from './distribution';
+// import DebtCollection from './debtCollection';
+// import Design from './design';
+import Confirmation from '../confirmCampaign/confirmation';
+import CurrentDebtors from './currentDebtors';
 
-export default class DesignCampaing extends React.Component {
+export default class SelectCases extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            activeStep: 'distribution step',
+            activeStep: 'Current debtors',
             entry: {}
         };
-        this.steps = ['distribution step', 'Design kampagne', 'Debt collection', 'Current debtors'];
+        this.steps = ['Current debtors', 'Confirmation page', 'Debt collection', 'Current debtors'];
         this.changeStep = this.changeStep.bind(this);
         this.changePart = this.props.changePart;
         this.changeStatus = this.props.changeStatus;
@@ -21,12 +22,8 @@ export default class DesignCampaing extends React.Component {
         const { value,entry,activeStep } = this.state;
 
         switch (activeStep) {
-            case 'distribution step':
-                return <Distribution changeStep={this.changeStep} />
-            case 'Design kampagne':
-                return <Design changeStep={this.changeStep} />;
-            case 'Debt collection':
-                return <DebtCollection changeStep={this.changePart} />;
+            case 'Current debtors':
+                return <CurrentDebtors changeStep={this.changePart} />
         }
     }
 
@@ -36,7 +33,7 @@ export default class DesignCampaing extends React.Component {
 
         this.steps.filter((el, key) => {
             if (activeStep === el) {
-                this.changeStatus('Design kampagne', 'progress');
+                this.changeStatus('Vælg sager', 'progress');
                 this.setState({ activeStep: this.steps[backStep ? key + 1 : key - 1] });
             }
         })

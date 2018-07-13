@@ -183,7 +183,7 @@ export default class CurrentDebtors extends React.Component {
                     <Checkbox title={`${selection} valg till inddrivelse`} value={allCheck} onChange={() => { this.setState({ allCheck: !allCheck }); this.selectRow('', !allCheck, true) }} />
                 </div>
                 <div className="container-button">
-                    <Button onChange={() => { }} title={'Ga til bekraeftelse'} styles={{ backgroundColor: btnPrimaryColor, width: 260 }} />
+                    <Button onChange={() => changeStep(true)} title={'Ga til bekraeftelse'} styles={{ backgroundColor: btnPrimaryColor, width: 260 }} />
                     <Button onChange={() => changeStep(false)} title={'Forrige'} className={'button button-back'} />
                 </div>
             </div>

@@ -8,7 +8,8 @@ export default class Account extends React.Component {
         super(props)
         this.state = {
             data: [],
-            password: ''
+            password: '',
+            checked: false
         }
         this.selectData = this.selectData.bind(this);
         this.checkData = this.checkData.bind(this);
@@ -70,7 +71,7 @@ export default class Account extends React.Component {
 
     render() {
         const { changeStep, entry = [] } = this.props;
-        const { password, update } = this.state;
+        const { password, update,checked } = this.state;
         const { content } = this.props.data;
         const { btnPrimaryColor } = defaultProps.btnStyles;
 
@@ -151,7 +152,7 @@ export default class Account extends React.Component {
                 </div>
 
                 <div className="container-checkbox">
-                    <Checkbox title={'Jeg accepterer Likvido Inkasso ApS '} url={'https://likvido.dk/betingelser/'} />
+                    <Checkbox title={'Jeg accepterer Likvido Inkasso ApS '} value={checked} onChange={() => this.setState({checked: !checked})} url={'https://likvido.dk/betingelser/'} />
                 </div>
                 <div className="container-button">
                     <Button onChange={() => this.checkData() && changeStep(true)} title={'Næste →'} styles={{ backgroundColor: btnPrimaryColor }} />

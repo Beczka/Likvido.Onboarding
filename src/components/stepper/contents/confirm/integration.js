@@ -1,6 +1,7 @@
 import { Button, Input } from '../../../../smpl-components/index';
 import defaultProps from '../../../../default';
 import Validation from '../../../validation';
+import ModalVideo from './modalVideo'
 import React from 'react';
 
 export default class Integration extends React.Component {
@@ -11,8 +12,11 @@ export default class Integration extends React.Component {
         };
         this.data = [{ name: 'step 1', value: 'test test 1' }, { name: 'step 2', value: 'test test 2' }, {
             name: 'step 3',
-            value: 'test test 3'
+            value: 'test test 3',
+            openModal: false
         }];
+
+        this.openModal = this.openModal.bind(this);
     }
 
     updatedDone() {
@@ -64,12 +68,16 @@ export default class Integration extends React.Component {
         return succses;
     }
 
+    openModal(status) {
+        this.setState({ openModal: status ? status : false })
+    }
+
     render() {
         const { btnPrimaryColor } = defaultProps.btnStyles;
-        const { changeStep, program, data,changeLoading } = this.props;
-        const { update } = this.state;
+        const { changeStep, program, data, changeLoading } = this.props;
+        const { update,openModal } = this.state;
 
-        return (
+        return ([ openModal && <ModalVideo openModal={this.openModal} />,
             <div className="container">
                 <div className="left-panel-block">
                     <div className="left-panel-container-header">
@@ -114,15 +122,15 @@ export default class Integration extends React.Component {
                                     return <span key={index}>{el.name}: {el.value}</span>
                                 })}
                             </div>
-                            <span className="left-panel-container-body-content-footer"> Du kan også se vores video guide, <u>klik her</u> </span>
+                            <span className="left-panel-container-body-content-footer"> Du kan også se vores video guide, <u onClick={()=> this.openModal(true)}>klik her</u> </span>
                         </div>
                     </div>
                     <div className="container-button">
-                        <Button onChange={() => {changeStep(true);changeLoading(true)}} title={'Opsæt integration  →'} styles={{ backgroundColor: btnPrimaryColor, width: 230 }} />
+                        <Button onChange={() => { changeStep(true); changeLoading(true) }} title={'Opsæt integration  →'} styles={{ backgroundColor: btnPrimaryColor, width: 230 }} />
                         <Button onChange={() => changeStep(false)} title={'Afbryd'} className={'button button-back'} />
                     </div>
                 </div>
             </div>
-        )
+        ])
     }
 }

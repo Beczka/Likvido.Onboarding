@@ -12,7 +12,8 @@ export default class Design extends React.Component {
             openModal: false,
             checked: true,
             dataSwitch: {},
-            editorStateContent : ''
+            editorStateContent: '',
+            email: ''
         }
         this.dataSwitch = {};
         this.openModal = this.openModal.bind(this);
@@ -24,17 +25,17 @@ export default class Design extends React.Component {
         this.setState({ openModal: status ? status : false, row: row ? row : '' })
     }
 
-    saveData(data,editorStateContent,editorStateHeader) {
+    saveData(data, editorStateContent, editorStateHeader,email) {
         let { row } = this.state;
         this.dataSwitch[row] = data || [];
-        this.setState({editorStateContent:editorStateContent,editorStateHeader: editorStateHeader})
+        this.setState({ editorStateContent: editorStateContent, editorStateHeader: editorStateHeader,email : email })
     }
 
 
     render() {
         const { btnPrimaryColor } = defaultProps.btnStyles;
         const { changeStep } = this.props;
-        const { openModal, editorStateContent, row } = this.state;
+        const { openModal, editorStateContent, row, editorStateHeader,email } = this.state;
         const data = [{
             name: 'Venlig pamindekse',
             id: 5
@@ -82,7 +83,7 @@ export default class Design extends React.Component {
                 </div>)
         }];
 
-        return ([openModal && <SettingsReminder openModal={this.openModal} saveData={this.saveData} editorStateContent={editorStateContent} dataSwitch={this.dataSwitch[row]} />,
+        return ([openModal && <SettingsReminder openModal={this.openModal} email={email} saveData={this.saveData} editorStateHeader={editorStateHeader} editorStateContent={editorStateContent} dataSwitch={this.dataSwitch[row]} />,
         <div className="left-panel-block padding-top-25px">
             <div className="left-panel-container-header">
                 Design dit rykkerflow
