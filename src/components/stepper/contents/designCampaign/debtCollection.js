@@ -2,7 +2,8 @@ import { Button } from '../../../../smpl-components/index';
 import defaultProps from '../../../../default';
 import React from 'react';
 import Switch from 'react-ios-switch';
-import Img from '../../../../styles/img/Flat Line Modern Concept Illustration - Teamwork.png';
+import Img from '../../../../styles/img/Skærmbillede 2018-06-17 kl. 16.32.29.png';
+import alert from '../../../../styles/img/alert-circle-i.png';
 
 export default class DebtCollection extends React.Component {
     constructor(props) {
@@ -50,9 +51,9 @@ export default class DebtCollection extends React.Component {
                         onColor="#666ee8"
                         className="switch"
                     />
-                    <label>Start kun sager efter manuel godkendelse vie e-mail / SMS</label>
+                    <label>Start kun sager efter manuel godkendelse vie e-mail / SMS <img src={alert}/></label>
                 </div>
-                <img className="Fill-1" src={Img} />
+                <img src={Img} styles={{width: '100%'}} />
 
                 <div className="container-button">
                     <Button onChange={() => changeStep(true)} title={'Næste →'} styles={{ backgroundColor: btnPrimaryColor }} />

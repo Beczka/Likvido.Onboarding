@@ -1,4 +1,4 @@
-import { Button, Input, RadioButton } from '../../../../smpl-components/index';
+import { Button, RadioButton } from '../../../../smpl-components/index';
 import Economic from '../../../../styles/img/e-conomic-logo-til-web.png';
 import Billy from '../../../../styles/img/billy-logo-final_blue.png';
 import Dinero from '../../../../styles/img/dinero-logo.png';
@@ -25,22 +25,35 @@ export default class Software extends React.Component {
             name: 'billy',
             img: Billy,
             active: false
+        }, {
+            name: '1',
+            img: Economic,
+            active: false
+        }, {
+            name: '2',
+            img: Dinero,
+            active: false
+        }, {
+
+            name: '3',
+            img: Billy,
+            active: false
         }];
     }
 
     render() {
         const { selectProgram } = this.state;
         const { btnPrimaryColor } = defaultProps.btnStyles;
-        const { changeStep ,data } = this.props;
+        const { changeStep, data } = this.props;
 
         return (
             <div className="container">
                 <div className="left-panel-block">
                     <div className="left-panel-container-header">
-                       {data.content.container_header}
+                        {data.content.container_header}
                     </div>
                     <div className="left-panel-container-text left-panel-container-content">
-                    {data.content.header_content}
+                        {data.content.header_content}
                     </div>
                     <div className="container-accounting-program">
                         {this.accountingProgram.map((el, index) => {

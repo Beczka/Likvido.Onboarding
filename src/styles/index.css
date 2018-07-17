@@ -1,5 +1,5 @@
 @font-face {
-  font-family: Montserrat;
+  font-family: 'Montserrat', sans-serif;
   src: url(./font/Montserrat-Regular.ttf); }
 
 body .main .rocket-icon {
@@ -9,7 +9,7 @@ body .main .rocket-icon {
   background-repeat: no-repeat; }
 
 body {
-  font-family: 'Montserrat';
+  font-family: 'Montserrat', sans-serif;
   margin: 0;
   padding: 0;
   font-stretch: normal;
@@ -75,15 +75,15 @@ body {
       font-size: 15px;
       margin-bottom: 10px; }
       body .main .menu .wrapper {
-        width: 19.5%; }
+        width: 20.5%; }
         body .main .menu .wrapper .step {
           display: flex;
           box-sizing: border-box;
           width: 100%;
           height: 52px;
           background: #fff;
-          border: solid 0.5px rgba(102, 110, 232, 0.5);
-          border-right: none;
+          border: solid 0.5px rgba(70, 72, 85, 0.25);
+          border-right: none !important;
           position: relative;
           align-items: center;
           padding-left: 30px;
@@ -103,14 +103,26 @@ body {
             border-width: 25px; }
           body .main .menu .wrapper .step:before {
             top: -1px;
-            border-color: transparent transparent transparent rgba(102, 110, 232, 0.5);
+            border-color: transparent transparent transparent rgba(70, 72, 85, 0.25);
             border-width: 26px; }
+        body .main .menu .wrapper .step.active {
+          border: solid 0.5px rgba(102, 110, 232, 0.5); }
+        body .main .menu .wrapper .step.active:before {
+          border-color: transparent transparent transparent rgba(102, 110, 232, 0.5); }
         body .main .menu .wrapper .name p {
           color: #2d2d50;
           text-align: center;
           padding-left: 25px;
           font-size: 12px;
           white-space: nowrap; }
+      body .main .menu .wrapper.last .step:after {
+        display: none; }
+      body .main .menu .wrapper.last .step:before {
+        display: none; }
+      body .main .menu .wrapper.last .step {
+        border: solid 0.5px rgba(70, 72, 85, 0.25) !important; }
+      body .main .menu .wrapper.last .step.active {
+        border: solid 0.5px rgba(102, 110, 232, 0.5) !important; }
     body .main .left-panel .left-panel-container-text {
       font-size: 14px;
       font-weight: 400;
@@ -171,8 +183,7 @@ body {
           display: flex;
           flex-wrap: wrap;
           padding-top: 20px;
-          align-items: center;
-          justify-content: center; }
+          align-items: center; }
           body .main .left-panel .left-panel-block .container-accounting-program .accounting-program {
             display: flex;
             justify-content: space-around;
@@ -191,6 +202,8 @@ body {
             border: solid 2px #666ee8; }
       body .main .left-panel .greeting {
         align-items: center; }
+      body .main .left-panel .max-width-530px {
+        max-width: 530px; }
       body .main .left-panel .left-panel-container-body {
         padding: 30px 0 60px 0px; }
       body .main .left-panel .left-panel-payment-info {
@@ -206,7 +219,7 @@ body {
             height: 30px; }
       body .main .left-panel .left-panel-container-header {
         font-size: 28px;
-        font-weight: 500;
+        font-weight: 400;
         line-height: 1.52;
         letter-spacing: normal;
         color: #464855; }
@@ -228,19 +241,26 @@ body {
       align-items: center;
       padding: 0px 15px;
       flex-grow: 1;
-      justify-content: space-around;
       -webkit-box-sizing: initial !important; }
+      body .main .right-panel .right-panel-flex {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        height: 100%; }
       body .main .right-panel .container-number {
         display: flex;
-        flex-direction: column; }
+        flex-direction: column;
+        padding-top: 20px; }
         body .main .right-panel .container-number img {
           margin-right: 10px; }
         body .main .right-panel .container-number .panel-bl-content {
-          padding-top: 5px;
+          padding-top: 10px;
           color: #666ee8;
           font-weight: 500;
           font-size: 14px; }
       body .main .right-panel .right-panel-user-info {
+        padding-top: 20px;
         font-size: 14px;
         font-weight: 400;
         text-align: center;
@@ -248,23 +268,44 @@ body {
         padding-bottom: 5px; }
       body .main .right-panel .right-panel-header {
         font-size: 21px;
+        padding-top: 20px;
         text-align: center;
         color: #464855;
         font-weight: 500; }
       body .main .right-panel .right-panel-button {
-        color: #666ee8; }
+        color: #666ee8;
+        margin-top: 30px; }
+      body .main .right-panel .right-panel-divider {
+        border-top: 1px solid #e6e7ed;
+        width: 100%;
+        height: 1px; }
+      body .main .right-panel .right-panel-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center; }
+        body .main .right-panel .right-panel-container img {
+          padding-top: 15px; }
+        body .main .right-panel .right-panel-container .right-panel-container-title {
+          font-size: 18px;
+          padding-top: 5px;
+          font-weight: 500;
+          color: #666ee8; }
+        body .main .right-panel .right-panel-container .right-panel-container-body {
+          padding: 15px;
+          color: #6d7183;
+          text-align: center; }
     body .main .img {
       width: 118px;
       height: 118px;
       border-radius: 100px;
-      margin-top: 50px; }
+      margin-top: 70px; }
     body .main .rocket-icon {
       background-image: url("/icons/svg-rocket-icon-2.svg"); }
     body .main .divider {
       height: 35px;
       width: 1px;
       background-color: #464855;
-      margin: 0 7px; }
+      margin: 0 10px; }
     body .main .divider-line {
       border: solid 1px #464855;
       margin-top: 50px;
@@ -374,7 +415,7 @@ body {
     height: 58px;
     border-radius: 4px;
     background-color: rgba(255, 255, 255, 0);
-    border: solid 1px #e4e5ec;
+    border: solid 1px #d4d4d4;
     outline: none; }
     .main .right-panel-button:active {
       box-shadow: inset 1px 1px 8px #666; }
@@ -406,19 +447,24 @@ body {
       outline: none;
       font-family: Montserrat;
       font-weight: 600; }
+    .main .search-container input.search-value {
+      -webkit-text-fill-color: #464855; }
     .main .search-container .search-container-block {
       width: 100%;
-      max-height: 254px;
+      max-height: 285px;
       top: 61px;
       border-radius: 4px;
       box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.03);
       background-color: #ffffff;
       border: solid 1px #e4e5ec;
-      overflow-x: hidden;
-      overflow-y: auto;
       position: absolute;
       display: none;
       z-index: 5; }
+      .main .search-container .search-container-block .search-container-block-list {
+        overflow-x: hidden;
+        overflow-y: auto;
+        width: 100%;
+        max-height: 228px; }
       .main .search-container .search-container-block .search-container-block-item {
         height: 56px;
         display: flex;
@@ -576,8 +622,8 @@ body {
       position: fixed;
       max-width: 1000px;
       width: 100%;
-      overflow-y: scroll;
-      max-height: 950px;
+      overflow-y: auto;
+      max-height: 925px;
       height: 100%;
       background-color: white;
       display: flex;
@@ -638,9 +684,10 @@ body {
         .main .modal-container .modal .modal-body .react-tabs {
           width: 100%; }
           .main .modal-container .modal .modal-body .react-tabs .tabs-header-container {
+            padding-left: 0px;
+            padding-top: 0px;
             font-weight: 500;
             display: flex;
-            padding-top: 35px;
             border-bottom: 1px solid #e4e5ec;
             color: #8a8fa3;
             list-style-type: none;
@@ -684,7 +731,7 @@ body {
                 padding: 10px 0; } }
           .main .modal-container .modal .modal-body .react-tabs .subject-line-constainer {
             display: flex;
-            margin-top: 55px;
+            margin-top: 40px;
             align-items: center;
             flex-wrap: wrap;
             justify-content: space-between; }
@@ -717,7 +764,7 @@ body {
             padding-right: 3px;
             border: 1px solid #e4e5ec;
             word-wrap: break-word;
-            height: 250px;
+            height: 300px;
             overflow: hidden; }
             .main .modal-container .modal .modal-body .react-tabs .subject-line-container textarea {
               padding-top: 10px;
@@ -924,7 +971,7 @@ body {
       border-bottom: 1px solid rgba(0, 0, 0, 0.1);
       box-shadow: none !important;
       color: #878eee;
-      font-weight: 600; }
+      font-weight: 500; }
     .main .ReactTable .pagination-bottom {
       display: none; }
     .main .ReactTable .rt-th {

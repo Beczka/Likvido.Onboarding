@@ -10,7 +10,7 @@ export default class step extends React.Component {
         super(props);
         this.state = {
             parts: [{
-                name: 'Opret konto', status: ''
+                name: 'Opret konto', status: 'progress'
             }, {
                 name: 'Tilknyt regnskabssystem', status: ''
             }, {
@@ -20,7 +20,8 @@ export default class step extends React.Component {
             }, {
                 name: 'Bekræft kampagne', status: ''
             }],
-            loading: false
+            loading: false,
+            activePart: 'Design kampagne',
         };
 
         this.changeStatus = this.changeStatus.bind(this);
@@ -41,7 +42,7 @@ export default class step extends React.Component {
     }
 
     saveActivePart(el) {
-        this.setState({ activePart: el })
+        this.setState({ activePart: el, activeStep: '' });
     }
 
     saveActiveStep(el) {
@@ -65,7 +66,6 @@ export default class step extends React.Component {
             </div>
             ,
             <div className="main">
-
                 {loading ?
                     <div className="container-main">
                         <LoadingPage changeLoading={this.changeLoading} body={body} title={title} progress={progress} />
@@ -74,7 +74,7 @@ export default class step extends React.Component {
                     [<TopPanel parts={parts} />,
                     <div className="container-main">
                         <LeftPanel parts={parts} activePart={activePart} activeStep={this.activeStep} saveActiveStep={this.saveActiveStep} saveActivePart={this.saveActivePart} changeStatus={this.changeStatus} changeLoading={this.changeLoading} />
-                        <RightPanel />
+                        <RightPanel activeStep={activePart} />
                     </div>]
                 }
             </div>

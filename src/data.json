@@ -5,6 +5,45 @@
     "userNumber": "+45 71 74 93 62",
     "userEmail": "kontakt@likvido.dk",
     "backgroundColor": "",
-    "apiKey": ""
-
+    "apiKey": "",
+    "Tilknyt regnskabssystem": {
+        "userInfo": "Du kan booke et online-session hvor vores tekniske support hjælper dig gennem opsætningen.",
+        "userHeader": "Skal vi guide dig igennem integrationen?",
+        "userButton": "Få hjælp til integrationen",
+        "userImg": "https://secure.gravatar.com/avatar/8761de7cbf61c1017c571dce1e9dfafe?s=60&d=https://app.zeplin.io/img/emotars/emotarChestnut.png",
+        "userNumber": "+45 71 74 93 62",
+        "userEmail": "kontakt@likvido.dk"
+    },
+    "Opret konto": {
+        "userInfo": "Er du i tvivl om hvad Likvido koster, hvad dine kunder modtager og hvordan vi kan hjælpe din virksomhed? Så tøv ikke med at kontakte os. Vi er på telefonen alle hverdage 9-21 og weekenden 10-18. Du kan også booke et gratis 30 minutters online møde med vores CMO Maximilian Frimmer. ",
+        "userHeader": "Vil du tale med os før du opretter dig på Likvido?",
+        "userButton": "Book et online møde",
+        "userImg": "https://secure.gravatar.com/avatar/8761de7cbf61c1017c571dce1e9dfafe?s=60&d=https://app.zeplin.io/img/emotars/emotarChestnut.png",
+        "userNumber": "+45 71 74 93 62",
+        "userEmail": "kontakt@likvido.dk"
+    },
+    "Design kampagne": {
+        "blockName1": "100% gratis",
+        "blockName2": "Ingen binding",
+        "blockName3": "100% kontrol",
+        "blockBody1": "Opstart: 0,00 DKK Samlet pris for kampagnen: 0,00 DKK",
+        "blockBody2": "Du kan trække sagerne tillbage gratis inden for 24 timer. Herefter koster det 100 kr.pr.sag. Du har ingen binding.",
+        "blockBody3": "Du vil lobende modtage mails fra os og kunne folge alle sager online. Vi vil aldrig igangsætte en aktivitet som kan koste dig penge, uden dit eksplicitte samtykke."
+    },
+    "Vælg sager": {
+        "userInfo": "Er du i tvivl om hvad Likvido koster, hvad dine kunder modtager og hvordan vi kan hjælpe din virksomhed? Så tov ikke med at kontakte os. Vi er på telefonen alle hverdage 9-21 og weekenden 10-18. Du kan også booke et gratis 30 minutters online mode med vores CMO Maximilian Frimmer.",
+        "userHeader": "Vil du tale med os for du sender noget til dine kunder?",
+        "userButton": "Book et online mode",
+        "userImg": "https://secure.gravatar.com/avatar/8761de7cbf61c1017c571dce1e9dfafe?s=60&d=https://app.zeplin.io/img/emotars/emotarChestnut.png",
+        "userNumber": "+45 71 74 93 62",
+        "userEmail": "kontakt@likvido.dk"
+    },
+    "Bekræft kampagne": {
+        "blockName1": "100% gratis",
+        "blockName2": "Ingen binding",
+        "blockName3": "100% kontrol",
+        "blockBody1": "Opstart: 0,00 DKK Samlet pris for kampagnen: 0,00 DKK",
+        "blockBody2": "Du kan trække sagerne tillbage gratis inden for 24 timer. Herefter koster det 100 kr.pr.sag. Du har ingen binding.",
+        "blockBody3": "Du vil lobende modtage mails fra os og kunne folge alle sager online. Vi vil aldrig igangsætte en aktivitet som kan koste dig penge, uden dit eksplicitte samtykke."
+    }
 }

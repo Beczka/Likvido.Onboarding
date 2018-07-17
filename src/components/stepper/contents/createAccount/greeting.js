@@ -2,6 +2,7 @@ import React from 'react'
 import { Button } from '../../../../smpl-components/index'
 import defaultProps from '../../../../default'
 import Img from '../../../../styles/img/Flat Line Modern Concept Illustration - Teamwork.png';
+import f389 from '../../../../styles/img/1f389.png';
 
 export default class Greeting extends React.Component {
     render() {
@@ -12,7 +13,7 @@ export default class Greeting extends React.Component {
         return (
             <div className="left-panel-block greeting">
                 <div className="left-panel-container-header">
-                    {content.container_header}
+                    {content.container_header} <img src={f389}/>
                 </div>
                 <div className="left-panel-container-text left-panel-container-content text-align-senter">
                     {content.header_content}

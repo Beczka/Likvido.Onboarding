@@ -3,7 +3,7 @@ import ReactTable from "react-table";
 import defaultProps from '../../../../default';
 import Switch from 'react-ios-switch';
 import React from 'react';
-
+import Shape from '../../../../styles/img/Shape.png';
 
 export default class CurrentDebtors extends React.Component {
     constructor(props) {
@@ -13,8 +13,8 @@ export default class CurrentDebtors extends React.Component {
             checked: true,
             dataSwitch: {},
             editorStateContent: '',
-            selection: 0,
-            allCheck: false,
+            selection: 5,
+            allCheck: true,
             data: [
                 {
                     kunde: 'Venlig pamindekse',
@@ -22,7 +22,7 @@ export default class CurrentDebtors extends React.Component {
                     belob: '5.000 DKK',
                     _id: 1,
                     forfalden: 'Nej',
-                    value: false
+                    value: true
 
                 }, {
                     kunde: 'Rykker 1',
@@ -30,7 +30,7 @@ export default class CurrentDebtors extends React.Component {
                     belob: '5.000 DKK',
                     _id: 2,
                     forfalden: 'Nej',
-                    value: false
+                    value: true
 
                 }, {
                     kunde: 'Reminder',
@@ -38,7 +38,7 @@ export default class CurrentDebtors extends React.Component {
                     _id: 3,
                     belob: '5.000 DKK',
                     forfalden: 'Nej',
-                    value: false
+                    value: true
 
                 }, {
                     kunde: 'Rykker 2 + inkassovarsel',
@@ -46,14 +46,14 @@ export default class CurrentDebtors extends React.Component {
                     _id: 4,
                     belob: '5.000 DKK',
                     forfalden: '2 dage',
-                    value: false
+                    value: true
                 }, {
                     kunde: 'Final notice',
                     faktura: 22,
                     _id: 5,
                     belob: '5.000 DKK',
                     forfalden: '25 dage',
-                    value: false
+                    value: true
                 }]
         }
         this.dataSwitch = {};
@@ -86,10 +86,10 @@ export default class CurrentDebtors extends React.Component {
         }
 
         data.forEach((el) => {
-            !el.value ? ( allStatus = false ): (selection++);
+            !el.value ? (allStatus = false) : (selection++);
         })
 
-        this.setState({ data: data, allCheck: allStatus,selection:selection });
+        this.setState({ data: data, allCheck: allStatus, selection: selection });
     }
 
     render() {
@@ -135,7 +135,7 @@ export default class CurrentDebtors extends React.Component {
 
                     }}
                 >
-                    <CustomSelect placeholder={'Rykker'} data={['Inkasso','Stanbdy','Rykker']} />
+                    <CustomSelect placeholder={'Rykker'} data={['Inkasso', 'Stanbdy', 'Rykker']} />
                 </div>)
         },
         {
@@ -147,10 +147,11 @@ export default class CurrentDebtors extends React.Component {
                     style={{
                         width: "100%",
                         height: "100%",
-
+                        display: "flex",
+                        justifyContent: "center",
                     }}
                 >
-
+                    <img src={Shape} />
                 </div>)
         }];
 

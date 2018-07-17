@@ -20,8 +20,7 @@ export default class CreateAccount extends React.Component {
     }
 
     renderStep() {
-        const { value = '',entry,activeStep } = this.state;
-
+        const { value = '', entry, activeStep } = this.state;
         switch (activeStep) {
             case 'payment step':
                 return <Payment changeStep={this.changeStep} spinner={this.props.spinner} data={data.data_payment} value={value} />

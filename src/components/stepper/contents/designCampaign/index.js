@@ -10,7 +10,7 @@ export default class DesignCampaing extends React.Component {
             activeStep: 'distribution step',
             entry: {}
         };
-        this.steps = ['distribution step', 'Design kampagne', 'Debt collection', 'Current debtors'];
+        this.steps = ['distribution step', 'Design kampagne', 'Debt collection'];
         this.changeStep = this.changeStep.bind(this);
         this.changePart = this.props.changePart;
         this.changeStatus = this.props.changeStatus;
@@ -18,7 +18,7 @@ export default class DesignCampaing extends React.Component {
     }
 
     renderStep() {
-        const { value,entry,activeStep } = this.state;
+        const {activeStep } = this.state;
 
         switch (activeStep) {
             case 'distribution step':

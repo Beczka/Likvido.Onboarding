@@ -22,7 +22,6 @@ export default class ConfirmCampaign extends React.Component {
 
     renderStep() {
         const { value, entry, activeStep } = this.state;
-
         switch (this.props.activeStep || activeStep) {
             case 'Confirmation page':
                 return <Confirmation changeStep={this.changeStep} />;

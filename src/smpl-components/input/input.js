@@ -48,7 +48,7 @@ export default class Input extends React.Component {
     }
 
     render() {
-        const { errorMes = '', placeholder = '', update = false, defaultValue = '', type = '', name = '', title = '' } = this.props;
+        const { errorMes = '', placeholder = '', autofocus = false, defaultValue = '', type = '', name = '', title = '' } = this.props;
         const { errorShow } = this.state;
 
         return (
@@ -57,7 +57,7 @@ export default class Input extends React.Component {
                     {title}
                 </div>}
                 <div>
-                    <input type={type} name={name} autoComplete="off" placeholder={placeholder} defaultValue={defaultValue} className={`input-value ${errorShow ? 'error' : ''}`} onChange={this.validation} />
+                    <input type={type} name={name} autoComplete="off" autoFocus={autofocus} placeholder={placeholder} defaultValue={defaultValue} className={`input-value ${errorShow ? 'error' : ''}`} onChange={this.validation} />
                 </div>
                 <span className={`error-message ${errorShow ? 'show' : ''}`}> {errorMes}</span>
             </div>

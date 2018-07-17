@@ -8,8 +8,8 @@ export default class TopPanel extends React.Component {
             <div className="menu">
                 {parts.map((el, index) => {
                     return (
-                        <div key={index} className="wrapper">
-                            <div className="step">
+                        <div className={`wrapper ${index+1 === parts.length ? 'last' : ''}`}>
+                            <div className={`step ${el.status ? 'active' : ''}`}>
                                 <RadioButton status={el.status} />
                                 <div className="name">
                                     <p>{el.name}</p>

@@ -40,6 +40,8 @@ export default class Integration extends React.Component {
             this.setState(data);
         }
 
+        console.log('data',data)
+
         // this.props.saveData(data);
     }
 
@@ -57,14 +59,16 @@ export default class Integration extends React.Component {
     checkData() {
         const { data } = this.state;
         let succses = true;
+        console.log('data',!!data.length)
         this.setState({ update: true })
-        if (data.length < 0) {
-            return false;
+        if (!!!data.length) {
+            succses= false;
         }
         data.forEach((el) => {
             if (el.value.length === 0)
                 succses = false
         })
+        console.log(succses)
         return succses;
     }
 
@@ -74,7 +78,7 @@ export default class Integration extends React.Component {
 
     render() {
         const { btnPrimaryColor } = defaultProps.btnStyles;
-        const { changeStep, program, data, changeLoading } = this.props;
+        const { changeStep, program, data, changePart } = this.props;
         const { update,openModal } = this.state;
 
         return ([ openModal && <ModalVideo openModal={this.openModal} />,
@@ -95,7 +99,7 @@ export default class Integration extends React.Component {
                                         name='API'
                                         updatedDone={this.updatedDone()}
                                         update={update}
-                                        defaultValue={this.getSaveData('name')}
+                                        defaultValue={this.getSaveData('API')}
                                         placeholder={'Skriv din API nøgle '}
                                         errorMes={'API er forkert'}
                                         error={(el) => { return Validation.validationName(el) }}
@@ -126,7 +130,7 @@ export default class Integration extends React.Component {
                         </div>
                     </div>
                     <div className="container-button">
-                        <Button onChange={() => { changeStep(true); changeLoading(true) }} title={'Opsæt integration  →'} styles={{ backgroundColor: btnPrimaryColor, width: 230 }} />
+                        <Button onChange={() => { changePart(true) }} title={'Opsæt integration  →'} styles={{ backgroundColor: btnPrimaryColor, width: 230 }} />
                         <Button onChange={() => changeStep(false)} title={'Afbryd'} className={'button button-back'} />
                     </div>
                 </div>

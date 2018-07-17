@@ -4,6 +4,7 @@ import defaultProps from '../../../../default';
 import ReactTable from "react-table";
 import 'react-table/react-table.css';
 import React from 'react';
+import alert from '../../../../styles/img/alert-circle-i.png';
 
 export default class Design extends React.Component {
     constructor(props) {
@@ -13,7 +14,8 @@ export default class Design extends React.Component {
             checked: true,
             dataSwitch: {},
             editorStateContent: '',
-            email: ''
+            email: '',
+            row: ''
         }
         this.dataSwitch = {};
         this.openModal = this.openModal.bind(this);
@@ -22,6 +24,7 @@ export default class Design extends React.Component {
     }
 
     openModal(status, row) {
+        console.log('row',row)
         this.setState({ openModal: status ? status : false, row: row ? row : '' })
     }
 
@@ -36,6 +39,8 @@ export default class Design extends React.Component {
         const { btnPrimaryColor } = defaultProps.btnStyles;
         const { changeStep } = this.props;
         const { openModal, editorStateContent, row, editorStateHeader,email } = this.state;
+        console.log(this.dataSwitch,'row')
+
         const data = [{
             name: 'Venlig pamindekse',
             id: 5
@@ -68,7 +73,7 @@ export default class Design extends React.Component {
             accessor: d => <u href="#" onClick={() => this.openModal(true, d.name)}>Se mere</u>,
             maxWidth: 100
         }, {
-            Header: props => <span>Kraves godkendelse?</span>, // Custom header components!
+            Header: props => <span>Kraves godkendelse? <img src={alert}/></span>, // Custom header components!
             accessor: 'friend.age',
             minWidth: 250,
             Cell: row => (

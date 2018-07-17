@@ -67,7 +67,7 @@ export default class Payment extends React.Component {
         return (['',
         <div className="container">
             <div className="left-panel-block">
-                <div className="left-panel-container-header">
+                <div className="left-panel-container-header max-width-530px">
                     {content.container_header}
                 </div>
                 <div className="left-panel-container-text left-panel-container-content">

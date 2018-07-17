@@ -11,11 +11,12 @@ export default class SelectCases extends React.Component {
             activeStep: 'Current debtors',
             entry: {}
         };
-        this.steps = ['Current debtors', 'Confirmation page', 'Debt collection', 'Current debtors'];
+        this.steps = ['Current debtors'];
         this.changeStep = this.changeStep.bind(this);
         this.changePart = this.props.changePart;
         this.changeStatus = this.props.changeStatus;
         this.saveData = this.saveData.bind(this);
+
     }
 
     renderStep() {
@@ -34,6 +35,7 @@ export default class SelectCases extends React.Component {
         this.steps.filter((el, key) => {
             if (activeStep === el) {
                 this.changeStatus('Vælg sager', 'progress');
+                // this.saveActiveStep({ activeStep: this.steps[backStep ? key + 1 : key - 1] });
                 this.setState({ activeStep: this.steps[backStep ? key + 1 : key - 1] });
             }
         })

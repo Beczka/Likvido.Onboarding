@@ -14,7 +14,7 @@ export default class LeftPanel extends React.Component {
             status: false,
             activeStep: ''
         };
-        this.activeStep = ''
+        this.activeStep = '';
         this.changePart = this.changePart.bind(this);
         this.changeStatus = this.props.changeStatus;
         this.spinner = this.spinner.bind(this);
@@ -22,7 +22,7 @@ export default class LeftPanel extends React.Component {
     }
 
     renderPart() {
-        const { activePart, activeStep } = this.state;
+        const { activePart } = this.state;
         switch (activePart) {
             case 'Opret konto':
                 return <Account changePart={this.changePart} key={2} spinner={this.spinner} changeStatus={this.changeStatus} />
@@ -45,6 +45,7 @@ export default class LeftPanel extends React.Component {
                 this.setState({ activePart: parts[key + 1].name });
                 saveActivePart(parts[key + 1].name);
                 this.changeStatus(parts[key].name, 'success');
+                this.changeStatus(parts[key + 1].name, 'progress');
             }
         })
     }

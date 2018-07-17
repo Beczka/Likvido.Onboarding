@@ -4,6 +4,8 @@ import defaultProps from '../../../../default';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import Validation from '../../../validation';
 import Switch from 'react-ios-switch';
+import { Editor } from 'react-draft-wysiwyg';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 export default class SettingsReminder extends React.Component {
     constructor(props) {
@@ -14,20 +16,20 @@ export default class SettingsReminder extends React.Component {
             dataSwitch: dataSwitch ? dataSwitch : [
                 {
                     name: 'reminder',
-                    value: false,
+                    value: true,
                     label: 'Send reminder 5 dage for forfald'
                 }, {
                     name: 'email',
-                    value: false,
+                    value: true,
                     label: 'Send pa e-mail'
                 }, {
                     name: 'sms',
-                    value: false,
+                    value: true,
                     label: 'Send pa SMS'
 
                 }, {
                     name: 'post',
-                    value: false,
+                    value: true,
                     label: 'Send med post hvis der ikke findes en e-mail eller telefonnummer (gratis)'
 
                 }
@@ -38,7 +40,6 @@ export default class SettingsReminder extends React.Component {
             email: this.props.email || ''
 
         }
-
         this.updatedDone = this.updatedDone.bind(this);
         this.selectData = this.selectData.bind(this);
         this.onChangeContent = (editorState) => {
@@ -65,7 +66,7 @@ export default class SettingsReminder extends React.Component {
         const { btnPrimaryColor } = defaultProps.btnStyles;
         const { saveData, openModal } = this.props;
         const { update = false, dataSwitch, editorStateContent, editorStateHeader, email } = this.state;
-
+        console.log('sdfsdfsdfsdf',this.state.dataSwitch)
         return (
             <div className="modal-container">
                 <div className="modal">
@@ -108,7 +109,14 @@ export default class SettingsReminder extends React.Component {
                                     </div>
                                 </div>
                                 <div className="subject-line-container">
-                                    <textarea value={editorStateContent} onChange={(el) => this.onChangeContent(el.target.value)} />
+                                    {/* <textarea value={editorStateContent} onChange={(el) => this.onChangeContent(el.target.value)} /> */}
+                                    <Editor
+                                        editorState={editorStateContent}
+                                        toolbarClassName="toolbarClassName"
+                                        wrapperClassName="wrapperClassName"
+                                        editorClassName="editorClassName"
+                                        onEditorStateChange={(editorState) => this.onChangeContent(editorState)}
+                                    />
                                 </div>
                                 <div className="subject-line-email-container">
                                     <span>Fa tilsendt en test mail </span>
@@ -119,7 +127,7 @@ export default class SettingsReminder extends React.Component {
                                             update={update}
                                             placeholder={'E-mail (arbejdsmail) '}
                                             errorMes={'e-mail er forkert'}
-                                            defaultValue = {email}
+                                            defaultValue={email}
                                             error={(el) => { return Validation.validationEmail(el) }}
                                             onChange={(name, value) => { this.selectData(name, value) }} />
                                     </div>

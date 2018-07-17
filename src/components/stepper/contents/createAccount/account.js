@@ -87,6 +87,7 @@ export default class Account extends React.Component {
                 <div className="container-inp">
                     <Input title={'FORNAVN'}
                         name='name'
+                        autofocus={true}
                         updatedDone={this.updatedDone()}
                         update={update}
                         defaultValue={this.getSaveData('name')}

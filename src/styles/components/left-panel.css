@@ -59,8 +59,7 @@
       display: flex;
       flex-wrap: wrap;
       padding-top: 20px;
-      align-items: center;
-      justify-content: center; }
+      align-items: center; }
       .left-panel .left-panel-block .container-accounting-program .accounting-program {
         display: flex;
         justify-content: space-around;
@@ -79,6 +78,8 @@
         border: solid 2px #666ee8; }
   .left-panel .greeting {
     align-items: center; }
+  .left-panel .max-width-530px {
+    max-width: 530px; }
   .left-panel .left-panel-container-body {
     padding: 30px 0 60px 0px; }
   .left-panel .left-panel-payment-info {
@@ -94,7 +95,7 @@
         height: 30px; }
   .left-panel .left-panel-container-header {
     font-size: 28px;
-    font-weight: 500;
+    font-weight: 400;
     line-height: 1.52;
     letter-spacing: normal;
     color: #464855; }

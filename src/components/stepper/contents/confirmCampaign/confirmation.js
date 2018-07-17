@@ -11,7 +11,6 @@ export default class confirmation extends React.Component {
         this.dataSwitch = {};
         this.openModal = this.openModal.bind(this);
         this.saveData = this.saveData.bind(this);
-
     }
 
     openModal(status, row) {

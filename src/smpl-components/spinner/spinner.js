@@ -2,7 +2,7 @@ import React from 'react';
 
 const Spinner = ({ }) => {
     return (
-       [ <div className={'loader-container'}/>,<div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>]
+       [ <div className={'loader-container'} />,<div className="lds-spinner" ><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>]
     )
 };
 

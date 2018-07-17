@@ -11,7 +11,7 @@ export default class Confirm extends React.Component {
             program: '',
             entry: {}
         };
-        this.steps = ['software step', 'details step', 'loading step', 'loading step'];
+        this.steps = ['software step', 'details step', 'loading step'];
         this.changeStatus = this.props.changeStatus;
         this.changeLoading = this.props.changeLoading;
         this.changeStep = this.changeStep.bind(this);
@@ -26,19 +26,18 @@ export default class Confirm extends React.Component {
             case 'software step':
                 return <Software changeStep={this.changeStep} data={data.data_software} saveProgram={this.saveProgram} />
             case 'details step':
-                return <Integration changeLoading={this.changeLoading} changeStep={this.changePart} data={data.data_integration} entry={entry[activeStep]} program={program} />
+                return <Integration changeLoading={this.changeLoading}  changeStep={this.changeStep} changePart={this.changeStep} data={data.data_integration} entry={entry[activeStep]} program={program} />
             case 'loading step':
                 this.changePart();
                 this.changeLoading(true);
                 return <div />
-            case 'loading step':
-            // return <Greeting changeStep={this.changeStep} />
         }
     }
 
-    changeStep(backStep) {
-        const { activeStep } = this.state;
+    changeStep(back) {
+        const backStep = back || false;
 
+        const { activeStep } = this.state;
         this.steps.filter((el, key) => {
             if (activeStep === el) {
                 this.changeStatus('Tilknyt regnskabssystem', 'progress');
