@@ -1,4 +1,3 @@
-
 const Validation = {};
 
 Validation.validationEmail = (el) => {

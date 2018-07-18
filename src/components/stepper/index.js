@@ -21,7 +21,7 @@ export default class step extends React.Component {
                 name: 'Bekræft kampagne', status: ''
             }],
             loading: false,
-            activePart: 'Design kampagne',
+            activePart: 'Opret konto',
         };
 
         this.changeStatus = this.changeStatus.bind(this);
@@ -56,7 +56,7 @@ export default class step extends React.Component {
     render() {
         const { parts, loading, activePart = '', body, title, progress } = this.state;
         return ([
-            <div className="compan-block">
+            <div className="compan-block" key={10}>
                 <div className="compan-logo">
                     {data.logo}
                 </div>
@@ -65,14 +65,14 @@ export default class step extends React.Component {
 
             </div>
             ,
-            <div className="main">
+            <div className="main" key={99}>
                 {loading ?
                     <div className="container-main">
                         <LoadingPage changeLoading={this.changeLoading} body={body} title={title} progress={progress} />
                     </div>
                     :
-                    [<TopPanel parts={parts} />,
-                    <div className="container-main">
+                    [<TopPanel parts={parts} key={11}/>,
+                    <div className="container-main" key={12}>
                         <LeftPanel parts={parts} activePart={activePart} activeStep={this.activeStep} saveActiveStep={this.saveActiveStep} saveActivePart={this.saveActivePart} changeStatus={this.changeStatus} changeLoading={this.changeLoading} />
                         <RightPanel activeStep={activePart} />
                     </div>]

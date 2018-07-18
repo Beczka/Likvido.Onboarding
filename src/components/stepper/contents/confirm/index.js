@@ -24,12 +24,14 @@ export default class Confirm extends React.Component {
         const { activeStep, program, entry } = this.state;
         switch (activeStep) {
             case 'software step':
-                return <Software changeStep={this.changeStep} data={data.data_software} saveProgram={this.saveProgram} />
+                return <Software key={activeStep} changeStep={this.changeStep} changePart={this.changePart} data={data.data_software} saveProgram={this.saveProgram} />
             case 'details step':
-                return <Integration changeLoading={this.changeLoading}  changeStep={this.changeStep} changePart={this.changeStep} data={data.data_integration} entry={entry[activeStep]} program={program} />
+                return <Integration key={activeStep} saveData={this.saveData} changeLoading={this.changeLoading} changeStep={this.changeStep} data={data.data_integration} entry={entry[activeStep]} program={program} />
             case 'loading step':
-                this.changePart();
+                this.changePart(true);
                 this.changeLoading(true);
+                return <div key={activeStep} />
+            default:
                 return <div />
         }
     }
@@ -38,7 +40,7 @@ export default class Confirm extends React.Component {
         const backStep = back || false;
 
         const { activeStep } = this.state;
-        this.steps.filter((el, key) => {
+        this.steps.forEach((el, key) => {
             if (activeStep === el) {
                 this.changeStatus('Tilknyt regnskabssystem', 'progress');
                 this.setState({ activeStep: this.steps[backStep ? key + 1 : key - 1] });

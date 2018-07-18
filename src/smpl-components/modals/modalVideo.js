@@ -13,7 +13,7 @@ const ModalVideo = ({ title = 'Video guide: Sådan synkroniserer du Likvido med 
                     </div>
                 </div>
                 <div className="modal-video">
-                    <iframe width="760" height="400" src="https://www.youtube.com/embed/Ct6BUPvE2sM" frameborder="0" allow="autoplay; encrypted-media" />
+                    <iframe width="760" height="400" title='...' src="https://www.youtube.com/embed/Ct6BUPvE2sM" frameBorder="0" allow="autoplay; encrypted-media" />
                 </div>
             </div>
         </div>

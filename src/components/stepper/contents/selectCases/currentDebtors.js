@@ -151,7 +151,7 @@ export default class CurrentDebtors extends React.Component {
                         justifyContent: "center",
                     }}
                 >
-                    <img src={Shape} />
+                    <img src={Shape}  alt="..."/>
                 </div>)
         }];
 

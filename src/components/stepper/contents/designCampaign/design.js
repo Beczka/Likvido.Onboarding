@@ -13,33 +13,37 @@ export default class Design extends React.Component {
             openModal: false,
             checked: true,
             dataSwitch: {},
-            editorStateContent: '',
-            email: '',
+            editorStateContent: {},
+            email: {},
+            editorStateHeader: {},
             row: ''
         }
+        
         this.dataSwitch = {};
+        this.editorStateContent= {};
+        this.email= {};
+        this.editorStateHeader= {};
         this.openModal = this.openModal.bind(this);
         this.saveData = this.saveData.bind(this);
-
     }
 
-    openModal(status, row) {
-        console.log('row',row)
-        this.setState({ openModal: status ? status : false, row: row ? row : '' })
+    openModal(status) {
+        this.setState({ openModal: status ? status : false })
     }
 
-    saveData(data, editorStateContent, editorStateHeader,email) {
+    saveData(data, editorStateContent2, editorStateHeader2, email2) {
         let { row } = this.state;
         this.dataSwitch[row] = data || [];
-        this.setState({ editorStateContent: editorStateContent, editorStateHeader: editorStateHeader,email : email })
+        this.editorStateContent[row] = editorStateContent2;
+        this.editorStateHeader[row] = editorStateHeader2;
+        this.email[row] = email2;
     }
 
 
     render() {
         const { btnPrimaryColor } = defaultProps.btnStyles;
         const { changeStep } = this.props;
-        const { openModal, editorStateContent, row, editorStateHeader,email } = this.state;
-        console.log(this.dataSwitch,'row')
+        const { openModal, row, } = this.state;
 
         const data = [{
             name: 'Venlig pamindekse',
@@ -70,10 +74,10 @@ export default class Design extends React.Component {
         }, {
             id: 'friendName', // Required because our accessor is not a string
             Header: 'Detaljer',
-            accessor: d => <u href="#" onClick={() => this.openModal(true, d.name)}>Se mere</u>,
+            accessor: d => <u href="#" onClick={() => {this.openModal(true); this.setState({row: d.name})}}>Se mere</u>,
             maxWidth: 100
         }, {
-            Header: props => <span>Kraves godkendelse? <img src={alert}/></span>, // Custom header components!
+            Header: props => <span>Kraves godkendelse? <img src={alert}  alt="..."/></span>, // Custom header components!
             accessor: 'friend.age',
             minWidth: 250,
             Cell: row => (
@@ -88,8 +92,8 @@ export default class Design extends React.Component {
                 </div>)
         }];
 
-        return ([openModal && <SettingsReminder openModal={this.openModal} email={email} saveData={this.saveData} editorStateHeader={editorStateHeader} editorStateContent={editorStateContent} dataSwitch={this.dataSwitch[row]} />,
-        <div className="left-panel-block padding-top-25px">
+        return ([openModal && <SettingsReminder openModal={this.openModal} email={this.email[row]} saveData={this.saveData} editorStateHeader={this.editorStateHeader[row]} editorStateContent={this.editorStateContent[row]} dataSwitch={this.dataSwitch[row]} key={16}/>,
+        <div className="left-panel-block padding-top-25px" key={17}>
             <div className="left-panel-container-header">
                 Design dit rykkerflow
                 </div>

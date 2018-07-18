@@ -18,34 +18,37 @@ export default class LeftPanel extends React.Component {
         this.changePart = this.changePart.bind(this);
         this.changeStatus = this.props.changeStatus;
         this.spinner = this.spinner.bind(this);
-        this.saveActiveStep =this.props.saveActiveStep;
+        this.saveActiveStep = this.props.saveActiveStep;
     }
 
     renderPart() {
         const { activePart } = this.state;
         switch (activePart) {
             case 'Opret konto':
-                return <Account changePart={this.changePart} key={2} spinner={this.spinner} changeStatus={this.changeStatus} />
+                return <Account key={activePart} changePart={this.changePart}  spinner={this.spinner} changeStatus={this.changeStatus} />
             case 'Tilknyt regnskabssystem':
-                return <Confirm changePart={this.changePart} key={3} changeLoading={this.props.changeLoading} changeStatus={this.changeStatus} />
+                return <Confirm key={activePart} changePart={this.changePart} changeLoading={this.props.changeLoading} changeStatus={this.changeStatus} />
             case 'Design kampagne':
-                return <Design changePart={this.changePart} key={4} changeStatus={this.changeStatus} />
+                return <Design key={activePart} changePart={this.changePart} changeStatus={this.changeStatus} />
             case 'Vælg sager':
-                return <SelectCases changePart={this.changePart} key={5} changeStatus={this.changeStatus} />
+                return <SelectCases key={activePart} changePart={this.changePart} changeStatus={this.changeStatus} />
             case 'Bekræft kampagne':
-                return <ConfirmCampaign changePart={this.changePart} activeStep={this.props.activeStep} saveActiveStep={this.props.saveActiveStep} key={6} changeLoading={this.props.changeLoading} changeStatus={this.changeStatus} />
+                return <ConfirmCampaign key={activePart} changePart={this.changePart} activeStep={this.props.activeStep} saveActiveStep={this.props.saveActiveStep} key={6} changeLoading={this.props.changeLoading} changeStatus={this.changeStatus} />
+            default:
+                return <div />
         }
     }
 
-    changePart() {
+    changePart(back) {
+        const backStep = back || false;
         const { activePart } = this.state;
         const { parts, saveActivePart } = this.props;
         parts.filter((el, key) => {
             if (activePart === el.name) {
-                this.setState({ activePart: parts[key + 1].name });
-                saveActivePart(parts[key + 1].name);
-                this.changeStatus(parts[key].name, 'success');
-                this.changeStatus(parts[key + 1].name, 'progress');
+                this.setState({ activePart: backStep ? parts[key + 1].name : parts[key -1].name });
+                saveActivePart( backStep ? parts[key + 1].name : parts[key -1].name);
+                this.changeStatus(parts[key].name, backStep ? 'success' :'');
+                this.changeStatus(backStep ? parts[key + 1].name : parts[key -1].name, 'progress');
             }
         })
     }

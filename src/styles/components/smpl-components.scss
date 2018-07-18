@@ -28,7 +28,9 @@
     background-color: white;
     box-shadow: none !important;
     color: #666ee8;
+    font-weight: normal;
   }
+
   .right-panel-button {
     font-family: 'Montserrat';
     font-size: 14px;
@@ -153,8 +155,6 @@
   .container-inp {
     display: flex;
     justify-content: space-between;
-    margin-top: 15px;
-    margin-bottom: 20px;
     
     .input-block {
         width: 100%;
@@ -226,7 +226,7 @@
   .container-custom-checkbox {
     display: block;
     position: relative;
-    padding-left: 35px;
+    padding-left: 30px;
     margin-bottom: 12px;
     cursor: pointer;
     color: #6b6f81;
@@ -305,8 +305,9 @@
     z-index: 100;
     top: 0;
     left: 0;
-
+  }
     .modal {
+      z-index: 900;
       position: fixed;
       max-width: 1000px;
       width: 100%;
@@ -571,7 +572,7 @@
         align-items: center;
         height: 100%;
       }
-    }
+    
   }
 
   textarea {
@@ -941,6 +942,7 @@
   }
 
   .left-panel-info-container {
+    padding-top: 15px;
     display: flex;
     flex-direction: column;
 
@@ -983,6 +985,7 @@
 
       .left-panel-info-tr {
         width: auto !important;
+        height: 150px !important;
       }
     }
   }

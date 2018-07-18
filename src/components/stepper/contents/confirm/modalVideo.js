@@ -1,20 +1,7 @@
 import React from 'react';
-import { Button, Input } from '../../../../smpl-components/index';
 import defaultProps from '../../../../default';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import Validation from '../../../validation';
-import Switch from 'react-ios-switch';
 
 export default class ModalVideo extends React.Component {
-    constructor(props) {
-        super(props)
-
-        const { dataSwitch } = this.props;
-        this.state = {
-
-        }
-    }
-
 
     render() {
         const { btnPrimaryColor } = defaultProps.btnStyles;
@@ -33,7 +20,7 @@ export default class ModalVideo extends React.Component {
                     </div>
                     <div className="modal-video">
                         {/* <video width="400" height="300"  src="https://youtube.com/watch?v=yBLdQ1a4-JI" controls="controls" poster="video/duel.jpg"/> */}
-                        <iframe  src="https://www.youtube.com/embed/Ct6BUPvE2sM" frameborder="0" allow="autoplay; encrypted-media" />
+                        <iframe  src="https://www.youtube.com/embed/Ct6BUPvE2sM" frameBorder="0" allow="autoplay; encrypted-media" />
                     </div>
                 </div>
             </div>

@@ -17,7 +17,7 @@ export default class RightPanel extends React.Component {
                     <div className="right-panel-flex">
 
                         <div className="right-panel-container">
-                            <img src={tag} />
+                            <img src={tag}  alt="..."/>
                             <div className="right-panel-container-title">
                                 {blockName1}
                             </div>
@@ -28,7 +28,7 @@ export default class RightPanel extends React.Component {
                        
                         <div className="right-panel-container">
                         <div className="right-panel-divider" />
-                            <img src={cheque} />
+                            <img src={cheque}  alt="..."/>
 
                             <div className="right-panel-container-title">
                                 {blockName2}
@@ -39,7 +39,7 @@ export default class RightPanel extends React.Component {
                             <div className="right-panel-divider" />
                         </div>
                         <div className="right-panel-container">
-                            <img src={alert} />
+                            <img src={alert}  alt="..."/>
                             <div className="right-panel-container-title">
                                 {blockName3}
                             </div>
@@ -54,7 +54,7 @@ export default class RightPanel extends React.Component {
             const { userImg = false, userInfo, userHeader, userNumber = false, userEmail } = data[this.props.activeStep];
             return (
                 <div className="right-panel containers">
-                    {!!userImg && <img className="img" src={IMG} />}
+                    {!!userImg && <img className="img" src={IMG}  alt="..."/>}
                     <div className="right-panel-header">
                         {userHeader}
                     </div>
@@ -64,7 +64,7 @@ export default class RightPanel extends React.Component {
                     <Button title={'Book et online møde'} className={'right-panel-button'} />
                     {!!userNumber && <div className="container-number">
                         <span className="panel-bl-content">
-                            <img src={Phone} />
+                            <img src={Phone}  alt="..."/>
                             {userNumber}
                         </span>
                         <span className="panel-bl-content">

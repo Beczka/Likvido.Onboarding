@@ -1,7 +1,4 @@
 import React from 'react';
-// import DebtCollection from './debtCollection';
-// import Design from './design';
-import Confirmation from '../confirmCampaign/confirmation';
 import CurrentDebtors from './currentDebtors';
 
 export default class SelectCases extends React.Component {
@@ -20,11 +17,13 @@ export default class SelectCases extends React.Component {
     }
 
     renderStep() {
-        const { value,entry,activeStep } = this.state;
+        const { activeStep } = this.state;
 
         switch (activeStep) {
             case 'Current debtors':
-                return <CurrentDebtors changeStep={this.changePart} />
+                return <CurrentDebtors changeStep={this.changePart} key={activeStep} />
+            default:
+                return <div />
         }
     }
 

@@ -13,12 +13,12 @@ export default class Greeting extends React.Component {
         return (
             <div className="left-panel-block greeting">
                 <div className="left-panel-container-header">
-                    {content.container_header} <img src={f389}/>
+                    {content.container_header} <img src={f389}  alt="..."/>
                 </div>
                 <div className="left-panel-container-text left-panel-container-content text-align-senter">
                     {content.header_content}
                 </div>
-                <img className="Fill-1" src={Img} />
+                <img className="Fill-1" src={Img}  alt="..."/>
                 <Button onChange={changeStep} title={'Tilknyt regnskabsprogram'} styles={{ backgroundColor: btnPrimaryColor, width: 235 }} />
             </div>
         )

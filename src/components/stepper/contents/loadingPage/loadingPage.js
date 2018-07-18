@@ -1,5 +1,4 @@
 import React from 'react';
-import defaultProps from '../../../../default';
 import { Circle } from 'rc-progress';
 
 export default class Integration extends React.Component {

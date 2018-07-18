@@ -1,4 +1,4 @@
-import { Button, Select, ModalVideo } from '../../../../smpl-components/index';
+import { Select } from '../../../../smpl-components/index';
 import Economic from '../../../../styles/img/e-conomic-logo-til-web.png';
 import Billy from '../../../../styles/img/billy-logo-final_blue.png';
 import Dinero from '../../../../styles/img/dinero-logo.png';
@@ -64,7 +64,7 @@ export default class Payment extends React.Component {
         const { content } = this.props.data;
         const { changeStep, value } = this.props;
 
-        return (['',
+        return (
         <div className="container">
             <div className="left-panel-block">
                 <div className="left-panel-container-header max-width-530px">
@@ -81,13 +81,13 @@ export default class Payment extends React.Component {
             <div className="left-panel-block left-panel-payment-info">
                 <div className="left-panel-container-logo-container">
                     <div>
-                        <img src={Billy} />
+                        <img src={Billy}  alt="..."/>
                     </div>
                     <div>
-                        <img src={Economic} />
+                        <img src={Economic}  alt="..."/>
                     </div>
                     <div>
-                        <img src={Dinero} />
+                        <img src={Dinero}  alt="..."/>
                     </div>
                 </div>
                 <div className="left-panel-container-text">
@@ -97,7 +97,7 @@ export default class Payment extends React.Component {
                     Skriv til os på kontakt@likvido.dk hvis du har ønsker til andre integrationer.
                         </div>
             </div>
-        </div>]
+        </div>
         )
     }
 }

@@ -164,5 +164,10 @@
     display: flex;
     justify-content: start;
     align-items: center;
+    flex-wrap: wrap;
+
+      div {
+        margin-top: 5px;
+      }
   }
 }

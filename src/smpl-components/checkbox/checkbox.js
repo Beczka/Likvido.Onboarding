@@ -4,7 +4,7 @@ const Checkbox = ({ title = 'Default', value = false, url = '', onChange = () =>
     return (
         <label className="container-custom-checkbox container-checkbox-value">
             {title} {url && <a href={url}>handelsbetingelser </a>}
-            <input type="checkbox" checked={value && 'checked'}/>
+            <input type="checkbox" checked={value ? true : false} onChange={() => {}}/>
             <span className={`custom-checkmark active`} onClick={onChange}></span>
         </label>
     )

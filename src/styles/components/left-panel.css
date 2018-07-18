@@ -108,4 +108,7 @@
     padding-top: 20px;
     display: flex;
     justify-content: start;
-    align-items: center; }
+    align-items: center;
+    flex-wrap: wrap; }
+    .left-panel .container-button div {
+      margin-top: 5px; }

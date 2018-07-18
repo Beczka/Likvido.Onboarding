@@ -44,7 +44,7 @@ export default class Software extends React.Component {
     render() {
         const { selectProgram } = this.state;
         const { btnPrimaryColor } = defaultProps.btnStyles;
-        const { changeStep, data } = this.props;
+        const { changeStep, data, changePart } = this.props;
 
         return (
             <div className="container">
@@ -60,7 +60,7 @@ export default class Software extends React.Component {
                             return <div key={index}
                                 className={el.name === selectProgram ? 'accounting-program active' : 'accounting-program'}
                                 onClick={() => { this.props.saveProgram(el.name); this.setState({ selectProgram: el.name }) }}>
-                                <img src={el.img} />
+                                <img src={el.img}  alt="..." />
                                 <RadioButton status={el.name === selectProgram ? 'progress' : ''} />
                             </div>
                         })}
@@ -70,7 +70,7 @@ export default class Software extends React.Component {
                     </div>
                     <div className="container-button">
                         <Button onChange={() => selectProgram !== '' ? changeStep(true) : ''} title={'Næste →'} styles={{ backgroundColor: btnPrimaryColor }} />
-                        {/* <Button onChange={() => changeStep(false)} title={'Forrige'} className={'button button-back'} /> */}
+                        <Button onChange={() => changePart(false)} title={'Forrige'} className={'button button-back'} />
                     </div>
                 </div>
             </div>

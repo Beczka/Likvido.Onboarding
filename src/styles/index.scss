@@ -239,14 +239,26 @@ body {
     padding: 40px 20px 0px 20px !important;
   }
 
-  // .left-panel {
-  //   min-width: 100px;
+  .modal-header {
+    min-height: 45px !important;
+  }
 
-  // }
+  .subject-line-container {
+    height: 450px !important;
+  }
+
+  .subject-line-block input {
+    width: auto !important;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 
   .container-button {
+    align-items: center !important;
+    justify-content: center !important;
+    
     .button {
-      // width: 110px !important;
+      margin-top: 5px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;

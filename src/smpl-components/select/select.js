@@ -43,13 +43,13 @@ export default class TopPanel extends React.Component {
 
     render() {
         const { data = [], changeStep = () => { }, loader = true, search = () => { } } = this.props;
-        const { showItem, searchValue, openInput } = this.state;
+        const { showItem, searchValue } = this.state;
         const { btnPrimaryColor } = defaultProps.btnStyles;
 
         return (
             <div>
                 <div className="search-container">
-                    <img className="icon-home" src={Home} />
+                    <img className="icon-home" src={Home}  alt="..."/>
                     <span className="divider" />
                     <input className='search-value' placeholder={'Skriv navnet på din virksomhed eller dit CVR nummer'}
                         value={searchValue}

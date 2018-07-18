@@ -20,7 +20,8 @@
   .main .button-back {
     background-color: white;
     box-shadow: none !important;
-    color: #666ee8; }
+    color: #666ee8;
+    font-weight: normal; }
   .main .right-panel-button {
     font-family: 'Montserrat';
     font-size: 14px;
@@ -115,9 +116,7 @@
           color: #ff6b36; }
   .main .container-inp {
     display: flex;
-    justify-content: space-between;
-    margin-top: 15px;
-    margin-bottom: 20px; }
+    justify-content: space-between; }
     .main .container-inp .input-block {
       width: 100%;
       padding-bottom: 30px; }
@@ -172,7 +171,7 @@
   .main .container-custom-checkbox {
     display: block;
     position: relative;
-    padding-left: 35px;
+    padding-left: 30px;
     margin-bottom: 12px;
     cursor: pointer;
     color: #6b6f81; }
@@ -233,184 +232,185 @@
     z-index: 100;
     top: 0;
     left: 0; }
-    .main .modal-container .modal {
-      position: fixed;
-      max-width: 1000px;
+  .main .modal {
+    z-index: 900;
+    position: fixed;
+    max-width: 1000px;
+    width: 100%;
+    overflow-y: auto;
+    max-height: 925px;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto; }
+    .main .modal .modal-header {
+      background-color: #464855;
       width: 100%;
-      overflow-y: auto;
-      max-height: 925px;
-      height: 100%;
-      background-color: white;
+      min-height: 35px;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px 0; }
+      .main .modal .modal-header .modal-header-title {
+        font-size: 21px;
+        font-weight: 500;
+        padding-left: 10px; }
+      .main .modal .modal-header .modal-header-icon {
+        width: 32px;
+        height: 32px;
+        margin-right: 52px; }
+      .main .modal .modal-header .close {
+        position: absolute;
+        right: 20px;
+        top: 13px;
+        width: 32px;
+        height: 32px;
+        border-radius: 15px;
+        background-color: white;
+        cursor: pointer; }
+      .main .modal .modal-header .close:hover {
+        opacity: 1; }
+      .main .modal .modal-header .close:before, .main .modal .modal-header .close:after {
+        position: absolute;
+        left: 15px;
+        top: 5px;
+        content: ' ';
+        height: 20px;
+        width: 3px;
+        background-color: #464855; }
+      .main .modal .modal-header .close:before {
+        transform: rotate(45deg); }
+      .main .modal .modal-header .close:after {
+        transform: rotate(-45deg); }
+    .main .modal .modal-body {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      margin: auto; }
-      .main .modal-container .modal .modal-header {
-        background-color: #464855;
-        width: 100%;
-        min-height: 35px;
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 15px 0; }
-        .main .modal-container .modal .modal-header .modal-header-title {
-          font-size: 21px;
+      width: 90%;
+      align-items: start;
+      margin: 30px;
+      color: #6d7183; }
+      .main .modal .modal-body .react-tabs {
+        width: 100%; }
+        .main .modal .modal-body .react-tabs .tabs-header-container {
+          padding-left: 0px;
+          padding-top: 0px;
           font-weight: 500;
-          padding-left: 10px; }
-        .main .modal-container .modal .modal-header .modal-header-icon {
-          width: 32px;
-          height: 32px;
-          margin-right: 52px; }
-        .main .modal-container .modal .modal-header .close {
-          position: absolute;
-          right: 20px;
-          top: 13px;
-          width: 32px;
-          height: 32px;
-          border-radius: 15px;
-          background-color: white;
-          cursor: pointer; }
-        .main .modal-container .modal .modal-header .close:hover {
-          opacity: 1; }
-        .main .modal-container .modal .modal-header .close:before, .main .modal-container .modal .modal-header .close:after {
-          position: absolute;
-          left: 15px;
-          top: 5px;
-          content: ' ';
-          height: 20px;
-          width: 3px;
-          background-color: #464855; }
-        .main .modal-container .modal .modal-header .close:before {
-          transform: rotate(45deg); }
-        .main .modal-container .modal .modal-header .close:after {
-          transform: rotate(-45deg); }
-      .main .modal-container .modal .modal-body {
-        display: flex;
-        flex-direction: column;
-        width: 90%;
-        align-items: start;
-        margin: 30px;
-        color: #6d7183; }
-        .main .modal-container .modal .modal-body .react-tabs {
-          width: 100%; }
-          .main .modal-container .modal .modal-body .react-tabs .tabs-header-container {
-            padding-left: 0px;
-            padding-top: 0px;
-            font-weight: 500;
-            display: flex;
-            border-bottom: 1px solid #e4e5ec;
-            color: #8a8fa3;
-            list-style-type: none;
-            flex-wrap: wrap;
-            justify-content: start; }
-            .main .modal-container .modal .modal-body .react-tabs .tabs-header-container li {
-              padding: 10px;
-              cursor: pointer; }
-            .main .modal-container .modal .modal-body .react-tabs .tabs-header-container li.active {
-              border-bottom: 3px solid #8a91ff;
-              color: #464855; }
-            .main .modal-container .modal .modal-body .react-tabs .tabs-header-container li:nth-child(2) {
-              margin: 0 55px; }
-            @media screen and (max-width: 803px) {
-              .main .modal-container .modal .modal-body .react-tabs .tabs-header-container li:nth-child(2) {
-                margin: 0px !important; }
-              .main .modal-container .modal .modal-body .react-tabs .tabs-header-container .subject-line-email-container {
-                width: 100% !important; } }
+          display: flex;
+          border-bottom: 1px solid #e4e5ec;
+          color: #8a8fa3;
+          list-style-type: none;
+          flex-wrap: wrap;
+          justify-content: start; }
+          .main .modal .modal-body .react-tabs .tabs-header-container li {
+            padding: 10px;
+            cursor: pointer; }
+          .main .modal .modal-body .react-tabs .tabs-header-container li.active {
+            border-bottom: 3px solid #8a91ff;
+            color: #464855; }
+          .main .modal .modal-body .react-tabs .tabs-header-container li:nth-child(2) {
+            margin: 0 55px; }
           @media screen and (max-width: 803px) {
-            .main .modal-container .modal .modal-body .react-tabs .subject-line-email-container {
-              width: 100% !important; }
-            .main .modal-container .modal .modal-body .react-tabs .container-button {
-              padding-bottom: 20px; } }
-          @media screen and (max-width: 500px) {
-            .main .modal-container .modal .modal-body .react-tabs .subject-line-email-container {
-              width: 100% !important; }
-              .main .modal-container .modal .modal-body .react-tabs .subject-line-email-container .container-inp {
-                max-width: none !important;
-                width: 100% !important; }
-                .main .modal-container .modal .modal-body .react-tabs .subject-line-email-container .container-inp .input-block {
-                  padding-bottom: 30px !important; }
-                  .main .modal-container .modal .modal-body .react-tabs .subject-line-email-container .container-inp .input-block div {
-                    margin-right: 20px; }
-              .main .modal-container .modal .modal-body .react-tabs .subject-line-email-container .button {
-                width: 100%; } }
-          @media screen and (max-width: 500px) {
-            .main .modal-container .modal .modal-body .react-tabs .subject-line-email-container {
-              justify-content: flex-start !important;
-              flex-wrap: wrap; }
-              .main .modal-container .modal .modal-body .react-tabs .subject-line-email-container .container-inp {
-                padding: 10px 0; } }
-          .main .modal-container .modal .modal-body .react-tabs .subject-line-constainer {
-            display: flex;
-            margin-top: 40px;
-            align-items: center;
-            flex-wrap: wrap;
-            justify-content: space-between; }
-            .main .modal-container .modal .modal-body .react-tabs .subject-line-constainer .subject-line-block {
-              margin-left: 10px;
-              border: 1px solid #e4e5ec;
-              width: 80%;
-              overflow: hidden;
-              padding-left: 10px;
-              padding-right: 10px; }
-              .main .modal-container .modal .modal-body .react-tabs .subject-line-constainer .subject-line-block input {
-                padding-top: 20px;
-                padding-bottom: 20px;
-                width: 100%;
-                padding-left: 30px;
-                font-family: 'Montserrat';
-                font-weight: 400;
-                color: #6d7183;
-                font-size: 15px;
-                border: none;
-                outline: none; }
-          @media screen and (max-width: 967px) {
-            .main .modal-container .modal .modal-body .react-tabs .subject-line-block {
-              margin-top: 10px;
-              margin-left: 0px !important;
+            .main .modal .modal-body .react-tabs .tabs-header-container li:nth-child(2) {
+              margin: 0px !important; }
+            .main .modal .modal-body .react-tabs .tabs-header-container .subject-line-email-container {
               width: 100% !important; } }
-          .main .modal-container .modal .modal-body .react-tabs .subject-line-container {
-            margin-top: 20px;
-            padding-left: 5px;
-            padding-right: 3px;
+        @media screen and (max-width: 803px) {
+          .main .modal .modal-body .react-tabs .subject-line-email-container {
+            width: 100% !important; }
+          .main .modal .modal-body .react-tabs .container-button {
+            padding-bottom: 20px; } }
+        @media screen and (max-width: 500px) {
+          .main .modal .modal-body .react-tabs .subject-line-email-container {
+            width: 100% !important; }
+            .main .modal .modal-body .react-tabs .subject-line-email-container .container-inp {
+              max-width: none !important;
+              width: 100% !important; }
+              .main .modal .modal-body .react-tabs .subject-line-email-container .container-inp .input-block {
+                padding-bottom: 30px !important; }
+                .main .modal .modal-body .react-tabs .subject-line-email-container .container-inp .input-block div {
+                  margin-right: 20px; }
+            .main .modal .modal-body .react-tabs .subject-line-email-container .button {
+              width: 100%; } }
+        @media screen and (max-width: 500px) {
+          .main .modal .modal-body .react-tabs .subject-line-email-container {
+            justify-content: flex-start !important;
+            flex-wrap: wrap; }
+            .main .modal .modal-body .react-tabs .subject-line-email-container .container-inp {
+              padding: 10px 0; } }
+        .main .modal .modal-body .react-tabs .subject-line-constainer {
+          display: flex;
+          margin-top: 40px;
+          align-items: center;
+          flex-wrap: wrap;
+          justify-content: space-between; }
+          .main .modal .modal-body .react-tabs .subject-line-constainer .subject-line-block {
+            margin-left: 10px;
             border: 1px solid #e4e5ec;
-            word-wrap: break-word;
-            height: 300px;
-            overflow: hidden; }
-            .main .modal-container .modal .modal-body .react-tabs .subject-line-container textarea {
-              padding-top: 10px;
-              padding-left: 10px; }
-            .main .modal-container .modal .modal-body .react-tabs .subject-line-container .DraftEditor-root {
+            width: 80%;
+            overflow: hidden;
+            padding-left: 10px;
+            padding-right: 10px; }
+            .main .modal .modal-body .react-tabs .subject-line-constainer .subject-line-block input {
+              padding-top: 20px;
+              padding-bottom: 20px;
+              width: 100%;
+              padding-left: 30px;
+              font-family: 'Montserrat';
+              font-weight: 400;
+              color: #6d7183;
+              font-size: 15px;
+              border: none;
+              outline: none; }
+        @media screen and (max-width: 967px) {
+          .main .modal .modal-body .react-tabs .subject-line-block {
+            margin-top: 10px;
+            margin-left: 0px !important;
+            width: 100% !important; } }
+        .main .modal .modal-body .react-tabs .subject-line-container {
+          margin-top: 20px;
+          padding-left: 5px;
+          padding-right: 3px;
+          border: 1px solid #e4e5ec;
+          word-wrap: break-word;
+          height: 300px;
+          overflow: hidden; }
+          .main .modal .modal-body .react-tabs .subject-line-container textarea {
+            padding-top: 10px;
+            padding-left: 10px; }
+          .main .modal .modal-body .react-tabs .subject-line-container .DraftEditor-root {
+            height: 100%; }
+            .main .modal .modal-body .react-tabs .subject-line-container .DraftEditor-root .DraftEditor-editorContainer {
               height: 100%; }
-              .main .modal-container .modal .modal-body .react-tabs .subject-line-container .DraftEditor-root .DraftEditor-editorContainer {
+              .main .modal .modal-body .react-tabs .subject-line-container .DraftEditor-root .DraftEditor-editorContainer .public-DraftEditor-content {
                 height: 100%; }
-                .main .modal-container .modal .modal-body .react-tabs .subject-line-container .DraftEditor-root .DraftEditor-editorContainer .public-DraftEditor-content {
-                  height: 100%; }
-          .main .modal-container .modal .modal-body .react-tabs .subject-line-email-container {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            width: 70%;
-            margin: 15px 0; }
-            .main .modal-container .modal .modal-body .react-tabs .subject-line-email-container span {
-              font-weight: 500; }
-            .main .modal-container .modal .modal-body .react-tabs .subject-line-email-container .container-inp {
-              margin: 0;
-              max-width: 200px; }
-              .main .modal-container .modal .modal-body .react-tabs .subject-line-email-container .container-inp input {
-                height: 55px; }
-              .main .modal-container .modal .modal-body .react-tabs .subject-line-email-container .container-inp .input-block {
-                padding-bottom: 0px; }
-      .main .modal-container .modal .modal-video {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100%; }
+        .main .modal .modal-body .react-tabs .subject-line-email-container {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          width: 70%;
+          margin: 15px 0; }
+          .main .modal .modal-body .react-tabs .subject-line-email-container span {
+            font-weight: 500; }
+          .main .modal .modal-body .react-tabs .subject-line-email-container .container-inp {
+            margin: 0;
+            max-width: 200px; }
+            .main .modal .modal-body .react-tabs .subject-line-email-container .container-inp input {
+              height: 55px; }
+            .main .modal .modal-body .react-tabs .subject-line-email-container .container-inp .input-block {
+              padding-bottom: 0px; }
+    .main .modal .modal-video {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%; }
   .main textarea {
     width: 100%;
     height: 100%;
@@ -660,6 +660,7 @@
     .main .react-table-bottom-header .custom-checkmark {
       background-color: white; }
   .main .left-panel-info-container {
+    padding-top: 15px;
     display: flex;
     flex-direction: column; }
     .main .left-panel-info-container .left-panel-info-row {
@@ -689,4 +690,5 @@
     .main .left-panel-info-row {
       flex-wrap: wrap !important; }
       .main .left-panel-info-row .left-panel-info-tr {
-        width: auto !important; } }
+        width: auto !important;
+        height: 150px !important; } }

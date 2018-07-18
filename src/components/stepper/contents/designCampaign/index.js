@@ -18,15 +18,17 @@ export default class DesignCampaing extends React.Component {
     }
 
     renderStep() {
-        const {activeStep } = this.state;
+        const { activeStep } = this.state;
 
         switch (activeStep) {
             case 'distribution step':
-                return <Distribution changeStep={this.changeStep} />
+                return <Distribution key={activeStep} changeStep={this.changeStep} changePart={this.changePart} />
             case 'Design kampagne':
-                return <Design changeStep={this.changeStep} />;
+                return <Design key={activeStep} changeStep={this.changeStep} />;
             case 'Debt collection':
-                return <DebtCollection changeStep={this.changePart} />;
+                return <DebtCollection key={activeStep} changeStep={this.changePart} />;
+            default:
+                return <div />
         }
     }
 

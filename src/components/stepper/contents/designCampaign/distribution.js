@@ -31,7 +31,7 @@ export default class Distribution extends React.Component {
 
     render() {
         const { btnPrimaryColor } = defaultProps.btnStyles;
-        const { changeStep } = this.props;
+        const { changeStep,changePart } = this.props;
         const { data } = this.state;
 
         return (
@@ -51,6 +51,7 @@ export default class Distribution extends React.Component {
                 }} />
                 <div className="container-button">
                     <Button onChange={() => changeStep(true)} title={'Design inddrivelsesflow'} styles={{ backgroundColor: btnPrimaryColor, width: 235 }} />
+                    <Button onChange={() => changePart(false)} title={'Forrige'} className={'button button-back'} />
                 </div>
             </div>
         )

@@ -51,9 +51,9 @@ export default class DebtCollection extends React.Component {
                         onColor="#666ee8"
                         className="switch"
                     />
-                    <label>Start kun sager efter manuel godkendelse vie e-mail / SMS <img src={alert}/></label>
+                    <label>Start kun sager efter manuel godkendelse vie e-mail / SMS <img src={alert}  alt="..."/></label>
                 </div>
-                <img src={Img} styles={{width: '100%'}} />
+                <img src={Img} styles={{width: '100%'}}  alt="..."/>
 
                 <div className="container-button">
                     <Button onChange={() => changeStep(true)} title={'Næste →'} styles={{ backgroundColor: btnPrimaryColor }} />

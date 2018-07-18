@@ -21,7 +21,6 @@ export default class Input extends React.Component {
     }
 
     validation(el) {
-        let { errorShow } = this.state;
         const { name } = this.props;
         const value = typeof el === 'object' ? el.target.value : el;
         let error = false;

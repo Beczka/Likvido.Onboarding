@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Input, Checkbox, Modal } from '../../../../smpl-components/index'
+import { Button, Input, Checkbox } from '../../../../smpl-components/index'
 import defaultProps from '../../../../default'
 import Validation from '../../../validation'
 

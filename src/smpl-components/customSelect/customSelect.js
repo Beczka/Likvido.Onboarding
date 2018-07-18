@@ -1,7 +1,4 @@
 import React from 'react';
-import { Button, Spinner } from '../index';
-import defaultProps from '../../default'
-import Home from '../../styles/img/home.png';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 

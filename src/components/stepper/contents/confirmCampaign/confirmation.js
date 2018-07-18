@@ -26,11 +26,10 @@ export default class confirmation extends React.Component {
 
     render() {
         const { btnPrimaryColor } = defaultProps.btnStyles;
-        const { changeStep } = this.props;
-        const { checked } = this.state;
+        const { changeStep,changePart } = this.props;
 
         return ([
-            <div className="left-panel-block padding-top-25px height-auto align-items-center">
+            <div className="left-panel-block padding-top-25px height-auto align-items-center" key={19}>
                 <div className="left-panel-container-header ">
                     Er du klar til at starte din kampage?
                 </div>
@@ -98,10 +97,10 @@ export default class confirmation extends React.Component {
                 </div>
                 <div className="container-button">
                     <Button onChange={() => changeStep(true)} title={'Start inddrivelse'} styles={{ backgroundColor: btnPrimaryColor }} />
-                    <Button onChange={() => changeStep(false)} title={'Ret kampagne'} className={'button button-back'} />
+                    <Button onChange={() => changePart(false)} title={'Ret kampagne'} className={'button button-back'} />
                 </div>
             </div>,
-            <div className="left-panel-block left-panel-payment-info height-auto align-items-center margin-bottom-30">
+            <div key={21} className="left-panel-block left-panel-payment-info height-auto align-items-center margin-bottom-30">
                 <div className="left-panel-container-text text-bolt">
                     Er du i tvivl om det mindste?
                         <br />
