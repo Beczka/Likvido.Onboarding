@@ -49,7 +49,7 @@ export default class TopPanel extends React.Component {
         return (
             <div>
                 <div className="search-container">
-                    <img className="icon-home" src={Home}  alt="..."/>
+                    <img className="icon-home" src={Home} alt="..." />
                     <span className="divider" />
                     <input className='search-value' placeholder={'Skriv navnet på din virksomhed eller dit CVR nummer'}
                         value={searchValue}
@@ -58,21 +58,23 @@ export default class TopPanel extends React.Component {
                         onClick={() => this.setState({ showItem: !showItem, openInput: false })} />
                     <Button onChange={!!searchValue ? () => changeStep(true, searchValue) : () => { }} title={'Søg →'} styles={{ backgroundColor: btnPrimaryColor }} />
                     <div className={`search-container-block ${this.state.showItem ? 'show' : ''}`} >
-                        <div className="search-container-block-list">
-                            {loader && <Spinner />}
-                            <div className="search-container-block-item">
-                                <span className="search-container-block-label-main">Virksomhedsnavn</span>
-                                <span className="search-container-block-cvr-main">CVR</span>
-                                <span className="search-container-block-arrow">→</span>
-                            </div>
-                            {data.map((el, index) => {
-                                return <div className="search-container-block-item" key={index}
-                                    onClick={() => changeStep(true, el.registrationName)} >
-                                    <span className="search-container-block-label">{el.label}</span>
-                                    <span className="search-container-block-cvr">{el.registrationName}</span>
+                        <div>
+                            <div className="search-container-block-list">
+                                {loader && <Spinner />}
+                                <div className="search-container-block-item">
+                                    <span className="search-container-block-label-main">Virksomhedsnavn</span>
+                                    <span className="search-container-block-cvr-main">CVR</span>
                                     <span className="search-container-block-arrow">→</span>
                                 </div>
-                            })}
+                                {data.map((el, index) => {
+                                    return <div className="search-container-block-item" key={index}
+                                        onClick={() => changeStep(true, el.registrationName)} >
+                                        <span className="search-container-block-label">{el.label}</span>
+                                        <span className="search-container-block-cvr">{el.registrationName}</span>
+                                        <span className="search-container-block-arrow">→</span>
+                                    </div>
+                                })}
+                            </div>
                         </div>
                         <div className="search-container-block-item" >
                             <span className="search-value" onClick={changeStep} style={{ color: btnPrimaryColor }}>Opret manuelt, klik her</span>

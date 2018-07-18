@@ -37,10 +37,10 @@ export default class Details extends React.Component {
     checkData() {
         const { data } = this.state;
         let succses = true;
-
+        console.log('data.length',Object.keys(data).length)
         this.setState({ update: true });
-        if (data.length < 4) {
-            return false;
+        if (Object.keys(data).length < 4) {
+            succses = false;
         }
         for (var el in data) {
             if (data[el].length === 0)

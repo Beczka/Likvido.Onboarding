@@ -63,7 +63,7 @@ export default class Payment extends React.Component {
         const { selectSearch, data, loader } = this.state;
         const { content } = this.props.data;
         const { changeStep, value } = this.props;
-
+        console.log('selectSearch',selectSearch.length)
         return (
         <div className="container">
             <div className="left-panel-block">

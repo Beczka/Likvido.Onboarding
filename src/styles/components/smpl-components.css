@@ -46,6 +46,8 @@
     align-items: center;
     position: relative;
     padding-right: 160px; }
+    .main .search-container .loader-container {
+      max-height: 228px; }
     .main .search-container .button {
       position: absolute;
       right: 0; }
