@@ -45,7 +45,6 @@ export default class TopPanel extends React.Component {
         const { data = [], changeStep = () => { }, loader = true, search = () => { } } = this.props;
         const { showItem, searchValue } = this.state;
         const { btnPrimaryColor } = defaultProps.btnStyles;
-
         return (
             <div>
                 <div className="search-container">
