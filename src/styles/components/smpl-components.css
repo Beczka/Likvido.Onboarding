@@ -473,6 +473,8 @@
         width: 100%;
         height: 100%;
         margin: 0 10px; }
+  .main .modal-flex {
+    width: 100%; }
   .main .modal-table {
     max-height: 680px;
     max-width: 750px;
@@ -480,6 +482,9 @@
     .main .modal-table .modal-body-text {
       font-size: 14px;
       padding-bottom: 20px; }
+  @media screen and (max-width: 370px) {
+    .main .modal-table {
+      max-height: 820px; } }
   .main .text-bolt {
     font-weight: 600 !important;
     font-size: 18px !important;

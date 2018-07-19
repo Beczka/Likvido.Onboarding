@@ -49,7 +49,7 @@ export default class ModalTable extends React.Component {
             accessor: 'name',
             className: 'text-hiden',
             Cell: props => <span className='number'>{props.value}</span>,
-            minWidth: 300
+            maxWidth: 300
         }, {
             Header: props => <span>Kraves godkendelse? <img src={alert} alt="..." /></span>,
             accessor: 'friend.age',
@@ -81,13 +81,15 @@ export default class ModalTable extends React.Component {
                     <div className="modal-body-text">
                         Da denne faktura alerebe er forfalden 12 dage kan du ikke starte med  proaktive remindere.
                         Vi foreslar folgende inddrivelsesflow. Klik pa boksense for at fravaelge / redigere de enkelte stadier.
-                        </div>
+                    </div>
+                    <div className='modal-flex'>
                     <ReactTable
                         data={data}
                         columns={columns}
                         showPagination={false}
                         pageSize={data.length}
                     />
+                    </div>
                     <div className="container-button">
                         <Button onChange={() => { openModal(false) }} title={'Gem'} styles={{ backgroundColor: btnPrimaryColor }} />
                         <Button onChange={() => { openModal(false) }} title={'Annuller'} className={'button button-back'} />

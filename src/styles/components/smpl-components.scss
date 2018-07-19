@@ -685,6 +685,12 @@
 
   }
 
+  .modal-flex {
+    width: 100%;
+  }
+
+
+
   .modal-table {
     max-height: 680px;
     max-width: 750px;
@@ -693,6 +699,14 @@
     .modal-body-text {
       font-size: 14px;
       padding-bottom: 20px;
+    }
+  }
+
+
+  @media screen and (max-width: 370px) {
+
+    .modal-table {
+      max-height: 820px;
     }
   }
 
