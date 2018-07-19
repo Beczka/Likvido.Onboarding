@@ -26,7 +26,7 @@ export default class DesignCampaing extends React.Component {
             case 'Design kampagne':
                 return <Design key={activeStep} changeStep={this.changeStep} />;
             case 'Debt collection':
-                return <DebtCollection key={activeStep} changeStep={this.changePart} />;
+                return <DebtCollection key={activeStep} changeStep={this.changeStep} changePart={this.changePart}/>;
             default:
                 return <div />
         }

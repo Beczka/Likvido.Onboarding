@@ -2,6 +2,8 @@ import { Button, RadioButton } from '../../../../smpl-components/index';
 import Economic from '../../../../styles/img/e-conomic-logo-til-web.png';
 import Billy from '../../../../styles/img/billy-logo-final_blue.png';
 import Dinero from '../../../../styles/img/dinero-logo.png';
+import UniConta from '../../../../styles/img/UniConta_Logo_FINAL_RGB_pos_1500p_72dpi.png';
+import MicrosoftDynamics from '../../../../styles/img/MS-Dynamics-CRM-kupit.png';
 import defaultProps from '../../../../default';
 import React from 'react';
 
@@ -26,12 +28,12 @@ export default class Software extends React.Component {
             img: Billy,
             active: false
         }, {
-            name: '1',
-            img: Economic,
+            name: 'UniConta',
+            img: UniConta,
             active: false
         }, {
-            name: '2',
-            img: Dinero,
+            name: 'Microsoft Dynamics',
+            img: MicrosoftDynamics,
             active: false
         }, {
 
@@ -60,8 +62,8 @@ export default class Software extends React.Component {
                             return <div key={index}
                                 className={el.name === selectProgram ? 'accounting-program active' : 'accounting-program'}
                                 onClick={() => { this.props.saveProgram(el.name); this.setState({ selectProgram: el.name }) }}>
-                                <img src={el.img}  alt="..." />
-                                <RadioButton status={el.name === selectProgram ? 'progress' : ''} />
+                                <img src={el.img}  alt="..." className={el.name === 'UniConta' && 'UniConta'}/>
+                                <RadioButton status={el.name === selectProgram ? 'progress' : ''}  className={el.name === 'UniConta' && 'UniConta'}/>
                             </div>
                         })}
                     </div>
@@ -69,7 +71,7 @@ export default class Software extends React.Component {
                         Understotter vi endnu ikke dit regnskabsprogram? Skriv til os pa kontakt@likvido.dk og fa tilsendt info om vores REST.API og andre integrationsmuligheder.
                     </div>
                     <div className="container-button">
-                        <Button onChange={() => selectProgram !== '' ? changeStep(true) : ''} title={'Næste →'} styles={{ backgroundColor: btnPrimaryColor }} />
+                        <Button onChange={() => selectProgram !== '' ? changeStep(true) : ''} title={<span className="button-container-title">Næste <span className='block-arrow'>→</span> </span>} styles={{ backgroundColor: btnPrimaryColor }} />
                         <Button onChange={() => changePart(false)} title={'Forrige'} className={'button button-back'} />
                     </div>
                 </div>

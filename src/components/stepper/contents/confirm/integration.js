@@ -126,7 +126,7 @@ export default class Integration extends React.Component {
                     </div>
                 </div>
                 <div className="container-button">
-                    <Button onChange={() => { this.checkData(true) ? changeStep(true) : () => {} }} title={'Opsæt integration  →'} styles={{ backgroundColor: btnPrimaryColor, width: 230 }} />
+                    <Button onChange={() => { this.checkData(true) ? changeStep(true) : () => {} }} title={<span className="button-container-title">Opsæt integration <span className='block-arrow'>→</span> </span>} styles={{ backgroundColor: btnPrimaryColor, width: 230 }} />
                     <Button onChange={() => changeStep(false)} title={'Afbryd'} className={'button button-back'} />
                 </div>
             </div>

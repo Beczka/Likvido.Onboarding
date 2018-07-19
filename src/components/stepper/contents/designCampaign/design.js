@@ -70,14 +70,14 @@ export default class Design extends React.Component {
             Header: 'Emne',
             accessor: 'name',
             className: 'text-hiden',
-            Cell: props => <span className='number'>{props.value}</span> // Custom cell components!
+            Cell: props => <span className='number'>{props.value}</span> 
         }, {
-            id: 'friendName', // Required because our accessor is not a string
+            id: 'friendName', 
             Header: 'Detaljer',
             accessor: d => <u href="#" onClick={() => {this.openModal(true); this.setState({row: d.name})}}>Se mere</u>,
             maxWidth: 100
         }, {
-            Header: props => <span>Kraves godkendelse? <img src={alert}  alt="..."/></span>, // Custom header components!
+            Header: props => <span>Kraves godkendelse? <img src={alert}  alt="..."/></span>, 
             accessor: 'friend.age',
             minWidth: 250,
             Cell: row => (
@@ -110,7 +110,7 @@ export default class Design extends React.Component {
             />
 
             <div className="container-button">
-                <Button onChange={() => changeStep(true)} title={'Næste (inkasso indstillinger) →'} styles={{ backgroundColor: btnPrimaryColor, width: 260 }} />
+                <Button onChange={() => changeStep(true)} title={<span className="button-container-title">Næste (inkasso indstillinger) <span className='block-arrow'>→</span> </span>} styles={{ backgroundColor: btnPrimaryColor, width: 260 }} />
                 <Button onChange={() => changeStep(false)} title={'Forrige'} className={'button button-back'} />
             </div>
         </div>

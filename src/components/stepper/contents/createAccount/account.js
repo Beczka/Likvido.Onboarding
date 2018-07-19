@@ -71,7 +71,7 @@ export default class Account extends React.Component {
 
     render() {
         const { changeStep, entry = [] } = this.props;
-        const { password, update,checked } = this.state;
+        const { password, update, checked } = this.state;
         const { content } = this.props.data;
         const { btnPrimaryColor } = defaultProps.btnStyles;
 
@@ -95,7 +95,7 @@ export default class Account extends React.Component {
                         errorMes={'navnet er forkert'}
                         error={(el) => { return Validation.validationName(el) }}
                         onChange={(name, value) => { this.selectData(name, value) }} />
-                        
+
                     <Input title={'EFTERNAVN'}
                         name='surname'
                         updatedDone={this.updatedDone()}
@@ -153,10 +153,10 @@ export default class Account extends React.Component {
                 </div>
 
                 <div className="container-checkbox">
-                    <Checkbox title={'Jeg accepterer Likvido Inkasso ApS '} value={checked} onChange={() => this.setState({checked: !checked})} url={'https://likvido.dk/betingelser/'} />
+                    <Checkbox title={'Jeg accepterer Likvido Inkasso ApS '} value={checked} onChange={() => this.setState({ checked: !checked })} url={'https://likvido.dk/betingelser/'} />
                 </div>
                 <div className="container-button">
-                    <Button onChange={() => this.checkData() && changeStep(true)} title={'Næste →'} styles={{ backgroundColor: btnPrimaryColor }} />
+                    <Button onChange={() => this.checkData() && checked && changeStep(true)} title={<span className="button-container-title">Næste <span className='block-arrow'>→</span> </span>} styles={{ backgroundColor: btnPrimaryColor }} />
                     <Button onChange={() => changeStep(false)} title={'Forrige'} className={'button button-back'} />
                 </div>
             </div>

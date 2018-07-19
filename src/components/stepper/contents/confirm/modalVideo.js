@@ -20,7 +20,7 @@ export default class ModalVideo extends React.Component {
                     </div>
                     <div className="modal-video">
                         {/* <video width="400" height="300"  src="https://youtube.com/watch?v=yBLdQ1a4-JI" controls="controls" poster="video/duel.jpg"/> */}
-                        <iframe  src="https://www.youtube.com/embed/Ct6BUPvE2sM" frameBorder="0" allow="autoplay; encrypted-media" />
+                        {/* <iframe  src="https://www.youtube.com/embed/Ct6BUPvE2sM" frameBorder="0" allow="autoplay; encrypted-media" /> */}
                     </div>
                 </div>
             </div>

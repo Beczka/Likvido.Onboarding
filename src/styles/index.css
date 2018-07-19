@@ -257,6 +257,8 @@ body {
         padding-top: 20px; }
         body .main .right-panel .container-number img {
           margin-right: 10px; }
+        body .main .right-panel .container-number .width-16 {
+          width: 16px; }
         body .main .right-panel .container-number .panel-bl-content {
           padding-top: 10px;
           color: #666ee8;
@@ -435,6 +437,19 @@ body {
     outline: none; }
     .main .right-panel-button:active {
       box-shadow: inset 1px 1px 8px #666; }
+  .main .accounting-program img.UniConta {
+    width: 115px;
+    height: 15px !important;
+    padding-top: 35px; }
+  .main .accounting-program div.UniConta {
+    margin-bottom: 5px; }
+  .main .cursor-pointer-img {
+    width: "100%";
+    height: "100%";
+    display: "flex";
+    justify-content: "center"; }
+    .main .cursor-pointer-img img {
+      cursor: pointer; }
   .main .search-container {
     margin-top: 15px;
     display: flex;
@@ -515,7 +530,14 @@ body {
           text-overflow: ellipsis;
           font-size: 14px; }
         .main .search-container .search-container-block .search-container-block-item .search-container-block-arrow {
-          color: #ff6b36; }
+          color: #ff6b36;
+          font-size: 35px; }
+  .main .button-container-title {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+  .main .block-arrow {
+    font-size: 35px; }
   .main .container-inp {
     display: flex;
     justify-content: space-between; }
@@ -826,13 +848,19 @@ body {
   .main .switch-container {
     display: flex;
     align-items: center;
-    padding-bottom: 10px; }
+    padding-top: 10px;
+    padding-bottom: 20px; }
     .main .switch-container .switch {
       min-width: 50px; }
     .main .switch-container label {
-      padding-left: 10px; }
+      padding-left: 10px;
+      color: #6b6f81; }
+      .main .switch-container label img {
+        padding-bottom: 5px; }
+  .main .modal-body-container-radio .switch-container {
+    padding-bottom: 0 !important; }
   .main .align-items-center {
-    align-items: center; }
+    align-items: center !important; }
   .main .height-auto {
     height: auto !important; }
   .main .text-align-center {
@@ -847,6 +875,13 @@ body {
         width: 100%;
         height: 100%;
         margin: 0 10px; }
+  .main .modal-table {
+    max-height: 680px;
+    max-width: 750px;
+    align-items: start; }
+    .main .modal-table .modal-body-text {
+      font-size: 14px;
+      padding-bottom: 20px; }
   .main .text-bolt {
     font-weight: 600 !important;
     font-size: 18px !important;

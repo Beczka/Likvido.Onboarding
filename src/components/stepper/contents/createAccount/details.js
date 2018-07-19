@@ -37,7 +37,6 @@ export default class Details extends React.Component {
     checkData() {
         const { data } = this.state;
         let succses = true;
-        console.log('data.length',Object.keys(data).length)
         this.setState({ update: true });
         if (Object.keys(data).length < 4) {
             succses = false;
@@ -51,7 +50,7 @@ export default class Details extends React.Component {
     }
 
     async getData() {
-    this.props.spinner(true);
+        this.props.spinner(true);
         try {
             const res = await axios.get(API.detailAPI, {
                 headers: {
@@ -60,8 +59,9 @@ export default class Details extends React.Component {
                     value: this.props.value
                 },
             });
-            this.props.spinner()
-            this.setState({ data: res.data[0] || {}, loader: false })
+            this.props.spinner();
+            this.setState({ data: res.data[0] || {}, loader: false });
+            this.props.saveData(res.data[0])
         } catch (e) {
             console.log('Err: ', e)
             this.props.spinner();
@@ -98,7 +98,8 @@ export default class Details extends React.Component {
                         updatedDone={this.updatedDone()}
                         update={update}
                         error={(el) => { return Validation.validationName(el) }}
-                        name="name" defaultValue={data.name || this.getSaveData('name')}
+                        name="name" 
+                        defaultValue={data.name || this.getSaveData('Firmanavn')}
                         errorMes={'navnet er forkert'}
                         onChange={(name, value) => { this.selectData(name, value) }} />
 
@@ -144,7 +145,7 @@ export default class Details extends React.Component {
                         onChange={(name, value) => { this.selectData(name, value) }} />
                 </div>
                 <div className="container-button">
-                    <Button onChange={() => this.checkData() ? changeStep(true) : ''} title={'Næste →'} styles={{ backgroundColor: btnPrimaryColor }} />
+                    <Button onChange={() => this.checkData() ? changeStep(true) : ''} title={<span className="button-container-title">Næste <span className='block-arrow'>→</span> </span>} styles={{ backgroundColor: btnPrimaryColor }} />
                     <Button onChange={() => changeStep(false)} title={'Forrige'} className={'button button-back'} />
                 </div>
             </div>

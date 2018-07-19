@@ -24,7 +24,7 @@ export default class Confirm extends React.Component {
         const { activeStep, program, entry } = this.state;
         switch (activeStep) {
             case 'software step':
-                return <Software key={activeStep} changeStep={this.changeStep} changePart={this.changePart} data={data.data_software} saveProgram={this.saveProgram} />
+                return <Software key={activeStep} changeStep={this.changeStep} saveData={this.saveData} changePart={this.changePart} data={data.data_software} saveProgram={this.saveProgram} />
             case 'details step':
                 return <Integration key={activeStep} saveData={this.saveData} changeLoading={this.changeLoading} changeStep={this.changeStep} data={data.data_integration} entry={entry[activeStep]} program={program} />
             case 'loading step':
@@ -49,13 +49,16 @@ export default class Confirm extends React.Component {
     }
 
     saveProgram(name) {
-        this.setState({ program: name })
+        let { entry = {}, activeStep } = this.state;
+        entry[activeStep] = { program: name };
+        this.setState({ program: name, entry: entry })
     }
 
     saveData(saveData) {
         let { entry = {}, activeStep } = this.state;
         entry[activeStep] = saveData;
-        this.setState(entry);
+        this.props.saveData(entry)
+        this.setState(entry)
     }
 
     render() {

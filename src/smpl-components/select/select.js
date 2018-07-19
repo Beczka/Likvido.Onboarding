@@ -56,9 +56,9 @@ export default class TopPanel extends React.Component {
                         type="text"
                         onChange={(el) => { this.setState({ searchValue: el.target.value }); search(el) }}
                         onClick={() => this.setState({ showItem: !showItem, openInput: false })} />
-                    <Button onChange={!!searchValue ? () => changeStep(true, searchValue) : () => { }} title={'Søg →'} styles={{ backgroundColor: btnPrimaryColor }} />
+                    <Button onChange={!!searchValue ? () => changeStep(true, searchValue) : () => { }} title={<span className="button-container-title">Søg <span className='block-arrow'>→</span> </span>} styles={{ backgroundColor: btnPrimaryColor }} />
                     <div className={`search-container-block ${this.state.showItem ? 'show' : ''}`} >
-                        <div>
+                        <div styles={{ position: 'relative' }}>
                             <div className="search-container-block-list">
                                 {loader && <Spinner />}
                                 <div className="search-container-block-item">

@@ -2,6 +2,7 @@ import { Select } from '../../../../smpl-components/index';
 import Economic from '../../../../styles/img/e-conomic-logo-til-web.png';
 import Billy from '../../../../styles/img/billy-logo-final_blue.png';
 import Dinero from '../../../../styles/img/dinero-logo.png';
+import Rocket from '../../../../styles/img/🚀.png';
 import API from '../../../../APIconfig.json';
 import React from 'react';
 import axios from 'axios';
@@ -63,12 +64,11 @@ export default class Payment extends React.Component {
         const { selectSearch, data, loader } = this.state;
         const { content } = this.props.data;
         const { changeStep, value } = this.props;
-        console.log('selectSearch',selectSearch.length)
         return (
         <div className="container">
             <div className="left-panel-block">
                 <div className="left-panel-container-header max-width-530px">
-                    {content.container_header}
+                    {content.container_header} <img src={Rocket}/>
                 </div>
                 <div className="left-panel-container-text left-panel-container-content">
                     {content.header_content}

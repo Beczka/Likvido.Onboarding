@@ -30,7 +30,7 @@ export default class DebtCollection extends React.Component {
 
     render() {
         const { btnPrimaryColor } = defaultProps.btnStyles;
-        const { changeStep } = this.props;
+        const { changeStep, changePart } = this.props;
         const { checked } = this.state;
 
         return (
@@ -56,7 +56,7 @@ export default class DebtCollection extends React.Component {
                 <img src={Img} styles={{width: '100%'}}  alt="..."/>
 
                 <div className="container-button">
-                    <Button onChange={() => changeStep(true)} title={'Næste →'} styles={{ backgroundColor: btnPrimaryColor }} />
+                    <Button onChange={() => changePart(true)} title={<span className="button-container-title">Næste <span className='block-arrow'>→</span> </span>} styles={{ backgroundColor: btnPrimaryColor }} />
                     <Button onChange={() => changeStep(false)} title={'Forrige'} className={'button button-back'} />
                 </div>
             </div>

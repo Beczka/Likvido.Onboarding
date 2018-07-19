@@ -4,6 +4,8 @@ import defaultProps from '../../../../default';
 import Switch from 'react-ios-switch';
 import React from 'react';
 import Shape from '../../../../styles/img/Shape.png';
+import ModalTable from './modalTable';
+import alert from '../../../../styles/img/alert-circle-i.png';
 
 export default class CurrentDebtors extends React.Component {
     constructor(props) {
@@ -93,7 +95,7 @@ export default class CurrentDebtors extends React.Component {
     }
 
     render() {
-        const { checked = false, data, allCheck, selection } = this.state;
+        const { checked = false, data, allCheck, selection,openModal } = this.state;
         const { btnPrimaryColor } = defaultProps.btnStyles;
         const { changeStep } = this.props;
 
@@ -106,23 +108,23 @@ export default class CurrentDebtors extends React.Component {
             accessor: 'kunde',
             className: 'text-hiden',
             maxWidth: 160,
-            Cell: props => <span className='number'>{props.value}</span> // Custom cell components!
+            Cell: props => <span className='number'>{props.value}</span>
         }, {
             Header: 'Faktura nr.',
             accessor: 'faktura',
             maxWidth: 100,
-            Cell: props => <span className='color-grey'>{props.value}</span> // Custom cell components!
+            Cell: props => <span className='color-grey'>{props.value}</span>
         },
         {
             Header: 'Belob',
             accessor: 'belob',
             maxWidth: 100,
-            Cell: props => <span className='color-grey'>{props.value}</span> // Custom cell components!
+            Cell: props => <span className='color-grey'>{props.value}</span>
         }, {
             Header: 'Forfalden',
             accessor: 'forfalden',
             maxWidth: 100,
-            Cell: props => <span className='color-grey'>{props.value}</span> // Custom cell components!
+            Cell: props => <span className='color-grey'>{props.value}</span>
         }, {
             Header: 'Start',
             accessor: 'start',
@@ -143,7 +145,7 @@ export default class CurrentDebtors extends React.Component {
             accessor: 'ret',
             maxWidth: 70,
             Cell: row => (
-                <div
+                <div className="cursor-pointer-img"
                     style={{
                         width: "100%",
                         height: "100%",
@@ -151,43 +153,43 @@ export default class CurrentDebtors extends React.Component {
                         justifyContent: "center",
                     }}
                 >
-                    <img src={Shape}  alt="..."/>
+                    <img src={Shape} alt="..." onClick={() => {this.openModal(true); this.setState({row: row.name})}} />
                 </div>)
         }];
 
-        return (
-            <div className="left-panel-block padding-top-25px react-table">
-                <div className="left-panel-container-header">
-                    Hvan skal vi gore med dine nuvaerende skyldnere?
+        return ([openModal && <ModalTable openModal={this.openModal} saveData={this.saveData} key={16} />,
+        <div className="left-panel-block padding-top-25px react-table">
+            <div className="left-panel-container-header">
+                Hvan skal vi gore med dine nuvaerende skyldnere?
                 </div>
-                <div className="left-panel-container-text left-panel-container-content">
-                    Vaelg hvad der skal ske med dine forfaldne faktura fra dit regnskabsprogram. Ud fra gaeldens alder har vi anbefalet at starte enter
-                    med rykkerkampagnen eller at ga direkte til inkassovarsel.
+            <div className="left-panel-container-text left-panel-container-content">
+                Vaelg hvad der skal ske med dine forfaldne faktura fra dit regnskabsprogram. Ud fra gaeldens alder har vi anbefalet at starte enter
+                med rykkerkampagnen eller at ga direkte til inkassovarsel.
                 </div>
-                <div className="switch-container">
-                    < Switch
-                        checked={checked}
-                        offColor="white"
-                        onChange={() => this.setState({ checked: !checked })}
-                        onColor="#666ee8"
-                        className="switch"
-                    />
-                    <label>Sammenflet flere krav pa samme kunde</label>
-                </div>
-                <ReactTable
-                    data={data}
-                    columns={columns}
-                    showPagination={false}
-                    pageSize={data.length}
+            <div className="switch-container">
+                < Switch
+                    checked={checked}
+                    offColor="white"
+                    onChange={() => this.setState({ checked: !checked })}
+                    onColor="#666ee8"
+                    className="switch"
                 />
-                <div className="react-table-bottom-header">
-                    <Checkbox title={`${selection} valg till inddrivelse`} value={allCheck} onChange={() => { this.setState({ allCheck: !allCheck }); this.selectRow('', !allCheck, true) }} />
-                </div>
-                <div className="container-button">
-                    <Button onChange={() => changeStep(true)} title={'Ga til bekraeftelse'} styles={{ backgroundColor: btnPrimaryColor, width: 260 }} />
-                    <Button onChange={() => changeStep(false)} title={'Forrige'} className={'button button-back'} />
-                </div>
+                <label>Sammenflet flere krav pa samme kunde <img src={alert} alt="..." /></label>
             </div>
-        )
+            <ReactTable
+                data={data}
+                columns={columns}
+                showPagination={false}
+                pageSize={data.length}
+            />
+            <div className="react-table-bottom-header">
+                <Checkbox title={`${selection} valg till inddrivelse`} value={allCheck} onChange={() => { this.setState({ allCheck: !allCheck }); this.selectRow('', !allCheck, true) }} />
+            </div>
+            <div className="container-button">
+                <Button onChange={() => changeStep(true)} title={'Ga til bekraeftelse'} styles={{ backgroundColor: btnPrimaryColor, width: 260 }} />
+                <Button onChange={() => changeStep(false)} title={'Forrige'} className={'button button-back'} />
+            </div>
+        </div>
+        ])
     }
 }

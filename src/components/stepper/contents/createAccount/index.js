@@ -10,7 +10,8 @@ export default class CreateAccount extends React.Component {
         super(props);
         this.state = {
             activeStep: 'payment step',
-            entry: {}
+            entry: {},
+            value: ''
         };
         this.steps = ['payment step', 'details step', 'account step', 'greeting step'];
         this.changeStep = this.changeStep.bind(this);
@@ -37,7 +38,7 @@ export default class CreateAccount extends React.Component {
 
     changeStep(back, value) {
         const backStep = back || false;
-        const { activeStep } = this.state;
+        const { activeStep,entry = {} } = this.state;
 
         this.steps.forEach((el, key) => {
             if (activeStep === el) {
@@ -45,12 +46,14 @@ export default class CreateAccount extends React.Component {
                 this.setState({ activeStep: this.steps[backStep ? key + 1 : key - 1] });
             }
         })
-        value && this.setState({ value: value || '' });
+        value && (entry[activeStep] = {value:value});
+        value && this.setState({ value: value || '',entry });
     }
 
     saveData(saveData) {
         let { entry = {}, activeStep } = this.state;
         entry[activeStep] = saveData;
+        this.props.saveData(entry)
         this.setState(entry)
     }
 

@@ -19,15 +19,17 @@ export default class LeftPanel extends React.Component {
         this.changeStatus = this.props.changeStatus;
         this.spinner = this.spinner.bind(this);
         this.saveActiveStep = this.props.saveActiveStep;
+        this.saveData = this.saveData.bind(this);
+        this.data = {}
     }
 
     renderPart() {
         const { activePart } = this.state;
         switch (activePart) {
             case 'Opret konto':
-                return <Account key={activePart} changePart={this.changePart}  spinner={this.spinner} changeStatus={this.changeStatus} />
+                return <Account key={activePart} changePart={this.changePart} saveData={this.saveData} spinner={this.spinner} changeStatus={this.changeStatus} />
             case 'Tilknyt regnskabssystem':
-                return <Confirm key={activePart} changePart={this.changePart} changeLoading={this.props.changeLoading} changeStatus={this.changeStatus} />
+                return <Confirm key={activePart} changePart={this.changePart} saveData={this.saveData} changeLoading={this.props.changeLoading} changeStatus={this.changeStatus} />
             case 'Design kampagne':
                 return <Design key={activePart} changePart={this.changePart} changeStatus={this.changeStatus} />
             case 'Vælg sager':
@@ -51,6 +53,13 @@ export default class LeftPanel extends React.Component {
                 this.changeStatus(backStep ? parts[key + 1].name : parts[key -1].name, 'progress');
             }
         })
+    }
+
+    saveData(data) {
+        const {activePart= ''} = this.state;
+        this.data[activePart] = data;
+        this.props.saveData(this.data);
+        
     }
 
     saveActiveStep(el) {

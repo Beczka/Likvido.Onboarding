@@ -23,11 +23,12 @@ export default class step extends React.Component {
             loading: false,
             activePart: 'Opret konto',
         };
-
+        this.data= {};
         this.changeStatus = this.changeStatus.bind(this);
         this.changeLoading = this.changeLoading.bind(this);
         this.saveActivePart = this.saveActivePart.bind(this);
         this.saveActiveStep =this.saveActiveStep.bind(this);
+        this.saveData = this.saveData.bind(this);
     }
 
     changeStatus(name, status) {
@@ -53,8 +54,13 @@ export default class step extends React.Component {
         this.setState({ loading: status, title: title, body: body, progress: progress })
     }
 
+    saveData(data) {
+        this.data = data;
+    }
+
     render() {
         const { parts, loading, activePart = '', body, title, progress } = this.state;
+
         return ([
             <div className="compan-block" key={10}>
                 <div className="compan-logo">
@@ -73,7 +79,7 @@ export default class step extends React.Component {
                     :
                     [<TopPanel parts={parts} key={11}/>,
                     <div className="container-main" key={12}>
-                        <LeftPanel parts={parts} activePart={activePart} activeStep={this.activeStep} saveActiveStep={this.saveActiveStep} saveActivePart={this.saveActivePart} changeStatus={this.changeStatus} changeLoading={this.changeLoading} />
+                        <LeftPanel parts={parts} activePart={activePart} saveData={this.saveData} activeStep={this.activeStep} saveActiveStep={this.saveActiveStep} saveActivePart={this.saveActivePart} changeStatus={this.changeStatus} changeLoading={this.changeLoading} />
                         <RightPanel activeStep={activePart} />
                     </div>]
                 }

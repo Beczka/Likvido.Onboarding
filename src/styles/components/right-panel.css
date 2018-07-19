@@ -19,6 +19,8 @@
     padding-top: 20px; }
     .right-panel .container-number img {
       margin-right: 10px; }
+    .right-panel .container-number .width-16 {
+      width: 16px; }
     .right-panel .container-number .panel-bl-content {
       padding-top: 10px;
       color: #666ee8;

@@ -11,9 +11,8 @@ export default class SettingsReminder extends React.Component {
     constructor(props) {
         super(props)
 
-        const { dataSwitch } = this.props;
         this.state = {
-            dataSwitch: dataSwitch || [
+            dataSwitch: [
                 {
                     name: 'reminder',
                     value: true,
@@ -42,10 +41,36 @@ export default class SettingsReminder extends React.Component {
         }
         this.updatedDone = this.updatedDone.bind(this);
         this.selectData = this.selectData.bind(this);
+        this.changeSwitch = this.changeSwitch.bind(this);
+
         this.onChangeContent = (editorState) => {
             this.setState({ editorStateContent: editorState });
         };
         this.onChangeHeader = (editorState) => this.setState({ editorStateHeader: editorState });
+    }
+
+    componentDidMount() {
+        this.setState({dataSwitch: this.props.dataSwitch || [
+            {
+                name: 'reminder',
+                value: true,
+                label: 'Send reminder 5 dage for forfald'
+            }, {
+                name: 'email',
+                value: true,
+                label: 'Send pa e-mail'
+            }, {
+                name: 'sms',
+                value: true,
+                label: 'Send pa SMS'
+
+            }, {
+                name: 'post',
+                value: true,
+                label: 'Send med post hvis der ikke findes en e-mail eller telefonnummer (gratis)'
+
+            }
+        ] })
     }
 
     updatedDone() {
@@ -56,7 +81,7 @@ export default class SettingsReminder extends React.Component {
         this.setState({ email: value })
     }
 
-    changeSwitch = (index, value) => {
+    changeSwitch(index, value) {
         let { dataSwitch } = this.state;
         dataSwitch[index].value = !value;
         this.setState(dataSwitch);
@@ -66,8 +91,9 @@ export default class SettingsReminder extends React.Component {
         const { btnPrimaryColor } = defaultProps.btnStyles;
         const { saveData, openModal } = this.props;
         const { update = false, dataSwitch, editorStateContent, editorStateHeader, email } = this.state;
+
         return (
-            [<div className="modal-container" onClick={() => openModal(false)} key={200}/>,
+            [<div className="modal-container" onClick={() => openModal(false)} key={200} />,
             <div className="modal" key={201}>
                 <div className="modal-header">
                     <div className="modal-header-title">
