@@ -14,45 +14,45 @@ export default class Payment extends React.Component {
             showItem: false,
             selectSearch: '',
             data: [],
-            loader: false
+            loader: false,
+            load: false
         };
+
+        this.cancel = () => { };
         this.data = this.props.data.search;
-        this.getData = this.getData.bind(this);
-    }
+        this.fetchData = this.fetchData.bind(this);
 
-    componentWillMount() {
-        this.getData();
-    }
-
-    async getData() {
-        this.setState({ loader: true });
-        try {
-            const res = await axios.get(API.searchAPI, {
-                headers: {
-                    'Access-Control-Allow-Origin': '*',
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-            });
-            this.setState({ data: res.data, loader: false })
-        } catch (e) {
-            console.log('Err: ', e)
-        }
     }
 
     async fetchData(value) {
         this.setState({ loader: true });
+        let { load } = this.state;
+        const CancelToken = axios.CancelToken;
+
+        const source = CancelToken.source();
+        if (load) {
+            this.cancel('Operation canceled by the user.');
+            this.setState({ load: false });
+        }
+
         try {
-            const res = await axios.get(API.searchAPI, {
+            this.setState({ load: true });
+            this.res = await axios.get(API.searchAPI, {
                 headers: {
                     'Access-Control-Allow-Origin': '*',
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    value: value
-                },
+                    value: value,
+                }, cancelToken: new CancelToken((c) => {
+                    this.cancel = c;
+                }),
             });
-            this.setState({ data: res.data, loader: false });
+            this.cancel = () => { };
+
+            this.setState({ data: this.res.data, loader: false, load: false });
         } catch (e) {
-            console.log('Err: ', e)
+            this.setState({ loader: false });
         }
+
     }
 
     search = (el) => {
@@ -74,9 +74,9 @@ export default class Payment extends React.Component {
                     <div className="left-panel-container-text left-panel-container-content">
                         {content.header_content}
                     </div>
-                    <Select data={data} loader={loader} selectValue={!!value ? value : selectSearch} search={this.search} changeStep={(back, el) => changeStep(back, el)} />
+                    <Select data={data} loader={loader} selectValue={!!value ? value : selectSearch} search={this.search} changeStep={(back, el, updated) => changeStep(back, el, updated)} />
                     <span className="panel-bl-content">Kan du ikke finde din virksomhed?&nbsp;
-                            <u className="panel-bl-content" onClick={() => changeStep(true, '')}>Opret manuelt</u>
+                            <u className="panel-bl-content" onClick={() => changeStep(true, '', true)}>Opret manuelt</u>
                     </span>
                 </div>
                 <div className="left-panel-block left-panel-payment-info">

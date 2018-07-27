@@ -32,16 +32,15 @@ export default class Input extends React.Component {
             error = this.props.error(value)
         }
 
+        this.props.onChange(name, value);
         if (value === '') {
             this.setState({ errorShow: true });
             return '';
         }
-        if (error) {
-            this.props.onChange(name, value);
-        } else {
-            this.props.onChange(name, '');
-
-        }
+        // if (error) {
+        // } else {
+        //     this.props.onChange(name, '');
+        // }
         this.setState({ errorShow: !error });
 
     }

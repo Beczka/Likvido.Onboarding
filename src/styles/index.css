@@ -25,7 +25,8 @@ body {
       font-size: 21px;
       font-weight: bold; }
     body .compan-block .login .login-url {
-      color: #ff6b36; }
+      color: #ff6b36;
+      cursor: pointer; }
   body .Fill-1 {
     max-height: 325px;
     width: 100%;
@@ -428,6 +429,7 @@ body {
     font-family: 'Montserrat';
     font-size: 14px;
     font-weight: 400;
+    cursor: pointer;
     text-align: center;
     width: 225px;
     height: 58px;
@@ -437,12 +439,16 @@ body {
     outline: none; }
     .main .right-panel-button:active {
       box-shadow: inset 1px 1px 8px #666; }
+  .main .error {
+    border-color: red; }
   .main .accounting-program img.UniConta {
     width: 115px;
     height: 15px !important;
     padding-top: 35px; }
   .main .accounting-program div.UniConta {
     margin-bottom: 5px; }
+  .main u.panel-bl-content {
+    cursor: pointer; }
   .main .cursor-pointer-img {
     width: "100%";
     height: "100%";
@@ -532,6 +538,50 @@ body {
         .main .search-container .search-container-block .search-container-block-item .search-container-block-arrow {
           color: #ff6b36;
           font-size: 35px; }
+  .main #switch-shadow {
+    display: none; }
+  .main .switch {
+    visibility: hidden;
+    position: absolute;
+    margin-left: -9999px; }
+  .main .switch + label {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    user-select: none; }
+  .main .switch--shadow + label {
+    padding: 2px;
+    width: 33px;
+    height: 23px;
+    background-color: #dddddd;
+    border-radius: 60px; }
+  .main .switch--shadow + label:before,
+  .main .switch--shadow + label:after {
+    display: block;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    bottom: 1px;
+    content: ""; }
+  .main .switch--shadow + label:before {
+    right: 1px;
+    background-color: #f1f1f1;
+    border-radius: 60px;
+    transition: background 0.4s; }
+  .main .switch--shadow + label:after {
+    width: 22px;
+    height: 22px;
+    top: 2px;
+    left: 3px;
+    background-color: #fff;
+    border-radius: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s; }
+  .main .switch--shadow:checked + label:before {
+    background-color: #666ee8; }
+  .main .switch--shadow:checked + label:after {
+    transform: translateX(17px); }
   .main .button-container-title {
     display: flex;
     justify-content: center;

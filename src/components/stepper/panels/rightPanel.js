@@ -62,7 +62,7 @@ export default class RightPanel extends React.Component {
                     <div className="right-panel-user-info">
                         {userInfo}
                     </div>
-                    <Button title={'Book et online møde'} className={'right-panel-button'} />
+                    <Button title={'Book et online møde'} className={'right-panel-button'} onClick={() => {window.open('https://meetings.hubspot.com/max107?_ga=2.132280780.391986377.1526122385-82282547.1525762738')}}  href={'https://meetings.hubspot.com/max107?_ga=2.132280780.391986377.1526122385-82282547.1525762738'}/>
                     {!!userNumber && <div className="container-number">
                         <span className="panel-bl-content">
                             <img src={Phone} alt="..." />

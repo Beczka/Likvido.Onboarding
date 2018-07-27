@@ -5,6 +5,7 @@ import Confirm from '../contents/confirm/index'
 import SelectCases from '../contents/selectCases/index'
 import ConfirmCampaign from '../contents/confirmCampaign/index'
 import { Spinner } from '../../../smpl-components/index';
+import data from '../../../data.json'
 
 export default class LeftPanel extends React.Component {
     constructor(props) {
@@ -27,7 +28,7 @@ export default class LeftPanel extends React.Component {
         const { activePart } = this.state;
         switch (activePart) {
             case 'Opret konto':
-                return <Account key={activePart} changePart={this.changePart} saveData={this.saveData} spinner={this.spinner} changeStatus={this.changeStatus} />
+                return <Account key={activePart} changePart={ data.fullflow ? this.changePart : () => {} } saveData={this.saveData} spinner={this.spinner} changeStatus={this.changeStatus} />
             case 'Tilknyt regnskabssystem':
                 return <Confirm key={activePart} changePart={this.changePart} saveData={this.saveData} changeLoading={this.props.changeLoading} changeStatus={this.changeStatus} />
             case 'Design kampagne':

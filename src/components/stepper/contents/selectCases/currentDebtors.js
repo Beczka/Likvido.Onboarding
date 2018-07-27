@@ -1,7 +1,6 @@
-import { Button, Checkbox, CustomSelect } from '../../../../smpl-components/index';
+import { Button, Checkbox, CustomSelect,Switch } from '../../../../smpl-components/index';
 import ReactTable from "react-table";
 import defaultProps from '../../../../default';
-import Switch from 'react-ios-switch';
 import React from 'react';
 import Shape from '../../../../styles/img/Shape.png';
 import ModalTable from './modalTable';

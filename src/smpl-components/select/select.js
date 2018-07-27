@@ -17,6 +17,7 @@ export default class TopPanel extends React.Component {
 
     componentWillMount() {
         this.updatedSelect();
+        this.setState({ showItem: !!this.props.data.length});
     }
 
     updatedSelect = () => {
@@ -53,11 +54,11 @@ export default class TopPanel extends React.Component {
                     <input className='search-value' placeholder={'Skriv navnet på din virksomhed eller dit CVR nummer'}
                         value={searchValue}
                         type="text"
-                        onChange={(el) => { this.setState({ searchValue: el.target.value }); search(el) }}
-                        onClick={() => this.setState({ showItem: !showItem, openInput: false })} />
-                    <Button onChange={!!searchValue ? () => changeStep(true, searchValue) : () => { }} title={<span className="button-container-title">Søg <span className='block-arrow'>→</span> </span>} styles={{ backgroundColor: btnPrimaryColor }} />
+                        onChange={(el) => { this.setState({ searchValue: el.target.value });  if (el.target.value.length > 2) {search(el); this.setState({ showItem: true})} else {this.setState({ showItem: false})} }}
+                        onClick={(el) => el.target.value.length > 2 && this.setState({ showItem: !showItem})} />
+                    <Button onChange={!!searchValue ? () => changeStep(true, searchValue, true) : () => { }} title={<span className="button-container-title">Søg <span className='block-arrow'>→</span> </span>} styles={{ backgroundColor: btnPrimaryColor }} />
                     <div className={`search-container-block ${this.state.showItem ? 'show' : ''}`} >
-                        <div styles={{ position: 'relative' }}>
+                        <div style={{ position: 'relative' }}>
                             <div className="search-container-block-list">
                                 {loader && <Spinner />}
                                 <div className="search-container-block-item">
@@ -67,7 +68,7 @@ export default class TopPanel extends React.Component {
                                 </div>
                                 {data.map((el, index) => {
                                     return <div className="search-container-block-item" key={index}
-                                        onClick={() => changeStep(true, el.registrationName)} >
+                                        onClick={() => changeStep(true, el.registrationName,true)} >
                                         <span className="search-container-block-label">{el.label}</span>
                                         <span className="search-container-block-cvr">{el.registrationName}</span>
                                         <span className="search-container-block-arrow">→</span>
@@ -76,7 +77,7 @@ export default class TopPanel extends React.Component {
                             </div>
                         </div>
                         <div className="search-container-block-item" >
-                            <span className="search-value" onClick={changeStep} style={{ color: btnPrimaryColor }}>Opret manuelt, klik her</span>
+                            <span className="search-value" onClick={() => {changeStep(true, searchValue, true)}} style={{ color: btnPrimaryColor }}>Opret manuelt, klik her</span>
                         </div>
                     </div>
                 </div>

@@ -1,9 +1,8 @@
 import React from 'react';
-import { Button, Input } from '../../../../smpl-components/index';
+import { Button, Input,Switch } from '../../../../smpl-components/index';
 import defaultProps from '../../../../default';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import Validation from '../../../validation';
-import Switch from 'react-ios-switch';
 import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
@@ -106,11 +105,12 @@ export default class SettingsReminder extends React.Component {
                 <div className="modal-body">
                     <div className="modal-body-container-radio">
                         {dataSwitch.map((el, index) => {
-                            return <div className="switch-container" key={Math.random()}>
+                            return <div className="switch-container" key={index}>
                                 < Switch
                                     checked={el.value}
                                     offColor="white"
-                                    onChange={() => this.changeSwitch(index, el.value)}
+                                    value={index}
+                                    onClick={() => this.changeSwitch(index, el.value)}
                                     onColor="#666ee8"
                                     className="switch"
                                 />
@@ -134,7 +134,6 @@ export default class SettingsReminder extends React.Component {
                                 </div>
                             </div>
                             <div className="subject-line-container">
-                                {/* <textarea value={editorStateContent} onChange={(el) => this.onChangeContent(el.target.value)} /> */}
                                 <Editor
                                     editorState={editorStateContent}
                                     toolbarClassName="toolbarClassName"
@@ -151,7 +150,7 @@ export default class SettingsReminder extends React.Component {
                                         updatedDone={this.updatedDone()}
                                         update={update}
                                         placeholder={'E-mail (arbejdsmail) '}
-                                        errorMes={'e-mail er forkert'}
+                                        errorMes={'E-mail er forkert'}
                                         defaultValue={email}
                                         error={(el) => { return Validation.validationEmail(el) }}
                                         onChange={(name, value) => { this.selectData(name, value) }} />

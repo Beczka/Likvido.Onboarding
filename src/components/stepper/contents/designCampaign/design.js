@@ -18,11 +18,11 @@ export default class Design extends React.Component {
             editorStateHeader: {},
             row: ''
         }
-        
+
         this.dataSwitch = {};
-        this.editorStateContent= {};
-        this.email= {};
-        this.editorStateHeader= {};
+        this.editorStateContent = {};
+        this.email = {};
+        this.editorStateHeader = {};
         this.openModal = this.openModal.bind(this);
         this.saveData = this.saveData.bind(this);
     }
@@ -32,18 +32,19 @@ export default class Design extends React.Component {
     }
 
     saveData(data, editorStateContent2, editorStateHeader2, email2) {
-        let { row } = this.state;
-        this.dataSwitch[row] = data || [];
+        let { row, dataSwitch } = this.state;
+        dataSwitch[row] = data || [];
         this.editorStateContent[row] = editorStateContent2;
         this.editorStateHeader[row] = editorStateHeader2;
         this.email[row] = email2;
+        this.setState(dataSwitch);
     }
 
 
     render() {
         const { btnPrimaryColor } = defaultProps.btnStyles;
         const { changeStep } = this.props;
-        const { openModal, row, } = this.state;
+        const { openModal, row, dataSwitch } = this.state;
 
         const data = [{
             name: 'Venlig pamindekse',
@@ -70,14 +71,14 @@ export default class Design extends React.Component {
             Header: 'Emne',
             accessor: 'name',
             className: 'text-hiden',
-            Cell: props => <span className='number'>{props.value}</span> 
+            Cell: props => <span className='number'>{props.value}</span>
         }, {
-            id: 'friendName', 
+            id: 'friendName',
             Header: 'Detaljer',
-            accessor: d => <u href="#" onClick={() => {this.openModal(true); this.setState({row: d.name})}}>Se mere</u>,
+            accessor: d => <u href="#" onClick={() => { this.openModal(true); this.setState({ row: d.name }) }}>Se mere</u>,
             maxWidth: 100
         }, {
-            Header: props => <span>Kraves godkendelse? <img src={alert}  alt="..."/></span>, 
+            Header: props => <span>Kraves godkendelse? <img src={alert} alt="..." /></span>,
             accessor: 'friend.age',
             minWidth: 250,
             Cell: row => (
@@ -92,7 +93,7 @@ export default class Design extends React.Component {
                 </div>)
         }];
 
-        return ([openModal && <SettingsReminder openModal={this.openModal} email={this.email[row]} saveData={this.saveData} editorStateHeader={this.editorStateHeader[row]} editorStateContent={this.editorStateContent[row]} dataSwitch={this.dataSwitch[row]} key={16}/>,
+        return ([openModal ? <SettingsReminder openModal={this.openModal} email={this.email[row]} saveData={this.saveData} editorStateHeader={this.editorStateHeader[row]} editorStateContent={this.editorStateContent[row]} dataSwitch={dataSwitch[row]} key={9999999} /> : <div key={10000}/>,
         <div className="left-panel-block padding-top-25px" key={17}>
             <div className="left-panel-container-header">
                 Design dit rykkerflow

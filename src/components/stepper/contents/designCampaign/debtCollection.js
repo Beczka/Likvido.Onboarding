@@ -1,7 +1,6 @@
-import { Button } from '../../../../smpl-components/index';
+import { Button, Switch } from '../../../../smpl-components/index';
 import defaultProps from '../../../../default';
 import React from 'react';
-import Switch from 'react-ios-switch';
 import Img from '../../../../styles/img/Skærmbillede 2018-06-17 kl. 16.32.29.png';
 import alert from '../../../../styles/img/alert-circle-i.png';
 
@@ -9,7 +8,7 @@ export default class DebtCollection extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            checked: true,
+            checked: true
         }
         this.dataSwitch = {};
         this.openModal = this.openModal.bind(this);
@@ -24,7 +23,7 @@ export default class DebtCollection extends React.Component {
     saveData(data, editorStateContent, editorStateHeader) {
         let { row } = this.state;
         this.dataSwitch[row] = data || [];
-        this.setState({ editorStateContent: editorStateContent, editorStateHeader: editorStateHeader })
+        this.setState({ editorStateContent: editorStateContent, editorStateHeader: editorStateHeader });
     }
 
 
@@ -46,14 +45,12 @@ export default class DebtCollection extends React.Component {
                 <div className="switch-container">
                     < Switch
                         checked={checked}
-                        offColor="white"
-                        onChange={() => this.setState({checked: !checked})}
-                        onColor="#666ee8"
+                        onClick={() => this.setState({ checked: !checked })}
                         className="switch"
                     />
-                    <label>Start kun sager efter manuel godkendelse vie e-mail / SMS <img src={alert}  alt="..."/></label>
+                    <label>Start kun sager efter manuel godkendelse vie e-mail / SMS <img src={alert} alt="..." /></label>
                 </div>
-                <img src={Img} styles={{width: '100%'}}  alt="..."/>
+                <img src={Img} styles={{ width: '100%' }} alt="..." />
 
                 <div className="container-button">
                     <Button onChange={() => changePart(true)} title={<span className="button-container-title">Næste <span className='block-arrow'>→</span> </span>} styles={{ backgroundColor: btnPrimaryColor }} />

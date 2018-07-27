@@ -30,15 +30,15 @@ export default class CreateAccount extends React.Component {
             case 'account step':
                 return <Account key={activeStep} changeStep={this.changeStep} data={data.data_account} entry={entry[activeStep]} saveData={this.saveData} />;
             case 'greeting step':
-                return <Greeting key={activeStep} changeStep={this.changePart} data={data.data_greeting} />;
+                return <Greeting key={activeStep} changeStep={this.changePart} data={data.data_greeting} entry={entry} />;
             default:
                 return <div />
         }
     }
 
-    changeStep(back, value) {
+    changeStep(back, value, updated) {
         const backStep = back || false;
-        const { activeStep,entry = {} } = this.state;
+        const { activeStep, entry = {} } = this.state;
 
         this.steps.forEach((el, key) => {
             if (activeStep === el) {
@@ -46,8 +46,13 @@ export default class CreateAccount extends React.Component {
                 this.setState({ activeStep: this.steps[backStep ? key + 1 : key - 1] });
             }
         })
-        value && (entry[activeStep] = {value:value});
-        value && this.setState({ value: value || '',entry });
+        if (updated) {
+            entry['details step'] = {};
+            this.setState(entry)
+        }
+        activeStep === 'payment step' && (entry[activeStep] = { value: value });
+        activeStep === 'payment step' && this.setState({ value: value || '', entry });
+        this.setState(entry)
     }
 
     saveData(saveData) {

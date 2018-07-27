@@ -50,7 +50,17 @@ export default class Details extends React.Component {
     }
 
     async getData() {
+        const { entry ={}}= this.props
+        if (!!!this.props.value) {
+            return
+        }
+        if (!!Object.keys(entry).length) {
+            this.setState({ data: this.props.entry });
+            return
+        }
+
         this.props.spinner(true);
+
         try {
             const res = await axios.get(API.detailAPI, {
                 headers: {
@@ -59,9 +69,16 @@ export default class Details extends React.Component {
                     value: this.props.value
                 },
             });
+            let { data = {} } = this.state;
             this.props.spinner();
-            this.setState({ data: res.data[0] || {}, loader: false });
-            this.props.saveData(res.data[0])
+            data.officialName = res.data.officialName;
+            data.vat = res.data.vat;
+            data.address = res.data.address;
+            data.zipcode = res.data.zipcode;
+            data.city = res.data.city;
+
+            this.setState({ data: data, loader: false });
+            this.props.saveData(data)
         } catch (e) {
             console.log('Err: ', e)
             this.props.spinner();
@@ -98,18 +115,18 @@ export default class Details extends React.Component {
                         updatedDone={this.updatedDone()}
                         update={update}
                         error={(el) => { return Validation.validationName(el) }}
-                        name="name" 
-                        defaultValue={data.name || this.getSaveData('Firmanavn')}
-                        errorMes={'navnet er forkert'}
+                        name="officialName"
+                        defaultValue={data.officialName || this.getSaveData('Firmanavn')}
+                        errorMes={'Navnet er forkert'}
                         onChange={(name, value) => { this.selectData(name, value) }} />
 
                     <Input title={'CVR NUMMER'}
                         updatedDone={this.updatedDone()}
                         update={update}
                         error={(el) => { return Validation.validationCVR(el) }}
-                        name="companyRegistrationId"
-                        defaultValue={data.companyRegistrationId || this.getSaveData('companyRegistrationId')}
-                        errorMes={'navnet er forkert'}
+                        name="vat"
+                        defaultValue={data.vat || this.getSaveData('companyRegistrationId')}
+                        errorMes={'Navnet er forkert'}
                         onChange={(name, value) => { this.selectData(name, value) }} />
                 </div>
                 <div className="container-inp">
@@ -119,8 +136,7 @@ export default class Details extends React.Component {
                         error={(el) => { return Validation.validationName(el) }}
                         name="address"
                         defaultValue={data.address || this.getSaveData('address')}
-                        type={'email'}
-                        errorMes={'adresse er forkert'}
+                        errorMes={'Adresse er forkert'}
                         onChange={(name, value) => { this.selectData(name, value) }} />
                 </div>
                 <div className="container-inp">
@@ -131,7 +147,7 @@ export default class Details extends React.Component {
                         name="zipcode"
                         defaultValue={data.zipcode || this.getSaveData('zipcode')}
                         type={''}
-                        errorMes={'adgangskode er forkert'}
+                        errorMes={'Adgangskode er forkert'}
                         onChange={(name, value) => { this.selectData(name, value) }} />
 
                     <Input title={'BY'}
@@ -141,7 +157,7 @@ export default class Details extends React.Component {
                         error={(el) => { return Validation.validationName(el) }}
                         name="city"
                         defaultValue={data.city || this.getSaveData('city')}
-                        errorMes={'adgangskode er forkert'}
+                        errorMes={'Adgangskode er forkert'}
                         onChange={(name, value) => { this.selectData(name, value) }} />
                 </div>
                 <div className="container-button">

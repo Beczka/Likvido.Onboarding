@@ -66,7 +66,7 @@ export default class step extends React.Component {
                 <div className="compan-logo">
                     {data.logo}
                 </div>
-                <div className="login">Allerede bruger? <u className="login-url">Login →</u>
+                <div className="login">Allerede bruger? <u className="login-url" onClick={() => {window.open("https://app.likvido.dk/Account/Login")}}>Login →</u>
                 </div>
 
             </div>

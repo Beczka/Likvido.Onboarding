@@ -9,7 +9,8 @@ export default class Account extends React.Component {
         this.state = {
             data: [],
             password: '',
-            checked: false
+            checked: false,
+            error : false
         }
         this.selectData = this.selectData.bind(this);
         this.checkData = this.checkData.bind(this);
@@ -17,7 +18,7 @@ export default class Account extends React.Component {
     }
 
     updatedDone() {
-        this.state.update && this.setState({ update: false })
+        this.state.update && this.setState({ update: false });
     }
 
     selectData(name, value) {
@@ -56,9 +57,18 @@ export default class Account extends React.Component {
     }
 
     checkData() {
-        const { data } = this.state;
+        const { data, checked } = this.state;
         let succses = true;
-        this.setState({ update: true })
+        let error = false;
+
+        if (checked) {
+            error = false
+        } else {
+            error = true;
+        }
+
+        this.setState({ update: true , error : error});
+
         if (data.length < 5) {
             return false;
         }
@@ -71,9 +81,11 @@ export default class Account extends React.Component {
 
     render() {
         const { changeStep, entry = [] } = this.props;
-        const { password, update, checked } = this.state;
+        const { password, update, checked,error } = this.state;
         const { content } = this.props.data;
         const { btnPrimaryColor } = defaultProps.btnStyles;
+
+        let err = error ? !checked && true : false 
 
         return (
             <div className="left-panel-block">
@@ -92,7 +104,7 @@ export default class Account extends React.Component {
                         update={update}
                         defaultValue={this.getSaveData('name')}
                         placeholder={'Skriv dit fornavn'}
-                        errorMes={'navnet er forkert'}
+                        errorMes={'Navnet er forkert'}
                         error={(el) => { return Validation.validationName(el) }}
                         onChange={(name, value) => { this.selectData(name, value) }} />
 
@@ -102,7 +114,7 @@ export default class Account extends React.Component {
                         update={update}
                         defaultValue={this.getSaveData('surname')}
                         placeholder={'Skriv dit efternavn'}
-                        errorMes={'navnet er forkert'}
+                        errorMes={'Navnet er forkert'}
                         error={(el) => { return Validation.validationName(el) }}
                         onChange={(name, value) => { this.selectData(name, value) }} />
                 </div>
@@ -113,7 +125,7 @@ export default class Account extends React.Component {
                         update={update}
                         defaultValue={this.getSaveData('email')}
                         placeholder={'E-mail (arbejdsmail) '}
-                        errorMes={'e-mail er forkert'}
+                        errorMes={'E-mail er forkert'}
                         error={(el) => { return Validation.validationEmail(el) }}
                         onChange={(name, value) => { this.selectData(name, value) }} />
 
@@ -123,7 +135,7 @@ export default class Account extends React.Component {
                         defaultValue={this.getSaveData('number')}
                         name='number'
                         placeholder={'Mobilnummer (arbejde)'}
-                        errorMes={'nummeret er forkert'}
+                        errorMes={'Nummeret er forkert'}
                         error={(el) => { return Validation.validationCVR(el) }}
                         onChange={(name, value) => { this.selectData(name, value) }} />
                 </div>
@@ -135,7 +147,7 @@ export default class Account extends React.Component {
                         name='password'
                         placeholder={'Skriv et password '}
                         type={'password'}
-                        errorMes={'adgangskode er forkert'}
+                        errorMes={'Adgangskode er forkert'}
                         error={(el) => { return Validation.validationPass(el) }}
                         onChange={(name, value) => { this.selectData(name, value) }} />
 
@@ -146,14 +158,14 @@ export default class Account extends React.Component {
                         defaultValue={this.getSaveData('dublePassword')}
                         type={'password'}
                         placeholder={'Gentag password'}
-                        errorMes={'adgangskode er forkert'}
+                        errorMes={'Adgangskode er forkert'}
                         dublPass={password}
                         error={(el, el2) => { return Validation.validationDublPass(el, el2) }}
                         onChange={(name, value) => { this.selectData(name, value) }} />
                 </div>
 
                 <div className="container-checkbox">
-                    <Checkbox title={'Jeg accepterer Likvido Inkasso ApS '} value={checked} onChange={() => this.setState({ checked: !checked })} url={'https://likvido.dk/betingelser/'} />
+                    <Checkbox title={'Jeg accepterer Likvido Inkasso ApS '} error={err} value={checked} onChange={() => this.setState({ checked: !checked })} url={'https://likvido.dk/betingelser/'} />
                 </div>
                 <div className="container-button">
                     <Button onChange={() => this.checkData() && checked && changeStep(true)} title={<span className="button-container-title">Næste <span className='block-arrow'>→</span> </span>} styles={{ backgroundColor: btnPrimaryColor }} />

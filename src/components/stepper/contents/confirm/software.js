@@ -62,7 +62,7 @@ export default class Software extends React.Component {
                             return <div key={index}
                                 className={el.name === selectProgram ? 'accounting-program active' : 'accounting-program'}
                                 onClick={() => { this.props.saveProgram(el.name); this.setState({ selectProgram: el.name }) }}>
-                                <img src={el.img}  alt="..." className={el.name === 'UniConta' && 'UniConta'}/>
+                                <img src={el.img}  alt="..." className={el.name === 'UniConta' ? 'UniConta' : ''}/>
                                 <RadioButton status={el.name === selectProgram ? 'progress' : ''}  className={el.name === 'UniConta' && 'UniConta'}/>
                             </div>
                         })}
