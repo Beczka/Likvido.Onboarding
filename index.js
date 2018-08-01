@@ -11,11 +11,12 @@ app.use('/static', express.static(__dirname + '/build/static'));
 
 app.use(bodyParser.json());
 
-app.get('/companytype', (req, res) => {
-    res.sendFile(`${__dirname}/server/build/index.html`)
+app.get('/', (req, res) => {
+    console.log('sdfsdfsfsdfsd')
+    res.sendFile(`${__dirname}/build/index.html`)
 });
 
-app.get('/', (request, response) => {
+app.get('/companytype', (request, response) => {
     axios.get(`http://testkredit.likvido.dk/api/v1/Company/typeahead?query=${request.headers.value ? request.headers.value : 'youf'}`, {
         headers: {
             'Access-Control-Allow-Origin': '*',

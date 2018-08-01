@@ -1,5 +1,5 @@
 {
-    "searchAPI": "http://localhost:3001/",
-    "detailAPI": "http://localhost:3001/company",
-    "creditorsAPI": "http://localhost:3001/creditors"
+    "searchAPI": "/companytype",
+    "detailAPI": "/company",
+    "creditorsAPI": "/creditors"
 }
