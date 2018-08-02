@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 const querystring = require('querystring');
 
 const app = express();
-const port = process.env.port || 5000;
+const port = process.env.port || 3000;
 
 app.use(cors());
 app.use('/static', express.static(__dirname + '/build/static'));
