@@ -2,7 +2,7 @@
 
 :: ----------------------
 :: KUDU Deployment Script
-:: Version: 1.0.15
+:: Version: 1.0.17
 :: ----------------------
 
 :: Prerequisites
@@ -88,34 +88,38 @@ goto :EOF
 :Deployment
 echo Handling node.js deployment.
 
-:: 1. KuduSync to DEPLOYMENT_TEMP
-call :ExecuteCmd "%KUDU_SYNC_CMD%" -v 50 -f "%DEPLOYMENT_SOURCE%" -t "%DEPLOYMENT_TEMP%" -n "%NEXT_MANIFEST_PATH%" -p "%PREVIOUS_MANIFEST_PATH%" -i ".git;.hg;.deployment;deploy.cmd"
-IF !ERRORLEVEL! NEQ 0 goto error
+:: 1. KuduSync
+IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
+  call :ExecuteCmd "%KUDU_SYNC_CMD%" -v 50 -f "%DEPLOYMENT_SOURCE%" -t "%DEPLOYMENT_TARGET%" -n "%NEXT_MANIFEST_PATH%" -p "%PREVIOUS_MANIFEST_PATH%" -i ".git;.gitignore;.deployment;deploy.cmd"
+  IF !ERRORLEVEL! NEQ 0 goto error
+)
+
 
 :: 2. Select node version
 call :SelectNodeVersion
 
 :: 3. Install npm packages
-IF EXIST "%DEPLOYMENT_TEMP%\package.json" (
-  pushd "%DEPLOYMENT_TEMP%"
-  call :ExecuteCmd !NPM_CMD! install
+IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
+  pushd "%DEPLOYMENT_TARGET%"
+  call :ExecuteCmd !NPM_CMD! install --production
   IF !ERRORLEVEL! NEQ 0 goto error
   popd
 )
 
-:: 4. Build the website
-IF EXIST "%DEPLOYMENT_TEMP%\scripts\build.js" (
-  pushd "%DEPLOYMENT_TEMP%"
-  echo "Building web site"
-  call npm run build
-  if !ERRORLEVEL! NEQ 0 goto error
-  popd
-)
 
-:: 5. KuduSync to DEPLOYMENT_TARGET
-echo "Syncing site to Deployment Target"
-call :ExecuteCmd "%KUDU_SYNC_CMD%" -v 50 -f "%DEPLOYMENT_TEMP%\build" -t "%DEPLOYMENT_TARGET%" -x true -i ".git;.hg;.deployment;deploy.cmd"
-IF !ERRORLEVEL! NEQ 0 goto error
+echo Custom Step - Start
+
+pushd "%DEPLOYMENT_TARGET%"
+
+call :ExecuteCmd !NPM_CMD! run-script build
+rmdir /s /q "%DEPLOYMENT_TARGET%\src" 
+rmdir /s /q "%DEPLOYMENT_TARGET%\public"
+rmdir /s /q "%DEPLOYMENT_TARGET%\server"
+del  "%DEPLOYMENT_TARGET%\.gitignore"
+del  "%DEPLOYMENT_TARGET%\.deployment"
+del  "%DEPLOYMENT_TARGET%\README.md"
+
+echo Custom Step - End
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 goto end
