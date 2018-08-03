@@ -21,7 +21,7 @@ export default class step extends React.Component {
                 name: 'Bekræft kampagne', status: ''
             }],
             loading: false,
-            activePart: 'Design kampagne',
+            activePart: 'Opret konto',
         };
         this.data= {};
         this.changeStatus = this.changeStatus.bind(this);

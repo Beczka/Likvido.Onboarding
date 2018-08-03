@@ -117,7 +117,6 @@ export default class Account extends React.Component {
 
     changeAlready(alredy) {
         this.setState({ alredy: alredy ? alredy : false})
-        this.setState({update: true })
     }
 
     render() {
