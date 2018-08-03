@@ -5,13 +5,14 @@ var bodyParser = require('body-parser');
 const querystring = require('querystring');
 
 const app = express();
-const port = process.env.port || 3001;
+
+const port = process.env.port || 3000;
 
 app.use(cors());
 
 app.use(bodyParser.json());
 
-app.get('/', (request, response) => {
+app.get('/companytype', (request, response) => {
     axios.get(`http://testkredit.likvido.dk/api/v1/Company/typeahead?query=${request.headers.value ? request.headers.value : 'youf'}`, {
         headers: {
             'Access-Control-Allow-Origin': '*',
@@ -42,7 +43,7 @@ app.get('/company', (request, response) => {
 
 app.post('/creditors', (request, response) => {
    let data = {creditor: request.body.data}
-    axios.post(`https://testcore.likvido.dk/api/Creditors`, data, {
+    axios.post(`https://testcore.likvido.dk/api/Creditors`, request.body.data, {
         headers: {
             'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json-patch+json',
@@ -50,10 +51,10 @@ app.post('/creditors', (request, response) => {
     })
         .then((res) => {
             response.json(res.data)
-            console.log('asdasdasdasdadd', res)
         })
-        .catch(function (error) {
-            console.log('error',error)
+        .catch((error)=> {
+            response.json(error.response.data)
+            console.log('error',error.response.data)
         });
 
 });

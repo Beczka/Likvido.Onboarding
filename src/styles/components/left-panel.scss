@@ -14,6 +14,17 @@
   position: relative;
   -webkit-box-sizing: initial !important;
 
+
+  .max-width-550 {
+    max-width: 550px !important;
+  }
+  .padding-top-35 {
+    padding-top: 35px !important;
+  }
+
+  .padding-top-45 {
+    padding-top: 45px !important;
+  }
   
   .left-panel-block {
     padding: 70px 60px 20px 70px;
@@ -48,8 +59,13 @@
       .left-panel-container-body-content {
         display: flex;
         flex-direction: column;
-        padding-left: 50px;
+        padding-left: 20px;
         padding-top: 10px;
+        width: 58%;
+
+        u {
+          cursor: pointer;
+        }
 
         div {
           display: flex;
@@ -121,7 +137,7 @@
   }
 
   .left-panel-container-body {
-    padding: 30px 0 60px 0px ;
+    padding: 15px 0 60px 0px ;
   }
 
   .left-panel-payment-info {
@@ -169,5 +185,8 @@
       div {
         margin-top: 5px;
       }
+  }
+  .container-button.billy {
+    padding-top: 120px !important;
   }
 }

@@ -13,7 +13,6 @@ app.use('/static', express.static(__dirname + '/build/static'));
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-    console.log('sdfsdfsfsdfsd')
     res.sendFile(`${__dirname}/build/index.html`)
 });
 
@@ -56,7 +55,6 @@ app.post('/creditors', (request, response) => {
     })
         .then((res) => {
             response.json(res.data)
-            console.log('asdasdasdasdadd', res)
         })
         .catch(function (error) {
             console.log('error',error)
@@ -66,5 +64,4 @@ app.post('/creditors', (request, response) => {
 
 
 app.listen(port, (err) => {
-    console.log('test server')
 })

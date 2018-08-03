@@ -8,6 +8,12 @@ import API from '../../../../APIconfig.json';
 
 export default class Greeting extends React.Component {
 
+    constructor(props) {
+        super(props);
+
+        this.openSite = this.openSite.bind(this);
+    }
+
     async sendData() {
         let data = {};
         const { entry } = this.props;
@@ -21,7 +27,7 @@ export default class Greeting extends React.Component {
         data['officePhone'] = entry['account step'].filter((el) => el.name === 'number' && el.value)[0].value;
         data['firstName'] = entry['account step'].filter((el) => el.name === 'name' && el.value)[0].value;
         data['lastName'] = entry['account step'].filter((el) => el.name === 'surname' && el.value)[0].value;
-        data['password'] =  entry['account step'].filter((el) => el.name === 'password' && el.value)[0].value;
+        data['password'] = entry['account step'].filter((el) => el.name === 'password' && el.value)[0].value;
         try {
             const res = await axios.post(API.creditorsAPI, {
                 data: data
@@ -29,6 +35,12 @@ export default class Greeting extends React.Component {
         } catch (e) {
             console.log('Err: ', e)
         }
+    }
+
+    openSite() {
+        const { id } = this.props;
+        window.open(`https://app.likvido.dk/Account/ActivateOnboarding?creditorId=${this.props.value}&userId=${this.props.id}`);
+        this.props.changeStep;
     }
 
     render() {
@@ -45,7 +57,7 @@ export default class Greeting extends React.Component {
                     {content.header_content}
                 </div>
                 <img className="Fill-1" src={Img} alt="..." />
-                <Button onChange={changeStep} title={'Tilknyt regnskabsprogram'} styles={{ backgroundColor: btnPrimaryColor, width: 235 }} />
+                <Button onChange={this.openSite} title={'Tilknyt regnskabsprogram'} styles={{ backgroundColor: btnPrimaryColor, width: 235 }} />
             </div>
         )
     }
