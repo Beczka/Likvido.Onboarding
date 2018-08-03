@@ -99,9 +99,13 @@ export default class Account extends React.Component {
         data['password'] = entryAll['account step'].filter((el) => el.name === 'password' && el.value)[0].value;
 
         try {
-            const res = await axios.post(API.creditorsAPI, {
-                data: data
-            });
+
+            const res = axios.post(`https://testcore.likvido.dk/api/Creditors`, data, {
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Content-Type': 'application/json-patch+json',
+                },
+            })
             if (!!res.data.error) {
                 this.changeAlready(true);
             } else {
@@ -116,7 +120,7 @@ export default class Account extends React.Component {
     }
 
     changeAlready(alredy) {
-        this.setState({ alredy: alredy ? alredy : false})
+        this.setState({ alredy: alredy ? alredy : false })
     }
 
     render() {
