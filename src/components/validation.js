@@ -1,12 +1,14 @@
 const Validation = {};
 
 Validation.validationEmail = (el) => {
-    return /^(?!\.)(""([^""\r\\]|\\[""\r\\])*""|([-a-z0-9!#$%&'*+/=?^_`{|}~]|(?<!\.)\.)*)(?<!\.)@[a-z0-9][\w\.-]*[a-z0-9]\.[a-z][a-z\.]*[a-z]$/.test(el);
+    var regexp = /^[\w-\.]+@[\w-]+\.[a-z]{2,4}$/i
+    return regexp.test(el);
 
 };
 
 Validation.validationPass = (el) => {
-    return !!/^(?=.*\d)(?=.*[a-z])(?=(.*[a-z]){4}).{8,20}$/.test(el);
+    var regexp  = !!/^(?=.*\d)(?=.*[a-z])(?=(.*[a-z]){4}).{8,20}$/i
+    return regexp.test(el);
 }
 
 Validation.validationDublPass = (pass, pass2) => {
@@ -18,10 +20,12 @@ Validation.validationName = (el) => {
 }
 
 Validation.validationCVR = (el) => {
-    return /^[\S]{8,11}$/i.test(el);
+    var regexp = /^[\S]{8,11}$/i
+    return regexp.test(el);
 }
 Validation.validationZipcode = (el) => {
-    return /^[0-9]{4}$/.test(el);
+    var regexp = /^[0-9]{4}$/i
+    return regexp.test(el);
 }
 
 export default Validation;
