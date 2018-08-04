@@ -56,7 +56,7 @@ app.post('/creditors', (request, response) => {
             response.json(res.data)
         })
         .catch(function (error) {
-            console.log('error',error)
+            response.json(error.response.data)
         });
 
 });
