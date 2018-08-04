@@ -41,7 +41,6 @@ app.get('/company', (request, response) => {
 
 
 app.post('/creditors', (request, response) => {
-   let data = {creditor: request.body.data}
     axios.post(`https://testcore.likvido.dk/api/Creditors`, request.body.data, {
         headers: {
             'Access-Control-Allow-Origin': '*',
