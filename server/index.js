@@ -2,7 +2,6 @@ const express = require('express');
 const axios = require('axios');
 var cors = require('cors');
 var bodyParser = require('body-parser');
-const querystring = require('querystring');
 
 const app = express();
 
@@ -58,7 +57,6 @@ app.post('/creditors', (request, response) => {
         });
 
 });
-
 
 app.listen(port, (err) => {
     console.log('test server')

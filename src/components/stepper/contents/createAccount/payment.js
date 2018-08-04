@@ -37,13 +37,14 @@ export default class Payment extends React.Component {
 
         try {
             this.setState({ load: true });
-            this.res = await axios.get(`https://testkredit.likvido.dk/api/v1/Company/typeahead?query=${value}`, {
+            this.res = await axios.get(API.searchAPI, {
                 headers: {
                     'Access-Control-Allow-Origin': '*',
                     'Content-Type': 'application/x-www-form-urlencoded',
+                    value:value
                 }, cancelToken: new CancelToken((c) => {
                     this.cancel = c;
-                }),
+                })
             });
             this.cancel = () => { };
 

@@ -62,10 +62,11 @@ export default class Details extends React.Component {
         this.props.spinner(true);
 
         try {
-            const res = await axios.get(`http://testkredit.likvido.dk/api/v1/Company/${this.props.value}`, {
+            const res = await axios.get(API.detailAPI, {
                 headers: {
                     'Access-Control-Allow-Origin': '*',
                     'Content-Type': 'application/x-www-form-urlencoded',
+                    value: this.props.value
                 },
             });
             let { data = {} } = this.state;
