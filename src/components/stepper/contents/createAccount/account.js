@@ -99,13 +99,9 @@ export default class Account extends React.Component {
         data['password'] = entryAll['account step'].filter((el) => el.name === 'password' && el.value)[0].value;
 
         try {
-
-            const res = axios.post(API.creditorsAPI, data, {
-                headers: {
-                    'Access-Control-Allow-Origin': '*',
-                    'Content-Type': 'application/json-patch+json',
-                },
-            })
+            const res = await axios.post(API.creditorsAPI, {
+                data: data
+            });
             if (!!res.data.error) {
                 this.changeAlready(true);
             } else {
