@@ -7,8 +7,7 @@ Validation.validationEmail = (el) => {
 };
 
 Validation.validationPass = (el) => {
-    var regexp  = !!/^(?=.*\d)(?=.*[a-z])(?=(.*[a-z]){4}).{8,20}$/i
-    return regexp.test(el);
+    return !!/^(?=.*\d)(?=.*[a-z])(?=(.*[a-z]){4}).{8,20}$/i.test(el);
 }
 
 Validation.validationDublPass = (pass, pass2) => {
