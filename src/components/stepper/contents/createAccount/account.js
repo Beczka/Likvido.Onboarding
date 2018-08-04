@@ -100,7 +100,7 @@ export default class Account extends React.Component {
 
         try {
 
-            const res = axios.post(api.creditorsAPI, data, {
+            const res = axios.post(API.creditorsAPI, data, {
                 headers: {
                     'Access-Control-Allow-Origin': '*',
                     'Content-Type': 'application/json-patch+json',
