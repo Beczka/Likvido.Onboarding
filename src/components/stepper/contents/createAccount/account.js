@@ -97,7 +97,8 @@ export default class Account extends React.Component {
         data['firstName'] = entryAll['account step'].filter((el) => el.name === 'name' && el.value)[0].value;
         data['lastName'] = entryAll['account step'].filter((el) => el.name === 'surname' && el.value)[0].value;
         data['password'] = entryAll['account step'].filter((el) => el.name === 'password' && el.value)[0].value;
-
+        data['sendWelcomeMessage'] = true;
+        data['creditorType'] = 1;
         try {
             const res = await axios.post(API.creditorsAPI, {
                 data: data
