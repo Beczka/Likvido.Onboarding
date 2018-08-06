@@ -6,6 +6,7 @@ import UniConta from '../../../../styles/img/UniConta_Logo_FINAL_RGB_pos_1500p_7
 import MicrosoftDynamics from '../../../../styles/img/MS-Dynamics-CRM-kupit.png';
 import defaultProps from '../../../../default';
 import React from 'react';
+import {config} from '../../../../config/config.js';
 
 export default class Software extends React.Component {
     constructor(props) {

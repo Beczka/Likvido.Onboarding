@@ -2,6 +2,7 @@ import React from 'react'
 import { Button, Input, Checkbox } from '../../../../smpl-components/index'
 import defaultProps from '../../../../default'
 import Validation from '../../../validation'
+import {config} from '../../../../config/config.js';
 
 export default class Account extends React.Component {
     constructor(props) {
@@ -165,7 +166,7 @@ export default class Account extends React.Component {
                 </div>
 
                 <div className="container-checkbox">
-                    <Checkbox title={'Jeg accepterer Likvido Inkasso ApS '} error={err} value={checked} onChange={() => this.setState({ checked: !checked })} url={'https://likvido.dk/betingelser/'} />
+                    <Checkbox title={'Jeg accepterer Likvido Inkasso ApS '} error={err} value={checked} onChange={() => this.setState({ checked: !checked })} url={`${config.LIKWIDO_APP_BASE_PATH}`} />
                 </div>
                 <div className="container-button">
                     <Button onChange={() => this.checkData() && checked && changeStep(true)} title={<span className="button-container-title">Næste <span className='block-arrow'>→</span> </span>} styles={{ backgroundColor: btnPrimaryColor }} />

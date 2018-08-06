@@ -4,6 +4,7 @@ import RightPanel from './panels/rightPanel'
 import TopPanel from './panels/topPanel'
 import data from '../../data.json'
 import LoadingPage from './contents/loadingPage/loadingPage'
+import {config} from '../../config/config.js';
 
 export default class step extends React.Component {
     constructor(props) {
@@ -66,7 +67,7 @@ export default class step extends React.Component {
                 <div className="compan-logo">
                     {data.logo}
                 </div>
-                <div className="login">Allerede bruger? <u className="login-url" onClick={() => {window.open("https://app.likvido.dk/Account/Login")}}>Login →</u>
+                <div className="login">Allerede bruger? <u className="login-url" onClick={() => {window.open(`${config.LIKWIDO_APP_BASE_PATH}/Account/Login`)}}>Login →</u>
                 </div>
 
             </div>

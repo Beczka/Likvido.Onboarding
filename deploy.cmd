@@ -94,6 +94,23 @@ IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
   IF !ERRORLEVEL! NEQ 0 goto error
 )
 
+echo Prepare ENV - Start
+echo %ENV%
+echo %DEPLOYMENT_TARGET%
+
+IF "%ENV%" == "TEST" (
+  echo Applying config for TEST
+  copy "%DEPLOYMENT_TARGET%\src\config\kudu-config\config.dev.json" "%DEPLOYMENT_TARGET%\src\config\config.json" /Y
+  copy "%DEPLOYMENT_TARGET%\src\config\kudu-config\config.dev.js" "%DEPLOYMENT_TARGET%\config.js" /Y
+ ) 
+ 
+IF "%ENV%" == "PROD" (
+  echo Applying config for PROD
+  copy "%DEPLOYMENT_TARGET%\src\config\kudu-config\config.prod.json" "%DEPLOYMENT_TARGET%\src\config\config.json" /Y
+  copy "%DEPLOYMENT_TARGET%\src\config\kudu-config\config.prod.js" "%DEPLOYMENT_TARGET%\config.js" /Y
+ )
+
+echo Prepare ENV - End
 
 :: 2. Select node version
 call :SelectNodeVersion
@@ -105,7 +122,6 @@ IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
   IF !ERRORLEVEL! NEQ 0 goto error
   popd
 )
-
 
 echo Custom Step - Start
 
@@ -120,6 +136,10 @@ del  "%DEPLOYMENT_TARGET%\.deployment"
 del  "%DEPLOYMENT_TARGET%\README.md"
 
 echo Custom Step - End
+
+
+
+
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 goto end
