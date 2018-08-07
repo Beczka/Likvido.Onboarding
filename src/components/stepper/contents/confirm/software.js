@@ -37,7 +37,7 @@ export default class Software extends React.Component {
     changeProgram(id) {
 
         if (id === 0) {
-            window.open(`https://secure.e-conomic.com/secure/api1/requestaccess.aspx?appPublicToken=${'{heQd3b3YRMcb7FA7LdzAjR9z1opzeSHfGzTTcrMAltM1}'}&redirectUrl={1}`)
+            window.open(`https://secure.e-conomic.com/secure/api1/requestaccess.aspx?appPublicToken=${config.ECONOMIC_APP_PUBLIC_TOKEN}&redirectUrl={1}`)
         }
 
         this.props.changeStep(true);
