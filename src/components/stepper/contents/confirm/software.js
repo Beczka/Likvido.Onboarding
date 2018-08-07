@@ -18,30 +18,29 @@ export default class Software extends React.Component {
         this.accountingProgram = [{
             name: 'e-conomic',
             img: Economic,
-            active: false
+            active: false,
+            id: 0
         }, {
             name: 'dinero',
             img: Dinero,
-            active: false
+            active: false,
+            id: 2
         }, {
 
             name: 'billy',
             img: Billy,
-            active: false
-        }, {
-            name: 'UniConta',
-            img: UniConta,
-            active: false
-        }, {
-            name: 'Microsoft Dynamics',
-            img: MicrosoftDynamics,
-            active: false
-        }, {
-
-            name: '3',
-            img: Billy,
-            active: false
+            active: false,
+            id: 1
         }];
+    }
+
+    changeProgram(id) {
+
+        if (id === 0) {
+            window.open(`https://secure.e-conomic.com/secure/api1/requestaccess.aspx?appPublicToken=${'{heQd3b3YRMcb7FA7LdzAjR9z1opzeSHfGzTTcrMAltM1}'}&redirectUrl={1}`)
+        }
+
+        this.props.changeStep(true);
     }
 
     render() {
@@ -52,7 +51,7 @@ export default class Software extends React.Component {
         return (
             <div className="container">
                 <div className="left-panel-block">
-                    <div className="left-panel-container-header">
+                    <div className="left-panel-container-header max-width-550">
                         {data.content.container_header}
                     </div>
                     <div className="left-panel-container-text left-panel-container-content">
@@ -61,18 +60,18 @@ export default class Software extends React.Component {
                     <div className="container-accounting-program">
                         {this.accountingProgram.map((el, index) => {
                             return <div key={index}
-                                className={el.name === selectProgram ? 'accounting-program active' : 'accounting-program'}
-                                onClick={() => { this.props.saveProgram(el.name); this.setState({ selectProgram: el.name }) }}>
-                                <img src={el.img}  alt="..." className={el.name === 'UniConta' ? 'UniConta' : ''}/>
-                                <RadioButton status={el.name === selectProgram ? 'progress' : ''}  className={el.name === 'UniConta' && 'UniConta'}/>
+                                className={el.id === selectProgram ? 'accounting-program active' : 'accounting-program'}
+                                onClick={() => { this.props.saveProgram(el); this.setState({ selectProgram: el.id }) }}>
+                                <img src={el.img} alt="..." className={el.name === 'UniConta' ? 'UniConta' : ''} />
+                                <RadioButton status={el.id === selectProgram ? 'progress' : ''} className={el.id === 'UniConta' && 'UniConta'} />
                             </div>
                         })}
                     </div>
-                    <div className="left-panel-container-text left-panel-container-body">
+                    <div className="left-panel-container-text left-panel-container-body padding-top-35">
                         Understotter vi endnu ikke dit regnskabsprogram? Skriv til os pa kontakt@likvido.dk og fa tilsendt info om vores REST.API og andre integrationsmuligheder.
                     </div>
-                    <div className="container-button">
-                        <Button onChange={() => selectProgram !== '' ? changeStep(true) : ''} title={<span className="button-container-title">Næste <span className='block-arrow'>→</span> </span>} styles={{ backgroundColor: btnPrimaryColor }} />
+                    <div className="container-button padding-top-45">
+                        <Button onChange={() => selectProgram !== '' ? this.changeProgram(selectProgram) : ''} title={<span className="button-container-title">Næste <span className='block-arrow'>→</span> </span>} styles={{ backgroundColor: btnPrimaryColor }} />
                         <Button onChange={() => changePart(false)} title={'Forrige'} className={'button button-back'} />
                     </div>
                 </div>

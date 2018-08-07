@@ -3,6 +3,9 @@ import { Button, Input, Checkbox } from '../../../../smpl-components/index'
 import defaultProps from '../../../../default'
 import Validation from '../../../validation'
 import {config} from '../../../../config/config.js';
+import axios from 'axios';
+import API from '../../../../APIconfig.json';
+
 
 export default class Account extends React.Component {
     constructor(props) {
@@ -11,11 +14,13 @@ export default class Account extends React.Component {
             data: [],
             password: '',
             checked: false,
-            error : false
+            error: false,
+            alredy: false
         }
         this.selectData = this.selectData.bind(this);
         this.checkData = this.checkData.bind(this);
         this.updatedDone = this.updatedDone.bind(this);
+        this.changeAlready = this.changeAlready.bind(this);
     }
 
     updatedDone() {
@@ -68,7 +73,7 @@ export default class Account extends React.Component {
             error = true;
         }
 
-        this.setState({ update: true , error : error});
+        this.setState({ update: true, error: error });
 
         if (data.length < 5) {
             return false;
@@ -80,14 +85,50 @@ export default class Account extends React.Component {
         return succses;
     }
 
+    async sendData() {
+        let data = {};
+        const { entryAll } = this.props;
+        this.props.spinner(true);
+        data['companyName'] = entryAll['details step'].officialName;
+        data['companyRegistrationNumber'] = entryAll['details step'].vat;
+        data['address'] = entryAll['details step'].address;
+        data['zipCode'] = entryAll['details step'].zipcode;
+        data['city'] = entryAll['details step'].city;
+        data['officeEmail'] = entryAll['account step'].filter((el) => el.name === 'email' && el.value)[0].value;
+        data['officePhone'] = entryAll['account step'].filter((el) => el.name === 'number' && el.value)[0].value;
+        data['firstName'] = entryAll['account step'].filter((el) => el.name === 'name' && el.value)[0].value;
+        data['lastName'] = entryAll['account step'].filter((el) => el.name === 'surname' && el.value)[0].value;
+        data['password'] = entryAll['account step'].filter((el) => el.name === 'password' && el.value)[0].value;
+        data['sendWelcomeMessage'] = true;
+        data['creditorType'] = 1;
+        try {
+            const res = await axios.post(API.creditorsAPI, {
+                data: data
+            });
+            if (!!res.data.error) {
+                this.changeAlready(true);
+            } else {
+                this.props.saveID(res.data.id);
+                this.props.changeStep(true);
+            }
+            this.props.spinner();
+        } catch (e) {
+            console.log('Err: ', e)
+            this.props.spinner();
+        }
+    }
+
+    changeAlready(alredy) {
+        this.setState({ alredy: alredy ? alredy : false })
+    }
+
     render() {
         const { changeStep, entry = [] } = this.props;
-        const { password, update, checked,error } = this.state;
+        const { password, update, checked, error, alredy } = this.state;
         const { content } = this.props.data;
         const { btnPrimaryColor } = defaultProps.btnStyles;
 
-        let err = error ? !checked && true : false 
-
+        let err = error ? !checked && true : false;
         return (
             <div className="left-panel-block">
                 <div className="left-panel-container-header">
@@ -126,6 +167,9 @@ export default class Account extends React.Component {
                         update={update}
                         defaultValue={this.getSaveData('email')}
                         placeholder={'E-mail (arbejdsmail) '}
+                        errorMesAlredy={'E-mail is already taken'}
+                        alredy={alredy}
+                        changeAlready={this.changeAlready}
                         errorMes={'E-mail er forkert'}
                         error={(el) => { return Validation.validationEmail(el) }}
                         onChange={(name, value) => { this.selectData(name, value) }} />
@@ -146,7 +190,7 @@ export default class Account extends React.Component {
                         update={update}
                         defaultValue={this.getSaveData('password')}
                         name='password'
-                        placeholder={'Skriv et password '}
+                        placeholder={'Skriv et password'}
                         type={'password'}
                         errorMes={'Adgangskode er forkert'}
                         error={(el) => { return Validation.validationPass(el) }}
@@ -169,7 +213,7 @@ export default class Account extends React.Component {
                     <Checkbox title={'Jeg accepterer Likvido Inkasso ApS '} error={err} value={checked} onChange={() => this.setState({ checked: !checked })} url={`${config.LIKWIDO_APP_BASE_PATH}`} />
                 </div>
                 <div className="container-button">
-                    <Button onChange={() => this.checkData() && checked && changeStep(true)} title={<span className="button-container-title">Næste <span className='block-arrow'>→</span> </span>} styles={{ backgroundColor: btnPrimaryColor }} />
+                    <Button onChange={() => this.checkData() && checked && this.sendData()} title={<span className="button-container-title">Næste <span className='block-arrow'>→</span> </span>} styles={{ backgroundColor: btnPrimaryColor }} />
                     <Button onChange={() => changeStep(false)} title={'Forrige'} className={'button button-back'} />
                 </div>
             </div>

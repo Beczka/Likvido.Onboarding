@@ -48,7 +48,7 @@ app.get('/company', (request, response) => {
 
 app.post('/creditors', (request, response) => {
    let data = {creditor: request.body.data}
-    axios.post(`${env.config.CORE_SITE_BASE_PATH}/api/Creditors`, data, {
+   axios.post(`${env.config.CORE_SITE_BASE_PATH}/api/Creditors`, data, {
         headers: {
             'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json-patch+json',
@@ -56,15 +56,13 @@ app.post('/creditors', (request, response) => {
     })
         .then((res) => {
             response.json(res.data)
-            console.log('asdasdasdasdadd', res)
         })
         .catch(function (error) {
-            console.log('error',error)
+            response.json(error.response.data)
         });
 
 });
 
 
 app.listen(port, (err) => {
-    console.log('test server')
 })

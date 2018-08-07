@@ -8,34 +8,22 @@ import API from '../../../../APIconfig.json';
 
 export default class Greeting extends React.Component {
 
-    async sendData() {
-        let data = {};
-        const { entry } = this.props;
+    constructor(props) {
+        super(props);
 
-        data['companyName'] = entry['details step'].officialName;
-        data['companyRegistrationNumber'] = entry['details step'].vat;
-        data['address'] = entry['details step'].address;
-        data['zipCode'] = entry['details step'].zipcode;
-        data['city'] = entry['details step'].city;
-        data['officeEmail'] = entry['account step'].filter((el) => el.name === 'email' && el.value)[0].value;
-        data['officePhone'] = entry['account step'].filter((el) => el.name === 'number' && el.value)[0].value;
-        data['firstName'] = entry['account step'].filter((el) => el.name === 'name' && el.value)[0].value;
-        data['lastName'] = entry['account step'].filter((el) => el.name === 'surname' && el.value)[0].value;
-        data['password'] =  entry['account step'].filter((el) => el.name === 'password' && el.value)[0].value;
-        try {
-            const res = await axios.post(API.creditorsAPI, {
-                data: data
-            });
-        } catch (e) {
-            console.log('Err: ', e)
-        }
+        this.openSite = this.openSite.bind(this);
+    }
+
+    openSite() {
+        const { id } = this.props;
+        window.open(`https://app.likvido.dk/Account/ActivateOnboarding?creditorId=${this.props.id}`);
+        this.props.changeStep;
     }
 
     render() {
         const { changeStep } = this.props;
         const { content } = this.props.data;
         const { btnPrimaryColor } = defaultProps.btnStyles;
-        this.sendData();
         return (
             <div className="left-panel-block greeting">
                 <div className="left-panel-container-header">
@@ -45,7 +33,7 @@ export default class Greeting extends React.Component {
                     {content.header_content}
                 </div>
                 <img className="Fill-1" src={Img} alt="..." />
-                <Button onChange={changeStep} title={'Tilknyt regnskabsprogram'} styles={{ backgroundColor: btnPrimaryColor, width: 235 }} />
+                <Button onChange={this.openSite} title={'Tilknyt regnskabsprogram'} styles={{ backgroundColor: btnPrimaryColor, width: 235 }} />
             </div>
         )
     }
