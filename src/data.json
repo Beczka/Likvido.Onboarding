@@ -6,7 +6,7 @@
     "userEmail": "kontakt@likvido.dk",
     "backgroundColor": "",
     "apiKey": "",
-    "fullflow": false,
+    "fullflow": true,
     "Tilknyt regnskabssystem": {
         "userInfo": "Du kan booke et online-session hvor vores tekniske support hjælper dig gennem opsætningen.",
         "userHeader": "Skal vi guide dig igennem integrationen?",

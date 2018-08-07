@@ -11,26 +11,28 @@ export default class CreateAccount extends React.Component {
         this.state = {
             activeStep: 'payment step',
             entry: {},
-            value: ''
+            value: '',
+            id: ''
         };
         this.steps = ['payment step', 'details step', 'account step', 'greeting step'];
         this.changeStep = this.changeStep.bind(this);
         this.changePart = this.props.changePart;
         this.changeStatus = this.props.changeStatus;
         this.saveData = this.saveData.bind(this);
+        this.saveID = this.saveID.bind(this);
     }
 
     renderStep() {
-        const { value = '', entry, activeStep } = this.state;
+        const { value = '', entry, activeStep, id } = this.state;
         switch (activeStep) {
             case 'payment step':
                 return <Payment key={activeStep} changeStep={this.changeStep} spinner={this.props.spinner} data={data.data_payment} value={value} />
             case 'details step':
                 return <Details key={activeStep} changeStep={this.changeStep} spinner={this.props.spinner} data={data.data_details} value={value} entry={entry[activeStep]} saveData={this.saveData} />;
             case 'account step':
-                return <Account key={activeStep} changeStep={this.changeStep} data={data.data_account} entry={entry[activeStep]} saveData={this.saveData} />;
+                return <Account key={activeStep} changeStep={this.changeStep} saveID={this.saveID} spinner={this.props.spinner} entryAll={entry} data={data.data_account} entry={entry[activeStep]} saveData={this.saveData} />;
             case 'greeting step':
-                return <Greeting key={activeStep} changeStep={this.changePart} data={data.data_greeting} entry={entry} />;
+                return <Greeting key={activeStep} changeStep={this.changePart} id={id} data={data.data_greeting} entry={entry} value={value}/>;
             default:
                 return <div />
         }
@@ -60,6 +62,10 @@ export default class CreateAccount extends React.Component {
         entry[activeStep] = saveData;
         this.props.saveData(entry)
         this.setState(entry)
+    }
+
+    saveID(id) {
+        this.setState({ id: id })
     }
 
     render() {

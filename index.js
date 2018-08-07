@@ -13,7 +13,6 @@ app.use('/static', express.static(__dirname + '/build/static'));
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-    console.log('sdfsdfsfsdfsd')
     res.sendFile(`${__dirname}/build/index.html`)
 });
 
@@ -47,8 +46,7 @@ app.get('/company', (request, response) => {
 
 
 app.post('/creditors', (request, response) => {
-   let data = {creditor: request.body.data}
-    axios.post(`https://testcore.likvido.dk/api/Creditors`, data, {
+    axios.post(`https://testcore.likvido.dk/api/Creditors`, request.body.data, {
         headers: {
             'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json-patch+json',
@@ -56,15 +54,13 @@ app.post('/creditors', (request, response) => {
     })
         .then((res) => {
             response.json(res.data)
-            console.log('asdasdasdasdadd', res)
         })
         .catch(function (error) {
-            console.log('error',error)
+            response.json(error.response.data)
         });
 
 });
 
 
 app.listen(port, (err) => {
-    console.log('test server')
 })

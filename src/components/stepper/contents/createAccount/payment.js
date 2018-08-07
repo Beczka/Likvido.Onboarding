@@ -41,10 +41,10 @@ export default class Payment extends React.Component {
                 headers: {
                     'Access-Control-Allow-Origin': '*',
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    value: value,
+                    value:value
                 }, cancelToken: new CancelToken((c) => {
                     this.cancel = c;
-                }),
+                })
             });
             this.cancel = () => { };
 
